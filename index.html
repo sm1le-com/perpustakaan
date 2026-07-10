@@ -766,7 +766,6 @@
         <div class="container">
             <a class="navbar-brand" href="#" id="brandLink">
                 <img src="LOGO.png" alt="Logo" height="40">
-             
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -832,7 +831,6 @@
         <!-- DETAIL POSTINGAN -->
         <div class="page-section" id="page-post-detail">
             <div class="blog-container">
-
                 <div id="blogHero"></div>
                 <div class="blog-body">
                     <h1 class="blog-title" id="detailPostTitle"></h1>
@@ -959,11 +957,16 @@
             </div>
         </div>
 
-        <!-- MANAJEMEN BUKU -->
+        <!-- MANAJEMEN BUKU (dengan pencarian) -->
         <div class="page-section" id="page-manage-books">
             <div class="section-header">
                 <h2>📚 Manajemen Buku</h2>
                 <button class="btn btn-accent btn-sm" id="addBookBtn"><i class="fas fa-plus"></i> Tambah</button>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="searchManageBooks" placeholder="Cari buku berdasarkan judul atau ID...">
+                </div>
             </div>
             <div class="table-container">
                 <div class="table-responsive">
@@ -976,11 +979,16 @@
             </div>
         </div>
 
-        <!-- MANAJEMEN USER -->
+        <!-- MANAJEMEN USER (dengan pencarian) -->
         <div class="page-section" id="page-manage-users">
             <div class="section-header">
                 <h2>👥 Manajemen User</h2>
                 <button class="btn btn-accent btn-sm" id="addUserBtn"><i class="fas fa-plus"></i> Tambah</button>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="searchManageUsers" placeholder="Cari user berdasarkan NIS, nama, atau kelas...">
+                </div>
             </div>
             <div class="table-container">
                 <div class="table-responsive">
@@ -1217,9 +1225,9 @@
             var currentToken = null;
             var ckeditorInstance = null;
             var SLIDER_DATA = [
-                { image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1200&h=500&fit=crop', title: 'Temukan Dunia Melalui Buku', caption: 'Jelajahi ribuan koleksi buku berkualitas untuk menunjang prestasi dan wawasan.', btnText: 'Jelajahi Koleksi', link: 'buku' },
-                { image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=500&fit=crop', title: 'Baca, Pelajari, Berkembang', caption: 'Perpustakaan SMAN 1 Leuwimunding menyediakan lingkungan nyaman untuk membaca dan belajar.', btnText: 'Kunjungi Perpustakaan', link: 'beranda' },
-                { image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=500&fit=crop', title: 'Ilmu Pengetahuan Tanpa Batas', caption: 'Mulai perjalanan intelektualmu bersama kami. Buku adalah jendela dunia.', btnText: 'Lihat Artikel', link: 'semua-postingan' }
+                { image: 'https://blogger.googleusercontent.com/img/a/AVvXsEjU1PJLWzF0dg07pdeF8_6P5rOKWpco0mDop75AvROWcpxROamHX4HGCe4YXKxjsxRSJGY8CkYULs29KAMn18FW-aE-N3AwMvhCHtMaiTARVIqEtsQ6YP7aNWhawVU29-MN4sO25V8lkXDyBlmz57aA5D2l7ldjtw3XUC7B_yruRSqGrVaa9b5X7tiz4Qo?w=1200&h=500&fit=crop', title: 'Temukan Dunia Melalui Buku', caption: 'Jelajahi ribuan koleksi buku berkualitas untuk menunjang prestasi dan wawasan.', btnText: 'Jelajahi Koleksi', link: 'buku' },
+                { image: 'https://blogger.googleusercontent.com/img/a/AVvXsEhGivteUQbx-efCLkp2mAi-LAhec3DHp9LPeWM_oLnwvPJtmBgrdo5cRbRlbo5vfZqsWQd4xETh1iPN1a1ROvrmLaytmPFTmqQwefhMb5g9PXtpxa04bWswgAhbiAgrmbCvqae2ddqHXgBPqMseYmI6HIINScs1zTup4WnlpL5-QMgKCT8dD_BlyKvjA6Y?w=1200&h=500&fit=crop', title: 'Baca, Pelajari, Berkembang', caption: 'Perpustakaan SMAN 1 Leuwimunding menyediakan lingkungan nyaman untuk membaca dan belajar.', btnText: 'Kunjungi Perpustakaan', link: 'beranda' },
+                { image: 'https://blogger.googleusercontent.com/img/a/AVvXsEjtXECVl0eYtL9ugaDzF38j3EjWM9p4EcoHyA7j4nWcOJ1M3YqgsrYKGzVfOhkcQ5rfmqHBCA2A9U0_YnokYAoc3D7J_YMPv_wQS5_MY5ldIRMHb83kWmlWHEd077DA5xSxuxbk1P4aJh76T5gIy3phWEMzO74lPhykRjFLccwnRSgXc2fqNwRdMw2ZJOY?w=1200&h=500&fit=crop', title: 'Ilmu Pengetahuan Tanpa Batas', caption: 'Mulai perjalanan intelektualmu bersama kami. Buku adalah jendela dunia.', btnText: 'Lihat Artikel', link: 'semua-postingan' }
             ];
 
             // ===== UTILITY =====
@@ -1409,6 +1417,53 @@
                     });
                 }
                 container.innerHTML = html;
+
+                // Re-attach event listeners untuk tombol aksi (jika ada)
+                var containerId = state.containerId;
+                if (containerId === 'manageBookTableBody') {
+                    container.querySelectorAll('button[data-action]').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var action = this.dataset.action;
+                            var id = this.dataset.bookid;
+                            if (action === 'editBook') showBookForm(id);
+                            else if (action === 'deleteBook') deleteBook(id);
+                        });
+                    });
+                } else if (containerId === 'manageUserTableBody') {
+                    container.querySelectorAll('button[data-action]').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var action = this.dataset.action;
+                            var id = this.dataset.userid;
+                            if (action === 'editUser') showUserForm(id);
+                            else if (action === 'deleteUser') deleteUser(id);
+                        });
+                    });
+                } else if (containerId === 'bookTableBody') {
+                    container.querySelectorAll('button[data-action="borrowFromTable"]').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var bookId = this.dataset.bookid;
+                            var duration = parseInt(document.getElementById('bookLoanDuration').value) || 365;
+                            if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
+                            executeBorrowBook(bookId, duration);
+                        });
+                    });
+                } else if (containerId === 'borrowBookGrid') {
+                    container.querySelectorAll('button[data-action="borrowFromPinjam"]').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var bookId = this.dataset.bookid;
+                            var duration = parseInt(document.getElementById('studentLoanDuration').value) || 365;
+                            if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
+                            executeBorrowBook(bookId, duration);
+                        });
+                    });
+                } else if (containerId === 'activeLoanTable') {
+                    container.querySelectorAll('button[data-action="returnBook"]').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var loanId = this.dataset.loanid;
+                            returnBook(loanId);
+                        });
+                    });
+                }
 
                 buildPaginationControls(paginationId, totalItems, currentPage, pageSize, state.renderFn, state.containerId, state.isGrid);
             }
@@ -1899,9 +1954,7 @@
                     var containerId = mode === 'beranda' ? 'postCards' : 'allPostCards';
                     var container = document.getElementById(containerId);
                     if (res.success && res.data) {
-                        // PASTIKAN 6 POSTINGAN TERBARU DI BERANDA
                         var posts = mode === 'beranda' ? res.data.slice(0, 6) : res.data;
-                        console.log('Jumlah postingan ditampilkan:', posts.length); // debugging
                         var html = '';
                         if (posts.length === 0) html = '<div class="col-12 text-center text-muted py-5">Belum ada postingan.</div>';
                         posts.forEach(function(post) {
@@ -1985,14 +2038,6 @@
                                 </tr>`;
                             }
                         );
-                        document.querySelectorAll('#bookTableBody button[data-action="borrowFromTable"]').forEach(function(btn) {
-                            btn.addEventListener('click', function() {
-                                var bookId = this.dataset.bookid;
-                                var duration = parseInt(document.getElementById('bookLoanDuration').value) || 365;
-                                if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
-                                executeBorrowBook(bookId, duration);
-                            });
-                        });
                     } else {
                         document.getElementById('bookTableBody').innerHTML = '<tr><td colspan="10" class="text-center">Gagal memuat data.</td></tr>';
                         document.getElementById('bookPagination').innerHTML = '';
@@ -2003,7 +2048,7 @@
             function loadLatestBooks() {
                 jsonpCall('getBooks', {}, function(res) {
                     if (res.success && res.data) {
-                        var latest = res.data.slice(-6).reverse(); // 6 BUKU TERBARU
+                        var latest = res.data.slice(-6).reverse();
                         var html = '';
                         latest.forEach(function(b) {
                             html += `
@@ -2020,16 +2065,26 @@
                 });
             }
 
-            // ===== MANAGE BOOKS =====
+            // ===== MANAGE BOOKS (dengan pencarian) =====
             function loadManageBooks() {
                 showSpinner();
                 jsonpCall('getBooks', {}, function(res) {
                     hideSpinner();
                     if (res.success && res.data) {
+                        var search = document.getElementById('searchManageBooks').value.toLowerCase().trim();
+                        var filtered = res.data;
+                        if (search) {
+                            filtered = filtered.filter(function(b) {
+                                return b.Title.toLowerCase().includes(search) ||
+                                       b.BookID.toLowerCase().includes(search);
+                            });
+                        }
+                        // Reset pagination state agar halaman kembali ke 1
+                        delete paginationStates['manageBookPagination'];
                         renderPaginatedTableWithData(
                             'manageBookTableBody',
                             'manageBookPagination',
-                            res.data,
+                            filtered,
                             10,
                             function(b) {
                                 return `<tr>
@@ -2042,14 +2097,6 @@
                                     </td></tr>`;
                             }
                         );
-                        document.querySelectorAll('#manageBookTableBody button[data-action]').forEach(function(btn) {
-                            btn.addEventListener('click', function() {
-                                var action = this.dataset.action;
-                                var id = this.dataset.bookid;
-                                if (action === 'editBook') showBookForm(id);
-                                else if (action === 'deleteBook') deleteBook(id);
-                            });
-                        });
                     } else {
                         document.getElementById('manageBookTableBody').innerHTML = '<tr><td colspan="8" class="text-center">Gagal memuat data.</td></tr>';
                         document.getElementById('manageBookPagination').innerHTML = '';
@@ -2079,14 +2126,6 @@
                                     </td></tr>`;
                             }
                         );
-                        document.querySelectorAll('#managePostTableBody button[data-action]').forEach(function(btn) {
-                            btn.addEventListener('click', function() {
-                                var action = this.dataset.action;
-                                var id = this.dataset.postid;
-                                if (action === 'editPost') showPostForm(id);
-                                else if (action === 'deletePost') deletePost(id);
-                            });
-                        });
                     } else {
                         document.getElementById('managePostTableBody').innerHTML = '<tr><td colspan="4" class="text-center">Gagal memuat data.</td></tr>';
                         document.getElementById('managePostPagination').innerHTML = '';
@@ -2094,16 +2133,31 @@
                 });
             }
 
-            // ===== MANAGE USERS =====
+            // ===== MANAGE USERS (DIPERBAIKI) =====
             function loadManageUsers() {
                 showSpinner();
                 jsonpCall('getUsers', {}, function(res) {
                     hideSpinner();
                     if (res.success && res.data) {
+                        var search = document.getElementById('searchManageUsers').value.toLowerCase().trim();
+                        var filtered = res.data;
+                        if (search) {
+                            filtered = filtered.filter(function(u) {
+                                // Pastikan NIS diubah menjadi string
+                                var nisStr = String(u.NIS || '');
+                                var nameStr = String(u.Name || '');
+                                var classStr = String(u.Class || '');
+                                return nisStr.toLowerCase().includes(search) ||
+                                       nameStr.toLowerCase().includes(search) ||
+                                       classStr.toLowerCase().includes(search);
+                            });
+                        }
+                        // Reset pagination state agar halaman kembali ke 1
+                        delete paginationStates['manageUserPagination'];
                         renderPaginatedTableWithData(
                             'manageUserTableBody',
                             'manageUserPagination',
-                            res.data,
+                            filtered,
                             10,
                             function(u) {
                                 return `<tr>
@@ -2115,14 +2169,6 @@
                                     </td></tr>`;
                             }
                         );
-                        document.querySelectorAll('#manageUserTableBody button[data-action]').forEach(function(btn) {
-                            btn.addEventListener('click', function() {
-                                var action = this.dataset.action;
-                                var id = this.dataset.userid;
-                                if (action === 'editUser') showUserForm(id);
-                                else if (action === 'deleteUser') deleteUser(id);
-                            });
-                        });
                     } else {
                         document.getElementById('manageUserTableBody').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
                         document.getElementById('manageUserPagination').innerHTML = '';
@@ -2160,14 +2206,6 @@
                                 </div>`;
                             }
                         );
-                        document.querySelectorAll('#borrowBookGrid button[data-action="borrowFromPinjam"]').forEach(function(btn) {
-                            btn.addEventListener('click', function() {
-                                var bookId = this.dataset.bookid;
-                                var duration = parseInt(document.getElementById('studentLoanDuration').value) || 365;
-                                if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
-                                executeBorrowBook(bookId, duration);
-                            });
-                        });
                     } else {
                         document.getElementById('borrowBookGrid').innerHTML = '<div class="col-12 text-center text-muted py-5">Gagal memuat data.</div>';
                         document.getElementById('borrowPagination').innerHTML = '';
@@ -2295,12 +2333,6 @@
                                 </tr>`;
                             }
                         );
-                        document.querySelectorAll('#activeLoanTable button[data-action="returnBook"]').forEach(function(btn) {
-                            btn.addEventListener('click', function() {
-                                var loanId = this.dataset.loanid;
-                                returnBook(loanId);
-                            });
-                        });
                     } else {
                         document.getElementById('activeLoanTable').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
                         document.getElementById('activeLoanPagination').innerHTML = '';
@@ -2716,7 +2748,14 @@
                 document.getElementById('adminBorrowBtn').addEventListener('click', adminBorrowBook);
                 document.getElementById('refreshBorrowable').addEventListener('click', loadBorrowableBooks);
 
+                // ===== PENCARIAN MANAJEMEN BUKU & USER (dengan debounce) =====
+                document.getElementById('searchManageBooks').addEventListener('input', debounce(function() {
+                    loadManageBooks();
+                }, 300));
 
+                document.getElementById('searchManageUsers').addEventListener('input', debounce(function() {
+                    loadManageUsers();
+                }, 300));
 
                 var searchBuku = document.getElementById('searchBuku');
                 var searchPost = document.getElementById('searchPost');
