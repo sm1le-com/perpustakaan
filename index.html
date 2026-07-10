@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ANTI-CACHE: memaksa browser selalu mengambil versi terbaru -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <title>Perpustakaan SMAN 1 Leuwimunding</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <style>
-        /* ===== ROOT VARIABLES ===== */
+        /* ============================================================
+           GAYA UTAMA (sama seperti sebelumnya, hanya disatukan di sini)
+           ============================================================ */
         :root {
             --primary: #1e3a5f;
             --primary-dark: #0f2940;
@@ -146,7 +149,6 @@
         }
         .dropdown-item i { width: 1.4rem; color: var(--accent); }
 
-        /* ===== CAROUSEL ===== */
         .carousel-section {
             margin-bottom: 2rem;
             border-radius: 0 0 40px 40px;
@@ -557,7 +559,7 @@
             color: var(--dark);
             line-height: 1.3;
             display: -webkit-box;
-            
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -973,17 +975,19 @@
     </style>
 </head>
 <body>
-    <!-- Toast & Spinner -->
+    <!-- ===== TOAST & SPINNER ===== -->
     <div class="toast-container" id="toastContainer"></div>
     <div class="spinner-overlay" id="spinner" style="display:none;">
-        <div class="spinner-border text-warning" style="width:3rem;height:3rem;" role="status"><span class="visually-hidden">Loading...</span></div>
+        <div class="spinner-border text-warning" style="width:3rem;height:3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
     </div>
 
-    <!-- Navbar -->
+    <!-- ===== NAVBAR ===== -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#" id="brandLink">
-                <img src="LOGO.png" alt="Logo" height="40">
+                <img src="LOGO.png" alt="Logo" height="40" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -1002,7 +1006,7 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- ===== MAIN CONTENT ===== -->
     <div class="container" id="mainContent">
         <!-- BERANDA -->
         <div class="page-section active" id="page-beranda">
@@ -1016,21 +1020,18 @@
                     <span class="carousel-control-next-icon"></span>
                 </button>
             </div>
-
             <div class="section-header mt-4">
                 <h2>📰 Postingan Terbaru</h2>
                 <button class="btn btn-outline-primary-custom btn-sm" data-page="semua-postingan">Lihat Semua <i class="fas fa-arrow-right ms-1"></i></button>
             </div>
             <div class="row g-4" id="postCards"></div>
-
-            <hr class="my-5">
+            <hr class="my-5" />
             <div class="section-header">
                 <h2>📚 Buku Terbaru</h2>
                 <button class="btn btn-outline-primary-custom btn-sm" data-page="buku">Lihat Semua <i class="fas fa-arrow-right ms-1"></i></button>
             </div>
             <div class="row g-3" id="latestBooks"></div>
-
-            <hr class="my-5">
+            <hr class="my-5" />
             <div class="section-header">
                 <h2><i class="fas fa-map-marked-alt" style="color:var(--accent);"></i> Lokasi Kami</h2>
             </div>
@@ -1080,10 +1081,10 @@
                 <div class="d-flex flex-wrap gap-3 align-items-center">
                     <div class="d-flex align-items-center gap-2">
                         <label class="form-label mb-0" style="font-weight:500;font-size:0.9rem;" for="bookLoanDuration">Durasi:</label>
-                        <input type="number" class="form-control" id="bookLoanDuration" value="365" min="1" max="365" style="width:80px;">
+                        <input type="number" class="form-control" id="bookLoanDuration" value="365" min="1" max="365" style="width:80px;" />
                     </div>
                     <div>
-                        <input type="text" class="form-control" id="searchBuku" placeholder="Cari buku..." style="min-width:160px;">
+                        <input type="text" class="form-control" id="searchBuku" placeholder="Cari buku..." style="min-width:160px;" />
                     </div>
                 </div>
             </div>
@@ -1105,15 +1106,15 @@
             <div class="row g-3 mb-4">
                 <div class="col-md-3">
                     <label class="form-label" for="pinjamSearchTitle">Cari Judul</label>
-                    <input type="text" class="form-control" id="pinjamSearchTitle" placeholder="Judul...">
+                    <input type="text" class="form-control" id="pinjamSearchTitle" placeholder="Judul..." />
                 </div>
                 <div class="col-md-3">
                     <label class="form-label" for="pinjamSearchID">Cari ID</label>
-                    <input type="text" class="form-control" id="pinjamSearchID" placeholder="ID Buku...">
+                    <input type="text" class="form-control" id="pinjamSearchID" placeholder="ID Buku..." />
                 </div>
                 <div class="col-md-3">
                     <label class="form-label" for="studentLoanDuration">Durasi (hari)</label>
-                    <input type="number" class="form-control" id="studentLoanDuration" value="365" min="1" max="365">
+                    <input type="number" class="form-control" id="studentLoanDuration" value="365" min="1" max="365" />
                 </div>
                 <div class="col-md-3 d-flex align-items-end">
                     <button class="btn btn-outline-primary-custom w-100" id="refreshBorrowable"><i class="fas fa-sync"></i> Refresh</button>
@@ -1132,7 +1133,7 @@
                 </div>
             </div>
             <div class="row g-3 mb-3 no-print">
-                <div class="col-md-4"><label class="form-label">Cari Nama</label><input type="text" class="form-control" id="filterMyLoansStudent" placeholder="Nama..."></div>
+                <div class="col-md-4"><label class="form-label">Cari Nama</label><input type="text" class="form-control" id="filterMyLoansStudent" placeholder="Nama..." /></div>
                 <div class="col-md-3"><label class="form-label">Bulan</label>
                     <select class="form-control" id="filterMyLoansMonth">
                         <option value="">-- Semua --</option>
@@ -1178,7 +1179,7 @@
                 <h2>📝 Manajemen Postingan</h2>
                 <button class="btn btn-accent btn-sm" id="addPostBtn"><i class="fas fa-plus"></i> Tambah</button>
             </div>
-            <input type="text" class="form-control mb-3 w-50" id="searchPost" placeholder="Cari postingan...">
+            <input type="text" class="form-control mb-3 w-50" id="searchPost" placeholder="Cari postingan..." />
             <div class="table-container">
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -1198,7 +1199,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" id="searchManageBooks" placeholder="Cari buku berdasarkan judul atau ID...">
+                    <input type="text" class="form-control" id="searchManageBooks" placeholder="Cari buku berdasarkan judul atau ID..." />
                 </div>
             </div>
             <div class="table-container">
@@ -1220,7 +1221,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" id="searchManageUsers" placeholder="Cari user berdasarkan NIS, nama, atau kelas...">
+                    <input type="text" class="form-control" id="searchManageUsers" placeholder="Cari user berdasarkan NIS, nama, atau kelas..." />
                 </div>
             </div>
             <div class="table-container">
@@ -1237,7 +1238,7 @@
         <!-- PENGEMBALIAN -->
         <div class="page-section" id="page-pengembalian">
             <div class="section-header"><h2>🔄 Pengembalian Buku</h2></div>
-            <input type="text" class="form-control mb-3 w-50" id="searchReturn" placeholder="Cari nama siswa atau ID pinjaman...">
+            <input type="text" class="form-control mb-3 w-50" id="searchReturn" placeholder="Cari nama siswa atau ID pinjaman..." />
             <div class="table-container">
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -1256,19 +1257,19 @@
             <div class="row g-3 mb-4">
                 <div class="col-md-4">
                     <label class="form-label">Cari Siswa</label>
-                    <input type="text" class="form-control" id="searchStudent" placeholder="Nama...">
+                    <input type="text" class="form-control" id="searchStudent" placeholder="Nama..." />
                     <label class="form-label mt-2">Pilih Siswa</label>
                     <select class="form-control" id="selectStudent"><option value="">-- Pilih --</option></select>
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Cari Buku</label>
-                    <input type="text" class="form-control" id="searchBook" placeholder="Judul...">
+                    <input type="text" class="form-control" id="searchBook" placeholder="Judul..." />
                     <label class="form-label mt-2">Pilih Buku (Tersedia)</label>
                     <select class="form-control" id="selectBook"><option value="">-- Pilih --</option></select>
                 </div>
                 <div class="col-md-2">
                     <label class="form-label">Durasi (hari)</label>
-                    <input type="number" class="form-control" id="adminLoanDuration" value="365" min="1" max="365">
+                    <input type="number" class="form-control" id="adminLoanDuration" value="365" min="1" max="365" />
                 </div>
                 <div class="col-md-2 d-flex align-items-end">
                     <button class="btn btn-accent w-100" id="adminBorrowBtn"><i class="fas fa-hand-holding"></i> Pinjamkan</button>
@@ -1294,9 +1295,9 @@
                 </div>
             </div>
             <div class="row g-3 mb-3 no-print">
-                <div class="col-md-3"><label class="form-label">Nama</label><input type="text" class="form-control" id="filterAllLoansStudent" placeholder="Nama..."></div>
-                <div class="col-md-2"><label class="form-label">NIS</label><input type="text" class="form-control" id="filterAllLoansNIS" placeholder="NIS..."></div>
-                <div class="col-md-2"><label class="form-label">Kelas</label><input type="text" class="form-control" id="filterAllLoansClass" placeholder="Kelas..."></div>
+                <div class="col-md-3"><label class="form-label">Nama</label><input type="text" class="form-control" id="filterAllLoansStudent" placeholder="Nama..." /></div>
+                <div class="col-md-2"><label class="form-label">NIS</label><input type="text" class="form-control" id="filterAllLoansNIS" placeholder="NIS..." /></div>
+                <div class="col-md-2"><label class="form-label">Kelas</label><input type="text" class="form-control" id="filterAllLoansClass" placeholder="Kelas..." /></div>
                 <div class="col-md-2"><label class="form-label">Bulan</label>
                     <select class="form-control" id="filterAllLoansMonth">
                         <option value="">-- Semua --</option>
@@ -1322,7 +1323,7 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="row g-4">
@@ -1368,7 +1369,7 @@
                     </div>
                 </div>
             </div>
-            <hr>
+            <hr />
             <div class="footer-bottom">
                 &copy; <span id="currentYear"></span> Perpustakaan SMAN 1 Leuwimunding. All rights reserved.
                 <span style="opacity:0.5; margin:0 0.5rem;">|</span>
@@ -1377,10 +1378,10 @@
         </div>
     </footer>
 
-    <!-- PRINT AREA -->
+    <!-- ===== PRINT AREA ===== -->
     <div id="printArea" style="display:none;"></div>
 
-    <!-- ===== MODAL ===== -->
+    <!-- ===== MODALS ===== -->
     <!-- Modal Postingan -->
     <div class="modal fade" id="postFormModal" tabindex="-1" data-bs-backdrop="static">
         <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -1391,14 +1392,14 @@
                 </div>
                 <div class="modal-body">
                     <form id="postForm">
-                        <input type="hidden" id="postIdInput">
+                        <input type="hidden" id="postIdInput" />
                         <div class="mb-3">
                             <label class="post-modal-label">Judul <span class="required">*</span></label>
-                            <input type="text" class="form-control" id="postTitle" placeholder="Masukkan judul..." required>
+                            <input type="text" class="form-control" id="postTitle" placeholder="Masukkan judul..." required />
                         </div>
                         <div class="mb-3">
                             <label class="post-modal-label">Thumbnail URL <span class="text-muted">(opsional)</span></label>
-                            <input type="url" class="form-control" id="postThumbnail" placeholder="https://...">
+                            <input type="url" class="form-control" id="postThumbnail" placeholder="https://..." />
                         </div>
                         <div class="mb-3">
                             <label class="post-modal-label">Konten <span class="required">*</span></label>
@@ -1424,8 +1425,8 @@
                 <div class="modal-header"><h5 class="modal-title"><i class="fas fa-sign-in-alt"></i> Masuk</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
                 <div class="modal-body">
                     <form id="loginForm">
-                        <div class="mb-3"><label class="form-label">Username</label><input type="text" class="form-control" id="loginUsername" required autocomplete="username"></div>
-                        <div class="mb-3"><label class="form-label">Password</label><input type="password" class="form-control" id="loginPassword" required autocomplete="current-password"></div>
+                        <div class="mb-3"><label class="form-label">Username</label><input type="text" class="form-control" id="loginUsername" required autocomplete="username" /></div>
+                        <div class="mb-3"><label class="form-label">Password</label><input type="password" class="form-control" id="loginPassword" required autocomplete="current-password" /></div>
                         <button type="submit" class="btn btn-primary-custom w-100"><i class="fas fa-sign-in-alt"></i> Masuk</button>
                     </form>
                     <p class="text-muted mt-3 small text-center">Selamat Datang di Perpustakaan SMAN 1 Leuwimunding</p>
@@ -1441,21 +1442,21 @@
                 <div class="modal-header"><h5 class="modal-title" id="bookFormTitle">Tambah Buku</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
                 <div class="modal-body">
                     <form id="bookForm">
-                        <input type="hidden" id="bookIdInput">
+                        <input type="hidden" id="bookIdInput" />
                         <div class="row">
-                            <div class="col-md-8 mb-3"><label class="form-label">Judul</label><input type="text" class="form-control" id="bookTitle" required></div>
-                            <div class="col-md-4 mb-3"><label class="form-label">ISBN</label><input type="text" class="form-control" id="bookIsbn"></div>
+                            <div class="col-md-8 mb-3"><label class="form-label">Judul</label><input type="text" class="form-control" id="bookTitle" required /></div>
+                            <div class="col-md-4 mb-3"><label class="form-label">ISBN</label><input type="text" class="form-control" id="bookIsbn" /></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-3"><label class="form-label">Penulis</label><input type="text" class="form-control" id="bookAuthor" required></div>
-                            <div class="col-md-6 mb-3"><label class="form-label">Penerbit</label><input type="text" class="form-control" id="bookPublisher"></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Penulis</label><input type="text" class="form-control" id="bookAuthor" required /></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Penerbit</label><input type="text" class="form-control" id="bookPublisher" /></div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 mb-3"><label class="form-label">Kategori</label><input type="text" class="form-control" id="bookCategory"></div>
-                            <div class="col-md-4 mb-3"><label class="form-label">Tahun</label><input type="number" class="form-control" id="bookYear"></div>
-                            <div class="col-md-4 mb-3"><label class="form-label">Total Eksemplar</label><input type="number" class="form-control" id="bookTotalCopies" required min="1"></div>
+                            <div class="col-md-4 mb-3"><label class="form-label">Kategori</label><input type="text" class="form-control" id="bookCategory" /></div>
+                            <div class="col-md-4 mb-3"><label class="form-label">Tahun</label><input type="number" class="form-control" id="bookYear" /></div>
+                            <div class="col-md-4 mb-3"><label class="form-label">Total Eksemplar</label><input type="number" class="form-control" id="bookTotalCopies" required min="1" /></div>
                         </div>
-                        <div class="mb-3"><label class="form-label">Cover URL (opsional)</label><input type="url" class="form-control" id="bookCoverURL" placeholder="https://..."></div>
+                        <div class="mb-3"><label class="form-label">Cover URL (opsional)</label><input type="url" class="form-control" id="bookCoverURL" placeholder="https://..." /></div>
                         <button type="submit" class="btn btn-accent"><i class="fas fa-save"></i> Simpan</button>
                     </form>
                 </div>
@@ -1470,15 +1471,15 @@
                 <div class="modal-header"><h5 class="modal-title" id="userFormTitle">Tambah User</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
                 <div class="modal-body">
                     <form id="userForm">
-                        <input type="hidden" id="userIdInput">
-                        <div class="mb-3"><label class="form-label">NIS (opsional)</label><input type="text" class="form-control" id="userNis"></div>
-                        <div class="mb-3"><label class="form-label">Nama</label><input type="text" class="form-control" id="userName" required></div>
-                        <div class="mb-3"><label class="form-label">Kelas (siswa)</label><input type="text" class="form-control" id="userClass"></div>
-                        <div class="mb-3"><label class="form-label">Username</label><input type="text" class="form-control" id="userUsername" required></div>
-                        <div class="mb-3"><label class="form-label">Password</label><input type="text" class="form-control" id="userPassword" required></div>
+                        <input type="hidden" id="userIdInput" />
+                        <div class="mb-3"><label class="form-label">NIS (opsional)</label><input type="text" class="form-control" id="userNis" /></div>
+                        <div class="mb-3"><label class="form-label">Nama</label><input type="text" class="form-control" id="userName" required /></div>
+                        <div class="mb-3"><label class="form-label">Kelas (siswa)</label><input type="text" class="form-control" id="userClass" /></div>
+                        <div class="mb-3"><label class="form-label">Username</label><input type="text" class="form-control" id="userUsername" required /></div>
+                        <div class="mb-3"><label class="form-label">Password</label><input type="text" class="form-control" id="userPassword" required /></div>
                         <div class="mb-3"><label class="form-label">Role</label><select class="form-control" id="userRole"><option value="Siswa">Siswa</option><option value="Admin">Admin</option></select></div>
-                        <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" id="userEmail"></div>
-                        <div class="mb-3"><label class="form-label">Phone</label><input type="text" class="form-control" id="userPhone"></div>
+                        <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" id="userEmail" /></div>
+                        <div class="mb-3"><label class="form-label">Phone</label><input type="text" class="form-control" id="userPhone" /></div>
                         <button type="submit" class="btn btn-accent"><i class="fas fa-save"></i> Simpan</button>
                     </form>
                 </div>
@@ -1497,7 +1498,7 @@
         </div>
     </div>
 
-    <!-- ===== LIBRARY JS ===== -->
+    <!-- ===== SCRIPTS ===== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
@@ -1506,7 +1507,7 @@
             "use strict";
 
             // ===== KONFIGURASI =====
-            var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx8BddYfE3ZKD-FIFVrHZFq6ii4gbkH5ZNSjxA2oZQDmcbOqq8TT3FlA4iEo4ZV1sT1/exec';
+            var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwlRa3P-oPxHOXqffEVY3I-_guvud7PG7uY7SjREy6_qDOW1_D5qTLGfXEiKs5ALMGu/exec';
             var MAX_ACTIVE_LOANS = 20;
             var currentUser = null;
             var currentToken = null;
@@ -1574,7 +1575,7 @@
                 };
             }
 
-            // ===== JSONP DENGAN TIMEOUT =====
+            // ===== JSONP DENGAN TIMEOUT DAN PENANGANAN ERROR =====
             function jsonpCall(action, params, callback) {
                 var cbName = 'jsonp_cb_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
                 params.action = action;
@@ -1589,14 +1590,19 @@
                 var script = document.createElement('script');
                 script.src = APPS_SCRIPT_URL + '?' + queryString;
 
-                // Timeout 15 detik
+                var isCalled = false;
                 var timeoutId = setTimeout(function() {
-                    delete window[cbName];
-                    if (script.parentNode) script.parentNode.removeChild(script);
-                    callback({ success: false, message: 'Koneksi timeout. Periksa internet.' });
+                    if (!isCalled) {
+                        isCalled = true;
+                        delete window[cbName];
+                        if (script.parentNode) script.parentNode.removeChild(script);
+                        callback({ success: false, message: 'Koneksi timeout. Periksa internet.' });
+                    }
                 }, 15000);
 
                 window[cbName] = function(response) {
+                    if (isCalled) return;
+                    isCalled = true;
                     clearTimeout(timeoutId);
                     delete window[cbName];
                     if (script.parentNode) script.parentNode.removeChild(script);
@@ -1610,6 +1616,8 @@
                 };
 
                 script.onerror = function() {
+                    if (isCalled) return;
+                    isCalled = true;
                     clearTimeout(timeoutId);
                     delete window[cbName];
                     if (script.parentNode) script.parentNode.removeChild(script);
