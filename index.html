@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- ANTI-CACHE: memaksa browser selalu mengambil versi terbaru -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
@@ -12,9 +11,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <style>
-        /* ============================================================
-           GAYA UTAMA (sama seperti sebelumnya, hanya disatukan di sini)
-           ============================================================ */
         :root {
             --primary: #1e3a5f;
             --primary-dark: #0f2940;
@@ -148,7 +144,6 @@
             color: var(--primary);
         }
         .dropdown-item i { width: 1.4rem; color: var(--accent); }
-
         .carousel-section {
             margin-bottom: 2rem;
             border-radius: 0 0 40px 40px;
@@ -238,7 +233,6 @@
             .carousel-caption h2 { font-size: 1.8rem; }
             .carousel-caption p { font-size: 0.9rem; }
         }
-
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -265,7 +259,6 @@
             background: var(--accent);
             border-radius: 6px;
         }
-
         .post-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -341,7 +334,6 @@
             box-shadow: 0 6px 18px rgba(30,58,95,0.3);
             color: #fff;
         }
-
         .book-mini-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -387,7 +379,6 @@
             font-size: 0.8rem;
             color: var(--text-muted);
         }
-
         .table-container {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -420,7 +411,6 @@
         .table tbody tr:hover {
             background: #f8fafc;
         }
-
         .badge-status {
             font-size: 0.7rem;
             padding: 0.3rem 0.7rem;
@@ -431,7 +421,6 @@
         .badge-dikembalikan { background: #d4edda; color: #155724; }
         .badge-terlambat { background: #f8d7da; color: #721c24; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
-
         .stat-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -462,7 +451,6 @@
         .stat-card.danger .stat-icon { color: var(--danger); }
         .stat-card .stat-value { font-size: 2.4rem; font-weight: 800; color: var(--dark); }
         .stat-card .stat-label { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
-
         .blog-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -493,7 +481,6 @@
         .blog-content { font-size: 1.1rem; line-height: 1.8; color: #2c3e50; }
         .blog-content img { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .blog-content iframe { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; aspect-ratio: 16/9; width: 100%; }
-
         .sidebar-section {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -594,7 +581,6 @@
             .blog-hero-image { max-height: 250px; }
             .sidebar-section { padding: 1rem; }
         }
-
         .pagination-controls {
             display: flex;
             justify-content: center;
@@ -639,7 +625,6 @@
             color: var(--text-muted);
             margin-left: 0.4rem;
         }
-
         .modal-content {
             border-radius: 18px;
             border: none;
@@ -652,7 +637,6 @@
             border-radius: 18px 18px 0 0;
         }
         .modal-body { padding: 1.8rem; }
-
         .toast-container {
             position: fixed;
             top: 20px;
@@ -681,7 +665,6 @@
             from { transform: translateX(120%); opacity:0; }
             to { transform: translateX(0); opacity:1; }
         }
-
         .spinner-overlay {
             position: fixed;
             inset: 0;
@@ -692,7 +675,6 @@
             justify-content: center;
             z-index: 9998;
         }
-
         .btn-primary-custom {
             background: var(--primary);
             border: none;
@@ -753,7 +735,6 @@
             margin-bottom: 0.3rem;
             color: var(--dark);
         }
-
         .footer {
             background: linear-gradient(135deg, var(--primary-dark) 0%, #1a2f4a 100%);
             color: rgba(255,255,255,0.85);
@@ -888,7 +869,6 @@
             .footer .col-md-3 { margin-bottom: 2rem; }
             .footer .footer-bottom { font-size: 0.8rem; }
         }
-
         .map-container {
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -901,10 +881,8 @@
             height: 380px;
             border: 0;
         }
-
         .page-section { display: none; padding: 1.5rem 0; }
         .page-section.active { display: block; animation: fadeUp 0.4s ease; }
-
         @media (max-width: 768px) {
             .section-header h2 { font-size: 1.3rem; }
             .blog-body { padding: 1.5rem; }
@@ -917,7 +895,6 @@
             .blog-container .row { flex-direction: column; }
             .sidebar-section { margin-top: 1rem; }
         }
-
         .ck-editor__editable { min-height: 280px; }
         .ck-editor__editable_inline { padding: 1rem; }
         .ck-button.ck-custom-btn {
@@ -944,7 +921,6 @@
             overflow: hidden;
         }
         .post-modal-editor-wrapper .ck-editor__editable { min-height: 300px; }
-
         @media print {
             body * { visibility: hidden; }
             #printArea, #printArea * { visibility: visible; }
@@ -975,7 +951,8 @@
     </style>
 </head>
 <body>
-    <!-- ===== TOAST & SPINNER ===== -->
+
+    <!-- TOAST & SPINNER -->
     <div class="toast-container" id="toastContainer"></div>
     <div class="spinner-overlay" id="spinner" style="display:none;">
         <div class="spinner-border text-warning" style="width:3rem;height:3rem;" role="status">
@@ -983,7 +960,7 @@
         </div>
     </div>
 
-    <!-- ===== NAVBAR ===== -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#" id="brandLink">
@@ -1006,8 +983,9 @@
         </div>
     </nav>
 
-    <!-- ===== MAIN CONTENT ===== -->
+    <!-- MAIN CONTENT -->
     <div class="container" id="mainContent">
+
         <!-- BERANDA -->
         <div class="page-section active" id="page-beranda">
             <div id="heroCarousel" class="carousel slide carousel-section" data-bs-ride="carousel" data-bs-interval="5000">
@@ -1286,7 +1264,7 @@
             </div>
         </div>
 
-        <!-- RIWAYAT SEMUA -->
+        <!-- RIWAYAT SEMUA (DIPERBAIKI) -->
         <div class="page-section" id="page-all-loans">
             <div class="section-header">
                 <h2>📋 Riwayat Semua Peminjaman</h2>
@@ -1323,7 +1301,7 @@
         </div>
     </div>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="row g-4">
@@ -1378,11 +1356,10 @@
         </div>
     </footer>
 
-    <!-- ===== PRINT AREA ===== -->
+    <!-- PRINT AREA -->
     <div id="printArea" style="display:none;"></div>
 
-    <!-- ===== MODALS ===== -->
-    <!-- Modal Postingan -->
+    <!-- MODALS -->
     <div class="modal fade" id="postFormModal" tabindex="-1" data-bs-backdrop="static">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
@@ -1418,7 +1395,6 @@
         </div>
     </div>
 
-    <!-- Modal Login -->
     <div class="modal fade" id="loginModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1435,7 +1411,6 @@
         </div>
     </div>
 
-    <!-- Modal Buku -->
     <div class="modal fade" id="bookFormModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
@@ -1464,7 +1439,6 @@
         </div>
     </div>
 
-    <!-- Modal User -->
     <div class="modal fade" id="userFormModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1487,7 +1461,6 @@
         </div>
     </div>
 
-    <!-- Modal Konfirmasi -->
     <div class="modal fade" id="confirmModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
@@ -1498,7 +1471,7 @@
         </div>
     </div>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
@@ -1506,8 +1479,7 @@
         (function() {
             "use strict";
 
-            // ===== KONFIGURASI =====
-            var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFFgJpINQ2P0rNBZCevfElQKdqW4v2lnziAjw94UyQ2zK8L6DKXTk5ic5Briv0Q1Um/exec';
+            var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwun_5Ly7f-OcsqH4lWnmoJ62iRU5tRCkFAslJFyZwCOKfvIM6STWv6kEgU6YmP4azH/exec';
             var MAX_ACTIVE_LOANS = 20;
             var currentUser = null;
             var currentToken = null;
@@ -1519,7 +1491,6 @@
                 { image: 'https://blogger.googleusercontent.com/img/a/AVvXsEjtXECVl0eYtL9ugaDzF38j3EjWM9p4EcoHyA7j4nWcOJ1M3YqgsrYKGzVfOhkcQ5rfmqHBCA2A9U0_YnokYAoc3D7J_YMPv_wQS5_MY5ldIRMHb83kWmlWHEd077DA5xSxuxbk1P4aJh76T5gIy3phWEMzO74lPhykRjFLccwnRSgXc2fqNwRdMw2ZJOY?w=1200&h=500&fit=crop', title: 'Ilmu Pengetahuan Tanpa Batas', caption: 'Mulai perjalanan intelektualmu bersama kami. Buku adalah jendela dunia.', btnText: 'Lihat Artikel', link: 'semua-postingan' }
             ];
 
-            // ===== UTILITY =====
             function showSpinner() { document.getElementById('spinner').style.display = 'flex'; }
             function hideSpinner() { document.getElementById('spinner').style.display = 'none'; }
 
@@ -1575,7 +1546,6 @@
                 };
             }
 
-            // ===== JSONP DENGAN TIMEOUT DAN PENANGANAN ERROR =====
             function jsonpCall(action, params, callback) {
                 var cbName = 'jsonp_cb_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
                 params.action = action;
@@ -1626,7 +1596,6 @@
                 document.head.appendChild(script);
             }
 
-            // ===== AUTH =====
             function forceLogout() {
                 currentUser = null;
                 currentToken = null;
@@ -1784,7 +1753,6 @@
                 });
             }
 
-            // ===== NAVIGASI =====
             function navigateTo(page) {
                 document.querySelectorAll('.page-section').forEach(function(el) { el.classList.remove('active'); });
                 var target = document.getElementById('page-' + page);
@@ -1824,7 +1792,6 @@
                 });
             }
 
-            // ===== SLIDER =====
             function renderSlider() {
                 var indicators = document.getElementById('carouselIndicators');
                 var inner = document.getElementById('carouselInner');
@@ -1859,7 +1826,6 @@
                 });
             }
 
-            // ===== SIDEBAR =====
             function loadSidebarPosts() {
                 jsonpCall('getPosts', { page: 1, limit: 5 }, function(res) {
                     var container = document.getElementById('sidebarRecentPosts');
@@ -1916,7 +1882,6 @@
                 });
             }
 
-            // ===== POSTS =====
             function loadPosts(mode, page, limit) {
                 page = page || 1;
                 limit = limit || (mode === 'beranda' ? 6 : 10);
@@ -1993,7 +1958,6 @@
                 });
             }
 
-            // ===== BOOKS =====
             function loadBooks(page, limit) {
                 page = page || 1;
                 limit = limit || 10;
@@ -2069,7 +2033,6 @@
                 return '<div class="book-cover-placeholder" style="height:' + height + '; display:flex;"><i class="fas fa-book"></i></div>';
             }
 
-            // ===== PAGINATION =====
             function renderPaginationControls(containerId, total, currentPage, limit, fetchFn) {
                 var container = document.getElementById(containerId);
                 if (!container) return;
@@ -2111,7 +2074,6 @@
                 });
             }
 
-            // ===== MANAGE BOOKS =====
             function loadManageBooks(page, limit) {
                 page = page || 1;
                 limit = limit || 10;
@@ -2153,7 +2115,6 @@
                 });
             }
 
-            // ===== MANAGE POSTS =====
             function loadManagePosts(page, limit) {
                 page = page || 1;
                 limit = limit || 10;
@@ -2193,7 +2154,6 @@
                 });
             }
 
-            // ===== MANAGE USERS =====
             function loadManageUsers() {
                 showSpinner();
                 jsonpCall('getUsers', {}, function(res) {
@@ -2211,16 +2171,36 @@
                                        classStr.toLowerCase().includes(search);
                             });
                         }
-
-                        function renderUserPage(page, limit) {
+                        var tbody = document.getElementById('manageUserTableBody');
+                        var html = '';
+                        if (filtered.length === 0) html = '<tr><td colspan="7" class="text-center">Tidak ada data.</td></tr>';
+                        filtered.forEach(function(u) {
+                            html += `<tr>
+                                <td>${u.UserID}</td><td>${u.NIS||'-'}</td><td>${escapeHtml(u.Name)}</td><td>${u.Class||'-'}</td>
+                                <td>${u.Username}</td><td><span class="badge ${u.Role==='Admin'?'bg-primary':'bg-info'}">${u.Role}</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-warning me-1" data-userid="${u.UserID}" data-action="editUser"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger" data-userid="${u.UserID}" data-action="deleteUser"><i class="fas fa-trash"></i></button>
+                                </td></tr>`;
+                        });
+                        tbody.innerHTML = html;
+                        tbody.querySelectorAll('button[data-action]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var action = this.dataset.action;
+                                var id = this.dataset.userid;
+                                if (action === 'editUser') showUserForm(id);
+                                else if (action === 'deleteUser') deleteUser(id);
+                            });
+                        });
+                        renderPaginationControls('manageUserPagination', filtered.length, 1, 10, function(page, limit) {
                             var start = (page - 1) * limit;
                             var end = Math.min(start + limit, filtered.length);
                             var pageData = filtered.slice(start, end);
-                            var tbody = document.getElementById('manageUserTableBody');
-                            var html = '';
-                            if (pageData.length === 0) html = '<tr><td colspan="7" class="text-center">Tidak ada data.</td></tr>';
+                            var tbody2 = document.getElementById('manageUserTableBody');
+                            var html2 = '';
+                            if (pageData.length === 0) html2 = '<tr><td colspan="7" class="text-center">Tidak ada data.</td></tr>';
                             pageData.forEach(function(u) {
-                                html += `<tr>
+                                html2 += `<tr>
                                     <td>${u.UserID}</td><td>${u.NIS||'-'}</td><td>${escapeHtml(u.Name)}</td><td>${u.Class||'-'}</td>
                                     <td>${u.Username}</td><td><span class="badge ${u.Role==='Admin'?'bg-primary':'bg-info'}">${u.Role}</span></td>
                                     <td>
@@ -2228,8 +2208,8 @@
                                         <button class="btn btn-sm btn-outline-danger" data-userid="${u.UserID}" data-action="deleteUser"><i class="fas fa-trash"></i></button>
                                     </td></tr>`;
                             });
-                            tbody.innerHTML = html;
-                            tbody.querySelectorAll('button[data-action]').forEach(function(btn) {
+                            tbody2.innerHTML = html2;
+                            tbody2.querySelectorAll('button[data-action]').forEach(function(btn) {
                                 btn.addEventListener('click', function() {
                                     var action = this.dataset.action;
                                     var id = this.dataset.userid;
@@ -2237,10 +2217,8 @@
                                     else if (action === 'deleteUser') deleteUser(id);
                                 });
                             });
-                            renderPaginationControls('manageUserPagination', filtered.length, page, limit, renderUserPage);
-                        }
-
-                        renderUserPage(1, 10);
+                            renderPaginationControls('manageUserPagination', filtered.length, page, limit, arguments.callee);
+                        });
                     } else {
                         document.getElementById('manageUserTableBody').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
                         document.getElementById('manageUserPagination').innerHTML = '';
@@ -2248,7 +2226,6 @@
                 });
             }
 
-            // ===== BORROWABLE BOOKS =====
             function loadBorrowableBooks(page, limit) {
                 page = page || 1;
                 limit = limit || 12;
@@ -2301,7 +2278,6 @@
                 });
             }
 
-            // ===== LOANS =====
             function loadMyLoans(page, limit) {
                 page = page || 1;
                 limit = limit || 10;
@@ -2351,43 +2327,44 @@
                 });
             }
 
+            // ===== PERBAIKAN UTAMA: loadAllLoans dengan filter NIS dan Kelas (konversi ke string) =====
             function loadAllLoans(page, limit) {
                 page = page || 1;
                 limit = limit || 10;
-                var search = document.getElementById('filterAllLoansStudent').value.trim();
-                var nis = document.getElementById('filterAllLoansNIS').value.trim();
-                var cls = document.getElementById('filterAllLoansClass').value.trim();
+
+                var studentName = document.getElementById('filterAllLoansStudent').value.trim().toLowerCase();
+                var nis = document.getElementById('filterAllLoansNIS').value.trim().toLowerCase();
+                var className = document.getElementById('filterAllLoansClass').value.trim().toLowerCase();
                 var month = document.getElementById('filterAllLoansMonth').value;
                 var year = document.getElementById('filterAllLoansYear').value;
 
                 showSpinner();
-                jsonpCall('getLoans', {
-                    filter: 'all',
-                    allUsers: 'true',
-                    page: page,
-                    limit: limit,
-                    search: search,
-                    nis: nis,
-                    class: cls
-                }, function(res) {
+                jsonpCall('getLoans', { filter: 'all', allUsers: 'true', page: 1, limit: 9999 }, function(res) {
                     hideSpinner();
                     if (res.success && res.data) {
                         var loans = res.data;
-                        if (month || year) {
-                            loans = loans.filter(function(l) {
-                                var dateObj = parseDateIndonesian(l.BorrowDate);
+
+                        // Filter manual dengan konversi ke string terlebih dahulu
+                        loans = loans.filter(function(l) {
+                            if (studentName && !String(l.StudentName || '').toLowerCase().includes(studentName)) return false;
+                            if (nis && !String(l.StudentNIS || '').toLowerCase().includes(nis)) return false;
+                            if (className && !String(l.StudentClass || '').toLowerCase().includes(className)) return false;
+                            var dateObj = parseDateIndonesian(l.BorrowDate);
+                            if (month || year) {
                                 if (!dateObj) return false;
                                 var m = ('0' + (dateObj.getMonth() + 1)).slice(-2);
                                 var y = dateObj.getFullYear().toString();
                                 if (month && m !== month) return false;
                                 if (year && y !== year) return false;
-                                return true;
-                            });
-                        }
+                            }
+                            return true;
+                        });
+
                         var total = loans.length;
                         var start = (page - 1) * limit;
                         var end = Math.min(start + limit, total);
                         var pageData = loans.slice(start, end);
+
                         var tbody = document.getElementById('allLoanTableBody');
                         var html = '';
                         if (pageData.length === 0) html = '<tr><td colspan="9" class="text-center">Tidak ada data.</td></tr>';
@@ -2395,10 +2372,10 @@
                             var statusBadge = l.Status === 'Dikembalikan' ? '<span class="badge badge-dikembalikan">Dikembalikan</span>' : '<span class="badge badge-dipinjam">Dipinjam</span>';
                             html += `<tr>
                                 <td>${l.LoanID}</td>
-                                <td>${escapeHtml(l.StudentNIS || '-')}</td>
-                                <td>${escapeHtml(l.StudentName || l.UserID)}</td>
-                                <td>${escapeHtml(l.StudentClass || '-')}</td>
-                                <td>${escapeHtml(l.BookTitle || l.BookID)}</td>
+                                <td>${escapeHtml(String(l.StudentNIS || '-'))}</td>
+                                <td>${escapeHtml(String(l.StudentName || l.UserID))}</td>
+                                <td>${escapeHtml(String(l.StudentClass || '-'))}</td>
+                                <td>${escapeHtml(String(l.BookTitle || l.BookID))}</td>
                                 <td>${l.BorrowDate}</td>
                                 <td>${l.DueDate}</td>
                                 <td>${l.ReturnDate || '-'}</td>
@@ -2406,7 +2383,8 @@
                             </tr>`;
                         });
                         tbody.innerHTML = html;
-                        renderPaginationControls('allLoansPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
+
+                        renderPaginationControls('allLoansPagination', total, page, limit, function(newPage, newLimit) {
                             loadAllLoans(newPage, newLimit);
                         });
                     } else {
@@ -2416,74 +2394,6 @@
                 });
             }
 
-            function loadActiveLoans(page, limit) {
-                page = page || 1;
-                limit = limit || 10;
-                var search = document.getElementById('searchReturn').value.trim();
-                showSpinner();
-                jsonpCall('getLoans', { filter: 'active', allUsers: 'true', page: page, limit: limit, search: search }, function(res) {
-                    hideSpinner();
-                    if (res.success && res.data) {
-                        var loans = res.data;
-                        var tbody = document.getElementById('activeLoanTable');
-                        var html = '';
-                        if (loans.length === 0) html = '<tr><td colspan="7" class="text-center">Tidak ada pinjaman aktif.</td></tr>';
-                        var today = new Date(); today.setHours(0,0,0,0);
-                        loans.forEach(function(l) {
-                            var isLate = new Date(l.DueDate) < today;
-                            html += `<tr class="${isLate ? 'table-danger' : ''}">
-                                <td>${l.LoanID}</td><td>${escapeHtml(l.StudentName || l.UserID)}</td>
-                                <td>${escapeHtml(l.BookTitle || l.BookID)}</td>
-                                <td>${l.BorrowDate}</td><td>${l.DueDate}</td>
-                                <td>${isLate ? '<span class="badge badge-status badge-terlambat">Terlambat</span>' : '<span class="badge badge-status badge-dipinjam">Dipinjam</span>'}</td>
-                                <td><button class="btn btn-sm btn-success" data-loanid="${l.LoanID}" data-action="returnBook"><i class="fas fa-undo"></i> Kembalikan</button></td>
-                            </tr>`;
-                        });
-                        tbody.innerHTML = html;
-                        tbody.querySelectorAll('button[data-action="returnBook"]').forEach(function(btn) {
-                            btn.addEventListener('click', function() {
-                                var loanId = this.dataset.loanid;
-                                returnBook(loanId);
-                            });
-                        });
-                        renderPaginationControls('activeLoanPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
-                            loadActiveLoans(newPage, newLimit);
-                        });
-                    } else {
-                        document.getElementById('activeLoanTable').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
-                        document.getElementById('activeLoanPagination').innerHTML = '';
-                    }
-                });
-            }
-
-            function loadAdminActiveLoans(page, limit) {
-                page = page || 1;
-                limit = limit || 10;
-                jsonpCall('getLoans', { filter: 'active', allUsers: 'true', page: page, limit: limit }, function(res) {
-                    if (res.success && res.data) {
-                        var loans = res.data;
-                        var tbody = document.getElementById('adminActiveLoanTable');
-                        var html = '';
-                        if (loans.length === 0) html = '<tr><td colspan="6" class="text-center">Tidak ada pinjaman aktif.</td></tr>';
-                        loans.forEach(function(l) {
-                            html += `<tr>
-                                <td>${l.LoanID}</td><td>${escapeHtml(l.StudentName)}</td><td>${escapeHtml(l.BookTitle)}</td>
-                                <td>${l.BorrowDate}</td><td>${l.DueDate}</td>
-                                <td><span class="badge badge-dipinjam">Dipinjam</span></td>
-                            </tr>`;
-                        });
-                        tbody.innerHTML = html;
-                        renderPaginationControls('adminLoanPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
-                            loadAdminActiveLoans(newPage, newLimit);
-                        });
-                    } else {
-                        document.getElementById('adminActiveLoanTable').innerHTML = '<tr><td colspan="6" class="text-center">Tidak ada data.</td></tr>';
-                        document.getElementById('adminLoanPagination').innerHTML = '';
-                    }
-                });
-            }
-
-            // ===== OTHER FUNCTIONS =====
             function executeBorrowBook(bookId, duration) {
                 if (!currentUser || currentUser.Role !== 'Siswa') return showToast('Anda harus login sebagai siswa.', 'warning');
                 showSpinner();
@@ -2547,33 +2457,20 @@
             function setupSearchFilter() {
                 var searchStudent = document.getElementById('searchStudent');
                 var searchBook = document.getElementById('searchBook');
-
-                // Hapus listener lama jika ada
-                if (searchStudent._listener) {
-                    searchStudent.removeEventListener('input', searchStudent._listener);
-                }
-                var studentHandler = function() {
+                searchStudent.oninput = function() {
                     var filter = this.value.toLowerCase();
                     document.querySelectorAll('#selectStudent option').forEach(function(opt) {
                         var text = opt.textContent.toLowerCase();
                         opt.style.display = (text.indexOf(filter) > -1 || opt.value === '') ? '' : 'none';
                     });
                 };
-                searchStudent.addEventListener('input', studentHandler);
-                searchStudent._listener = studentHandler;
-
-                if (searchBook._listener) {
-                    searchBook.removeEventListener('input', searchBook._listener);
-                }
-                var bookHandler = function() {
+                searchBook.oninput = function() {
                     var filter = this.value.toLowerCase();
                     document.querySelectorAll('#selectBook option').forEach(function(opt) {
                         var text = opt.textContent.toLowerCase();
                         opt.style.display = (text.indexOf(filter) > -1 || opt.value === '') ? '' : 'none';
                     });
                 };
-                searchBook.addEventListener('input', bookHandler);
-                searchBook._listener = bookHandler;
             }
 
             function adminBorrowBook() {
@@ -2614,7 +2511,6 @@
                 });
             }
 
-            // ===== FORMS =====
             function showBookForm(bookId) {
                 bookId = bookId || null;
                 document.getElementById('bookIdInput').value = '';
@@ -2846,7 +2742,6 @@
                 new bootstrap.Modal(document.getElementById('confirmModal')).show();
             }
 
-            // ===== CKEDITOR =====
             function initCKEditor(initialContent) {
                 if (ckeditorInstance) {
                     ckeditorInstance.destroy().then(function() {
@@ -2989,7 +2884,73 @@
                 return document.getElementById('ckeditor-editor').value;
             }
 
-            // ===== POPULATE YEAR DROPDOWNS =====
+            function loadActiveLoans(page, limit) {
+                page = page || 1;
+                limit = limit || 10;
+                var search = document.getElementById('searchReturn').value.trim();
+                showSpinner();
+                jsonpCall('getLoans', { filter: 'active', allUsers: 'true', page: page, limit: limit, search: search }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var loans = res.data;
+                        var tbody = document.getElementById('activeLoanTable');
+                        var html = '';
+                        if (loans.length === 0) html = '<tr><td colspan="7" class="text-center">Tidak ada pinjaman aktif.</td></tr>';
+                        var today = new Date(); today.setHours(0,0,0,0);
+                        loans.forEach(function(l) {
+                            var isLate = new Date(l.DueDate) < today;
+                            html += `<tr class="${isLate ? 'table-danger' : ''}">
+                                <td>${l.LoanID}</td><td>${escapeHtml(l.StudentName || l.UserID)}</td>
+                                <td>${escapeHtml(l.BookTitle || l.BookID)}</td>
+                                <td>${l.BorrowDate}</td><td>${l.DueDate}</td>
+                                <td>${isLate ? '<span class="badge badge-status badge-terlambat">Terlambat</span>' : '<span class="badge badge-status badge-dipinjam">Dipinjam</span>'}</td>
+                                <td><button class="btn btn-sm btn-success" data-loanid="${l.LoanID}" data-action="returnBook"><i class="fas fa-undo"></i> Kembalikan</button></td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                        tbody.querySelectorAll('button[data-action="returnBook"]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var loanId = this.dataset.loanid;
+                                returnBook(loanId);
+                            });
+                        });
+                        renderPaginationControls('activeLoanPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
+                            loadActiveLoans(newPage, newLimit);
+                        });
+                    } else {
+                        document.getElementById('activeLoanTable').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('activeLoanPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            function loadAdminActiveLoans(page, limit) {
+                page = page || 1;
+                limit = limit || 10;
+                jsonpCall('getLoans', { filter: 'active', allUsers: 'true', page: page, limit: limit }, function(res) {
+                    if (res.success && res.data) {
+                        var loans = res.data;
+                        var tbody = document.getElementById('adminActiveLoanTable');
+                        var html = '';
+                        if (loans.length === 0) html = '<tr><td colspan="6" class="text-center">Tidak ada pinjaman aktif.</td></tr>';
+                        loans.forEach(function(l) {
+                            html += `<tr>
+                                <td>${l.LoanID}</td><td>${escapeHtml(l.StudentName)}</td><td>${escapeHtml(l.BookTitle)}</td>
+                                <td>${l.BorrowDate}</td><td>${l.DueDate}</td>
+                                <td><span class="badge badge-dipinjam">Dipinjam</span></td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                        renderPaginationControls('adminLoanPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
+                            loadAdminActiveLoans(newPage, newLimit);
+                        });
+                    } else {
+                        document.getElementById('adminActiveLoanTable').innerHTML = '<tr><td colspan="6" class="text-center">Tidak ada data.</td></tr>';
+                        document.getElementById('adminLoanPagination').innerHTML = '';
+                    }
+                });
+            }
+
             function populateYearDropdowns() {
                 var currentYear = new Date().getFullYear();
                 var years = [];
@@ -2999,7 +2960,6 @@
                 document.getElementById('filterAllLoansYear').innerHTML += options;
             }
 
-            // ===== PRINT =====
             function printSection(sectionId) {
                 var tableId = (sectionId === 'page-riwayat') ? 'myLoansTable' : 'allLoansTable';
                 var $table = document.getElementById(tableId);
@@ -3050,7 +3010,6 @@
                 };
             }
 
-            // ===== INISIALISASI =====
             function init() {
                 var savedToken = localStorage.getItem('libToken');
                 var savedUser = localStorage.getItem('libUser');
@@ -3063,7 +3022,6 @@
                     populateYearDropdowns();
                     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-                    // ===== SEMUA EVENT LISTENER =====
                     document.querySelectorAll('.modal').forEach(function(modalEl) {
                         modalEl.addEventListener('hidden.bs.modal', function() {
                             document.body.focus();
@@ -3133,7 +3091,6 @@
                     navigateTo('beranda');
                 }
 
-                // Jika ada token, validasi sesi terlebih dahulu
                 if (savedToken && savedUser) {
                     currentToken = savedToken;
                     try {
@@ -3161,7 +3118,6 @@
                 }
             }
 
-            // ===== START =====
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', init);
             } else {
