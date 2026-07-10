@@ -45,7 +45,6 @@
             flex-direction: column;
             -webkit-font-smoothing: antialiased;
         }
-        /* ===== NAVBAR ===== */
         .navbar {
             background: rgba(30,58,95,0.92);
             backdrop-filter: blur(16px);
@@ -238,7 +237,6 @@
             .carousel-caption p { font-size: 0.9rem; }
         }
 
-        /* ===== SECTION HEADER ===== */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -266,7 +264,6 @@
             border-radius: 6px;
         }
 
-        /* ===== CARD POST ===== */
         .post-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -343,7 +340,6 @@
             color: #fff;
         }
 
-        /* ===== BOOK MINI CARD ===== */
         .book-mini-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -390,7 +386,6 @@
             color: var(--text-muted);
         }
 
-        /* ===== TABLES ===== */
         .table-container {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -424,7 +419,6 @@
             background: #f8fafc;
         }
 
-        /* ===== BADGES ===== */
         .badge-status {
             font-size: 0.7rem;
             padding: 0.3rem 0.7rem;
@@ -436,7 +430,6 @@
         .badge-terlambat { background: #f8d7da; color: #721c24; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
 
-        /* ===== STAT CARDS ===== */
         .stat-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -468,7 +461,6 @@
         .stat-card .stat-value { font-size: 2.4rem; font-weight: 800; color: var(--dark); }
         .stat-card .stat-label { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
 
-        /* ===== BLOG DETAIL ===== */
         .blog-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -500,7 +492,6 @@
         .blog-content img { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .blog-content iframe { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; aspect-ratio: 16/9; width: 100%; }
 
-        /* ===== SIDEBAR ===== */
         .sidebar-section {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -566,7 +557,7 @@
             color: var(--dark);
             line-height: 1.3;
             display: -webkit-box;
-     
+            
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -574,11 +565,6 @@
             font-size: 0.75rem;
             color: var(--text-muted);
             margin-top: 0.1rem;
-        }
-        .sidebar-item .book-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
         }
         .sidebar-item .book-cover-small {
             width: 40px;
@@ -607,7 +593,6 @@
             .sidebar-section { padding: 1rem; }
         }
 
-        /* ===== PAGINATION ===== */
         .pagination-controls {
             display: flex;
             justify-content: center;
@@ -653,7 +638,6 @@
             margin-left: 0.4rem;
         }
 
-        /* ===== MODAL ===== */
         .modal-content {
             border-radius: 18px;
             border: none;
@@ -667,7 +651,6 @@
         }
         .modal-body { padding: 1.8rem; }
 
-        /* ===== TOAST ===== */
         .toast-container {
             position: fixed;
             top: 20px;
@@ -697,7 +680,6 @@
             to { transform: translateX(0); opacity:1; }
         }
 
-        /* ===== SPINNER ===== */
         .spinner-overlay {
             position: fixed;
             inset: 0;
@@ -709,7 +691,6 @@
             z-index: 9998;
         }
 
-        /* ===== UTILITY ===== */
         .btn-primary-custom {
             background: var(--primary);
             border: none;
@@ -770,7 +751,7 @@
             margin-bottom: 0.3rem;
             color: var(--dark);
         }
-        /* ===== FOOTER BARU - PROFESIONAL & MENARIK ===== */
+
         .footer {
             background: linear-gradient(135deg, var(--primary-dark) 0%, #1a2f4a 100%);
             color: rgba(255,255,255,0.85);
@@ -895,38 +876,17 @@
             color: #fff;
             font-weight: 500;
         }
-
         @media (max-width: 768px) {
-            .footer {
-                padding: 2rem 0 1rem 0;
-                text-align: center;
-            }
-            .footer h5::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .footer h5:hover::after {
-                width: 40px;
-            }
-            .footer .contact-item {
-                justify-content: center;
-            }
-            .footer .social-icons a {
-                margin: 0 0.3rem;
-            }
-            .footer .opening-hours li {
-                justify-content: center;
-                gap: 1rem;
-            }
-            .footer .col-md-3 {
-                margin-bottom: 2rem;
-            }
-            .footer .footer-bottom {
-                font-size: 0.8rem;
-            }
+            .footer { padding: 2rem 0 1rem 0; text-align: center; }
+            .footer h5::after { left: 50%; transform: translateX(-50%); }
+            .footer h5:hover::after { width: 40px; }
+            .footer .contact-item { justify-content: center; }
+            .footer .social-icons a { margin: 0 0.3rem; }
+            .footer .opening-hours li { justify-content: center; gap: 1rem; }
+            .footer .col-md-3 { margin-bottom: 2rem; }
+            .footer .footer-bottom { font-size: 0.8rem; }
         }
 
-        /* ===== OTHER ===== */
         .map-container {
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -943,7 +903,6 @@
         .page-section { display: none; padding: 1.5rem 0; }
         .page-section.active { display: block; animation: fadeUp 0.4s ease; }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .section-header h2 { font-size: 1.3rem; }
             .blog-body { padding: 1.5rem; }
@@ -957,7 +916,6 @@
             .sidebar-section { margin-top: 1rem; }
         }
 
-        /* ===== CKEDITOR CUSTOM ===== */
         .ck-editor__editable { min-height: 280px; }
         .ck-editor__editable_inline { padding: 1rem; }
         .ck-button.ck-custom-btn {
@@ -985,7 +943,6 @@
         }
         .post-modal-editor-wrapper .ck-editor__editable { min-height: 300px; }
 
-        /* Print */
         @media print {
             body * { visibility: hidden; }
             #printArea, #printArea * { visibility: visible; }
@@ -1090,11 +1047,10 @@
             <div id="allPostPagination" class="pagination-controls"></div>
         </div>
 
-        <!-- DETAIL POSTINGAN (dengan sidebar) -->
+        <!-- DETAIL POSTINGAN -->
         <div class="page-section" id="page-post-detail">
             <div class="blog-container">
                 <div class="row g-0">
-                    <!-- KOLOM KIRI: KONTEN UTAMA -->
                     <div class="col-lg-8">
                         <div id="blogHero"></div>
                         <div class="blog-body">
@@ -1103,21 +1059,14 @@
                             <div class="blog-content" id="detailPostContent"></div>
                         </div>
                     </div>
-                    <!-- KOLOM KANAN: SIDEBAR -->
                     <div class="col-lg-4 p-3 p-lg-4" style="background: #f8fafc;">
-                        <!-- Postingan Terbaru -->
                         <div class="sidebar-section">
                             <h5><i class="fas fa-newspaper"></i> Postingan Terbaru</h5>
-                            <div id="sidebarRecentPosts">
-                                <div class="text-muted small">Memuat...</div>
-                            </div>
+                            <div id="sidebarRecentPosts"><div class="text-muted small">Memuat...</div></div>
                         </div>
-                        <!-- Buku Terbaru -->
                         <div class="sidebar-section">
                             <h5><i class="fas fa-book"></i> Buku Terbaru</h5>
-                            <div id="sidebarRecentBooks">
-                                <div class="text-muted small">Memuat...</div>
-                            </div>
+                            <div id="sidebarRecentBooks"><div class="text-muted small">Memuat...</div></div>
                         </div>
                     </div>
                 </div>
@@ -1174,7 +1123,7 @@
             <div id="borrowPagination" class="pagination-controls"></div>
         </div>
 
-        <!-- RIWAYAT SAYA (Siswa) -->
+        <!-- RIWAYAT SAYA -->
         <div class="page-section" id="page-riwayat">
             <div class="section-header">
                 <h2>📋 Riwayat Peminjaman Saya</h2>
@@ -1373,17 +1322,14 @@
         </div>
     </div>
 
-    <!-- ===== FOOTER BARU - PROFESIONAL & MENARIK ===== -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="row g-4">
-                <!-- Kolom 1: Tentang Perpustakaan -->
                 <div class="col-md-3">
                     <h5><i class="fas fa-book-open me-2"></i>Perpustakaan</h5>
                     <p style="font-size:0.95rem; opacity:0.85;">SMAN 1 Leuwimunding</p>
-                    <p style="font-size:0.9rem; opacity:0.75; line-height:1.6;">
-                        Menjembatani ilmu, membangun peradaban. Sumber belajar dan literasi bagi seluruh warga sekolah.
-                    </p>
+                    <p style="font-size:0.9rem; opacity:0.75; line-height:1.6;">Menjembatani ilmu, membangun peradaban. Sumber belajar dan literasi bagi seluruh warga sekolah.</p>
                     <div class="social-icons mt-3">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1391,8 +1337,6 @@
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-
-                <!-- Kolom 2: Tautan Cepat -->
                 <div class="col-md-3">
                     <h5>Tautan Cepat</h5>
                     <ul class="list-unstyled">
@@ -1403,29 +1347,13 @@
                         <li><a href="#" data-page="manage-posts" id="footerManageLink" style="display:none;"><i class="fas fa-chevron-right" style="font-size:0.6rem;"></i> Kelola</a></li>
                     </ul>
                 </div>
-
-                <!-- Kolom 3: Kontak -->
                 <div class="col-md-3">
                     <h5>Hubungi Kami</h5>
-                    <div class="contact-item">
-                        <i class="fas fa-map-pin"></i>
-                        <span>Jalan Raya Leuwimunding, Kec. Leuwimunding, Kab. Majalengka, Jawa Barat</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>(023) 1234567</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>perpus@smansa.sch.id</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-globe"></i>
-                        <span>www.sma1le.sch.id</span>
-                    </div>
+                    <div class="contact-item"><i class="fas fa-map-pin"></i><span>Jalan Raya Leuwimunding, Kec. Leuwimunding, Kab. Majalengka, Jawa Barat</span></div>
+                    <div class="contact-item"><i class="fas fa-phone-alt"></i><span>(023) 1234567</span></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>perpus@smansa.sch.id</span></div>
+                    <div class="contact-item"><i class="fas fa-globe"></i><span>www.sma1le.sch.id</span></div>
                 </div>
-
-                <!-- Kolom 4: Jam Buka -->
                 <div class="col-md-3">
                     <h5>Jam Buka</h5>
                     <div class="opening-hours">
@@ -1440,9 +1368,7 @@
                     </div>
                 </div>
             </div>
-
             <hr>
-
             <div class="footer-bottom">
                 &copy; <span id="currentYear"></span> Perpustakaan SMAN 1 Leuwimunding. All rights reserved.
                 <span style="opacity:0.5; margin:0 0.5rem;">|</span>
@@ -1454,7 +1380,8 @@
     <!-- PRINT AREA -->
     <div id="printArea" style="display:none;"></div>
 
-    <!-- ===== MODAL POSTINGAN ===== -->
+    <!-- ===== MODAL ===== -->
+    <!-- Modal Postingan -->
     <div class="modal fade" id="postFormModal" tabindex="-1" data-bs-backdrop="static">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
@@ -1490,7 +1417,7 @@
         </div>
     </div>
 
-    <!-- MODAL LOGIN -->
+    <!-- Modal Login -->
     <div class="modal fade" id="loginModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1507,7 +1434,7 @@
         </div>
     </div>
 
-    <!-- MODAL BUKU -->
+    <!-- Modal Buku -->
     <div class="modal fade" id="bookFormModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
@@ -1536,7 +1463,7 @@
         </div>
     </div>
 
-    <!-- MODAL USER -->
+    <!-- Modal User -->
     <div class="modal fade" id="userFormModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1559,7 +1486,7 @@
         </div>
     </div>
 
-    <!-- MODAL KONFIRMASI -->
+    <!-- Modal Konfirmasi -->
     <div class="modal fade" id="confirmModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
@@ -1578,11 +1505,13 @@
         (function() {
             "use strict";
 
-            var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx8BddYfE3ZKD-FIFVrHZFq6ii4gbkH5ZNSjxA2oZQDmcbOqq8TT3FlA4iEo4ZV1sT1/exec'; // GANTI
+            // ===== KONFIGURASI =====
+            var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx8BddYfE3ZKD-FIFVrHZFq6ii4gbkH5ZNSjxA2oZQDmcbOqq8TT3FlA4iEo4ZV1sT1/exec';
             var MAX_ACTIVE_LOANS = 20;
             var currentUser = null;
             var currentToken = null;
             var ckeditorInstance = null;
+
             var SLIDER_DATA = [
                 { image: 'https://blogger.googleusercontent.com/img/a/AVvXsEjU1PJLWzF0dg07pdeF8_6P5rOKWpco0mDop75AvROWcpxROamHX4HGCe4YXKxjsxRSJGY8CkYULs29KAMn18FW-aE-N3AwMvhCHtMaiTARVIqEtsQ6YP7aNWhawVU29-MN4sO25V8lkXDyBlmz57aA5D2l7ldjtw3XUC7B_yruRSqGrVaa9b5X7tiz4Qo?w=1200&h=500&fit=crop', title: 'Temukan Dunia Melalui Buku', caption: 'Jelajahi ribuan koleksi buku berkualitas untuk menunjang prestasi dan wawasan.', btnText: 'Jelajahi Koleksi', link: 'buku' },
                 { image: 'https://blogger.googleusercontent.com/img/a/AVvXsEhGivteUQbx-efCLkp2mAi-LAhec3DHp9LPeWM_oLnwvPJtmBgrdo5cRbRlbo5vfZqsWQd4xETh1iPN1a1ROvrmLaytmPFTmqQwefhMb5g9PXtpxa04bWswgAhbiAgrmbCvqae2ddqHXgBPqMseYmI6HIINScs1zTup4WnlpL5-QMgKCT8dD_BlyKvjA6Y?w=1200&h=500&fit=crop', title: 'Baca, Pelajari, Berkembang', caption: 'Perpustakaan SMAN 1 Leuwimunding menyediakan lingkungan nyaman untuk membaca dan belajar.', btnText: 'Kunjungi Perpustakaan', link: 'beranda' },
@@ -1634,97 +1563,72 @@
                 return new Date(year, month, day);
             }
 
+            function debounce(fn, delay) {
+                var timer = null;
+                return function() {
+                    var context = this, args = arguments;
+                    clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        fn.apply(context, args);
+                    }, delay);
+                };
+            }
+
+            // ===== JSONP DENGAN TIMEOUT =====
             function jsonpCall(action, params, callback) {
-                var cbName = 'jsonp_cb_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+                var cbName = 'jsonp_cb_' + Date.now() + '_' + Math.floor(Math.random() * 100000);
                 params.action = action;
                 params.callback = cbName;
                 if (currentToken) params.token = currentToken;
+                // Tambahkan timestamp untuk menghindari cache
+                params._ = Date.now();
 
-                var queryString = Object.keys(params).map(function(k) { return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]); }).join('&');
+                var queryString = Object.keys(params).map(function(k) {
+                    return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
+                }).join('&');
                 var script = document.createElement('script');
                 script.src = APPS_SCRIPT_URL + '?' + queryString;
 
-                window[cbName] = function(response) {
+                // Timeout 15 detik
+                var timeoutId = setTimeout(function() {
                     delete window[cbName];
-                    document.head.removeChild(script);
+                    if (script.parentNode) script.parentNode.removeChild(script);
+                    callback({ success: false, message: 'Koneksi timeout. Periksa internet.' });
+                }, 15000);
+
+                window[cbName] = function(response) {
+                    clearTimeout(timeoutId);
+                    delete window[cbName];
+                    if (script.parentNode) script.parentNode.removeChild(script);
                     if (response.success === false && response.message === 'SESSION_EXPIRED') {
                         forceLogout();
                         showToast('Sesi berakhir, silakan login kembali.', 'warning');
+                        callback(response);
                         return;
                     }
                     callback(response);
                 };
+
                 script.onerror = function() {
+                    clearTimeout(timeoutId);
                     delete window[cbName];
-                    document.head.removeChild(script);
+                    if (script.parentNode) script.parentNode.removeChild(script);
                     callback({ success: false, message: 'Gagal terhubung ke server.' });
                 };
+
                 document.head.appendChild(script);
             }
 
-            function showConfirm(message, onConfirm) {
-                document.getElementById('confirmBody').innerHTML = message;
-                var confirmBtn = document.getElementById('confirmBtn');
-                confirmBtn.onclick = function() {
-                    bootstrap.Modal.getInstance(document.getElementById('confirmModal')).hide();
-                    onConfirm();
-                };
-                new bootstrap.Modal(document.getElementById('confirmModal')).show();
+            // ===== AUTH =====
+            function forceLogout() {
+                currentUser = null;
+                currentToken = null;
+                localStorage.removeItem('libToken');
+                localStorage.removeItem('libUser');
+                sessionStorage.clear();
+                updateNavUI();
             }
 
-            function getBookCoverHtml(book, height) {
-                height = height || '200px';
-                var coverUrl = book.CoverURL && book.CoverURL.trim() !== '';
-                if (coverUrl) {
-                    return '<img src="' + book.CoverURL + '" alt="' + escapeHtml(book.Title) + '" class="book-cover-img" style="height:' + height + ';" onerror="this.style.display=\'none\'; this.parentNode.querySelector(\'.book-cover-placeholder\').style.display=\'flex\';">' +
-                           '<div class="book-cover-placeholder" style="height:' + height + '; display:none;"><i class="fas fa-book"></i></div>';
-                }
-                return '<div class="book-cover-placeholder" style="height:' + height + '; display:flex;"><i class="fas fa-book"></i></div>';
-            }
-
-            // ===== PAGINATION HELPERS =====
-            function renderPaginationControls(containerId, total, currentPage, limit, fetchFn) {
-                var container = document.getElementById(containerId);
-                if (!container) return;
-                var totalPages = Math.ceil(total / limit) || 1;
-                if (currentPage > totalPages) currentPage = totalPages;
-                if (currentPage < 1) currentPage = 1;
-
-                var html = '';
-                var start = (currentPage - 1) * limit + 1;
-                var end = Math.min(currentPage * limit, total);
-
-                html += '<button class="btn-prev" ' + (currentPage <= 1 ? 'disabled' : '') + ' data-page="' + (currentPage - 1) + '"><i class="fas fa-chevron-left"></i> Sebelumnya</button>';
-                for (var p = 1; p <= totalPages; p++) {
-                    html += '<button class="' + (p === currentPage ? 'active-page' : '') + '" data-page="' + p + '">' + p + '</button>';
-                }
-                html += '<button class="btn-next" ' + (currentPage >= totalPages ? 'disabled' : '') + ' data-page="' + (currentPage + 1) + '">Selanjutnya <i class="fas fa-chevron-right"></i></button>';
-                html += '<span class="pagination-info">' + start + '-' + end + ' dari ' + total + '</span>';
-                html += ' <select class="page-size-select">';
-                var sizes = [10, 20, 50, 100];
-                sizes.forEach(function(s) {
-                    html += '<option value="' + s + '" ' + (s === limit ? 'selected' : '') + '>' + s + '</option>';
-                });
-                html += '</select>';
-
-                container.innerHTML = html;
-
-                container.querySelectorAll('button[data-page]').forEach(function(btn) {
-                    btn.addEventListener('click', function() {
-                        var page = parseInt(this.dataset.page);
-                        if (page >= 1 && page <= totalPages) {
-                            fetchFn(page, limit);
-                        }
-                    });
-                });
-
-                container.querySelector('.page-size-select').addEventListener('change', function() {
-                    var newLimit = parseInt(this.value);
-                    fetchFn(1, newLimit);
-                });
-            }
-
-            // ===== AUTH & NAV =====
             function updateNavUI() {
                 var navLinks = document.getElementById('navLinks');
                 while (navLinks.children.length > 2) {
@@ -1782,7 +1686,6 @@
                     userInfo.style.display = 'inline';
                     btnLogin.style.display = 'none';
                     btnLogout.style.display = 'inline-flex';
-
                     if (footerDashLink) footerDashLink.style.display = 'inline';
                     if (footerManageLink) footerManageLink.style.display = 'inline';
                 } else if (currentUser && currentUser.Role === 'Siswa') {
@@ -1810,7 +1713,6 @@
                     userInfo.style.display = 'inline';
                     btnLogin.style.display = 'none';
                     btnLogout.style.display = 'inline-flex';
-
                     if (footerDashLink) footerDashLink.style.display = 'none';
                     if (footerManageLink) footerManageLink.style.display = 'none';
                 } else {
@@ -1827,15 +1729,6 @@
                         navigateTo(this.dataset.page);
                     });
                 });
-            }
-
-            function forceLogout() {
-                currentUser = null;
-                currentToken = null;
-                localStorage.removeItem('libToken');
-                localStorage.removeItem('libUser');
-                updateNavUI();
-                navigateTo('beranda');
             }
 
             function showLoginModal() {
@@ -1870,13 +1763,7 @@
                 if (currentToken) jsonpCall('logout', {}, function() {});
                 forceLogout();
                 showToast('Berhasil logout.', 'success');
-            }
-
-            function checkSessionAndUpdateUI() {
-                jsonpCall('checkSession', {}, function(res) {
-                    if (!res.success || !res.data || !res.data.valid) { forceLogout(); }
-                    else { if (res.data.user) currentUser = res.data.user; updateNavUI(); navigateTo('beranda'); }
-                });
+                navigateTo('beranda');
             }
 
             function checkLateLoansForStudent() {
@@ -1887,6 +1774,46 @@
                         var late = res.data.filter(function(l) { return l.Status === 'Dipinjam' && new Date(l.DueDate) < today; });
                         if (late.length > 0) showToast('⚠️ Anda memiliki ' + late.length + ' buku yang terlambat!', 'warning');
                     }
+                });
+            }
+
+            // ===== NAVIGASI =====
+            function navigateTo(page) {
+                document.querySelectorAll('.page-section').forEach(function(el) { el.classList.remove('active'); });
+                var target = document.getElementById('page-' + page);
+                if (target) target.classList.add('active');
+
+                document.querySelectorAll('#navLinks .nav-link, #navLinks .dropdown-item').forEach(function(el) {
+                    el.classList.remove('active');
+                });
+                var activeLink = document.querySelector('#navLinks a[data-page="' + page + '"]');
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    var parentDropdown = activeLink.closest('.dropdown');
+                    if (parentDropdown) {
+                        var toggle = parentDropdown.querySelector('.dropdown-toggle');
+                        if (toggle) toggle.classList.add('active');
+                    }
+                }
+
+                window.scrollTo(0, 0);
+
+                requestAnimationFrame(function() {
+                    setTimeout(function() {
+                        if (page === 'beranda') { loadPosts('beranda', 1, 6); loadLatestBooks(); }
+                        else if (page === 'semua-postingan') loadPosts('semua', 1, 10);
+                        else if (page === 'buku') loadBooks(1, 10);
+                        else if (page === 'pinjam') loadBorrowableBooks(1, 12);
+                        else if (page === 'riwayat') loadMyLoans(1, 10);
+                        else if (page === 'dashboard') loadDashboard();
+                        else if (page === 'manage-posts') loadManagePosts(1, 10);
+                        else if (page === 'manage-books') loadManageBooks(1, 10);
+                        else if (page === 'manage-users') loadManageUsers();
+                        else if (page === 'pengembalian') loadActiveLoans(1, 10);
+                        else if (page === 'peminjaman-admin') loadAdminPeminjamanForm();
+                        else if (page === 'all-loans') loadAllLoans(1, 10);
+                        else if (page === 'post-detail') { /* sudah diisi */ }
+                    }, 0);
                 });
             }
 
@@ -1925,49 +1852,7 @@
                 });
             }
 
-            // ===== NAVIGATION =====
-            function navigateTo(page) {
-                document.querySelectorAll('.page-section').forEach(function(el) { el.classList.remove('active'); });
-                var target = document.getElementById('page-' + page);
-                if (target) target.classList.add('active');
-
-                document.querySelectorAll('#navLinks .nav-link, #navLinks .dropdown-item').forEach(function(el) {
-                    el.classList.remove('active');
-                });
-                var activeLink = document.querySelector('#navLinks a[data-page="' + page + '"]');
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                    var parentDropdown = activeLink.closest('.dropdown');
-                    if (parentDropdown) {
-                        var toggle = parentDropdown.querySelector('.dropdown-toggle');
-                        if (toggle) toggle.classList.add('active');
-                    }
-                }
-
-                window.scrollTo(0, 0);
-
-                requestAnimationFrame(function() {
-                    setTimeout(function() {
-                        if (page === 'beranda') { loadPosts('beranda', 1, 6); loadLatestBooks(); }
-                        else if (page === 'semua-postingan') loadPosts('semua', 1, 10);
-                        else if (page === 'buku') loadBooks(1, 10);
-                        else if (page === 'pinjam') loadBorrowableBooks(1, 12);
-                        else if (page === 'riwayat') loadMyLoans(1, 10);
-                        else if (page === 'dashboard') loadDashboard();
-                        else if (page === 'manage-posts') loadManagePosts(1, 10);
-                        else if (page === 'manage-books') loadManageBooks(1, 10);
-                        else if (page === 'manage-users') loadManageUsers();
-                        else if (page === 'pengembalian') loadActiveLoans(1, 10);
-                        else if (page === 'peminjaman-admin') loadAdminPeminjamanForm();
-                        else if (page === 'all-loans') loadAllLoans(1, 10);
-                        else if (page === 'post-detail') {
-                            // Tidak load ulang, karena sudah diisi oleh viewPostDetail
-                        }
-                    }, 0);
-                });
-            }
-
-            // ===== SIDEBAR FUNCTIONS =====
+            // ===== SIDEBAR =====
             function loadSidebarPosts() {
                 jsonpCall('getPosts', { page: 1, limit: 5 }, function(res) {
                     var container = document.getElementById('sidebarRecentPosts');
@@ -2094,7 +1979,6 @@
                             document.getElementById('page-post-detail').classList.add('active');
                             document.querySelectorAll('#navLinks .nav-link').forEach(function(el) { el.classList.remove('active'); });
                             window.scrollTo(0, 0);
-                            // Muat sidebar
                             loadSidebarPosts();
                             loadSidebarBooks();
                         }
@@ -2165,6 +2049,58 @@
                         });
                         document.getElementById('latestBooks').innerHTML = html || '<div class="col-12 text-muted">Belum ada buku.</div>';
                     }
+                });
+            }
+
+            function getBookCoverHtml(book, height) {
+                height = height || '200px';
+                var coverUrl = book.CoverURL && book.CoverURL.trim() !== '';
+                if (coverUrl) {
+                    return '<img src="' + book.CoverURL + '" alt="' + escapeHtml(book.Title) + '" class="book-cover-img" style="height:' + height + ';" onerror="this.style.display=\'none\'; this.parentNode.querySelector(\'.book-cover-placeholder\').style.display=\'flex\';">' +
+                           '<div class="book-cover-placeholder" style="height:' + height + '; display:none;"><i class="fas fa-book"></i></div>';
+                }
+                return '<div class="book-cover-placeholder" style="height:' + height + '; display:flex;"><i class="fas fa-book"></i></div>';
+            }
+
+            // ===== PAGINATION =====
+            function renderPaginationControls(containerId, total, currentPage, limit, fetchFn) {
+                var container = document.getElementById(containerId);
+                if (!container) return;
+                var totalPages = Math.ceil(total / limit) || 1;
+                if (currentPage > totalPages) currentPage = totalPages;
+                if (currentPage < 1) currentPage = 1;
+
+                var html = '';
+                var start = (currentPage - 1) * limit + 1;
+                var end = Math.min(currentPage * limit, total);
+
+                html += '<button class="btn-prev" ' + (currentPage <= 1 ? 'disabled' : '') + ' data-page="' + (currentPage - 1) + '"><i class="fas fa-chevron-left"></i> Sebelumnya</button>';
+                for (var p = 1; p <= totalPages; p++) {
+                    html += '<button class="' + (p === currentPage ? 'active-page' : '') + '" data-page="' + p + '">' + p + '</button>';
+                }
+                html += '<button class="btn-next" ' + (currentPage >= totalPages ? 'disabled' : '') + ' data-page="' + (currentPage + 1) + '">Selanjutnya <i class="fas fa-chevron-right"></i></button>';
+                html += '<span class="pagination-info">' + start + '-' + end + ' dari ' + total + '</span>';
+                html += ' <select class="page-size-select">';
+                var sizes = [10, 20, 50, 100];
+                sizes.forEach(function(s) {
+                    html += '<option value="' + s + '" ' + (s === limit ? 'selected' : '') + '>' + s + '</option>';
+                });
+                html += '</select>';
+
+                container.innerHTML = html;
+
+                container.querySelectorAll('button[data-page]').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var page = parseInt(this.dataset.page);
+                        if (page >= 1 && page <= totalPages) {
+                            fetchFn(page, limit);
+                        }
+                    });
+                });
+
+                container.querySelector('.page-size-select').addEventListener('change', function() {
+                    var newLimit = parseInt(this.value);
+                    fetchFn(1, newLimit);
                 });
             }
 
@@ -2289,9 +2225,7 @@
                                 else if (action === 'deleteUser') deleteUser(id);
                             });
                         });
-                        // Pagination sederhana untuk user (frontend)
                         renderPaginationControls('manageUserPagination', filtered.length, 1, 10, function(page, limit) {
-                            // Karena data sudah diambil semua, kita hanya perlu potong ulang
                             var start = (page - 1) * limit;
                             var end = Math.min(start + limit, filtered.length);
                             var pageData = filtered.slice(start, end);
@@ -2325,7 +2259,7 @@
                 });
             }
 
-            // ===== BORROWABLE BOOKS (GRID) =====
+            // ===== BORROWABLE BOOKS =====
             function loadBorrowableBooks(page, limit) {
                 page = page || 1;
                 limit = limit || 12;
@@ -2895,6 +2829,16 @@
                 });
             }
 
+            function showConfirm(message, onConfirm) {
+                document.getElementById('confirmBody').innerHTML = message;
+                var confirmBtn = document.getElementById('confirmBtn');
+                confirmBtn.onclick = function() {
+                    bootstrap.Modal.getInstance(document.getElementById('confirmModal')).hide();
+                    onConfirm();
+                };
+                new bootstrap.Modal(document.getElementById('confirmModal')).show();
+            }
+
             // ===== CKEDITOR =====
             function initCKEditor(initialContent) {
                 if (ckeditorInstance) {
@@ -3099,111 +3043,124 @@
                 };
             }
 
-            // ===== INIT =====
+            // ===== INISIALISASI =====
             function init() {
                 var savedToken = localStorage.getItem('libToken');
                 var savedUser = localStorage.getItem('libUser');
+
+                function afterInit() {
+                    renderSlider();
+                    loadPosts('beranda', 1, 6);
+                    loadLatestBooks();
+                    updateNavUI();
+                    populateYearDropdowns();
+                    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+                    // ===== SEMUA EVENT LISTENER =====
+                    document.querySelectorAll('.modal').forEach(function(modalEl) {
+                        modalEl.addEventListener('hidden.bs.modal', function() {
+                            document.body.focus();
+                        });
+                    });
+
+                    document.getElementById('brandLink').addEventListener('click', function(e) { e.preventDefault(); navigateTo('beranda'); });
+                    document.querySelectorAll('.btn-outline-primary-custom[data-page]').forEach(function(el) {
+                        el.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            navigateTo(this.dataset.page);
+                        });
+                    });
+
+                    document.getElementById('btnLoginNav').addEventListener('click', showLoginModal);
+                    document.getElementById('btnLogoutNav').addEventListener('click', logout);
+                    document.getElementById('loginForm').addEventListener('submit', handleLogin);
+
+                    document.getElementById('addPostBtn').addEventListener('click', function() { showPostForm(null); });
+                    document.getElementById('postForm').addEventListener('submit', handleSavePost);
+
+                    document.getElementById('addBookBtn').addEventListener('click', function() { showBookForm(null); });
+                    document.getElementById('bookForm').addEventListener('submit', handleSaveBook);
+
+                    document.getElementById('addUserBtn').addEventListener('click', function() { showUserForm(null); });
+                    document.getElementById('userForm').addEventListener('submit', handleSaveUser);
+
+                    document.getElementById('adminBorrowBtn').addEventListener('click', adminBorrowBook);
+                    document.getElementById('refreshBorrowable').addEventListener('click', function() { loadBorrowableBooks(1, 12); });
+
+                    document.getElementById('searchManageBooks').addEventListener('input', debounce(function() { loadManageBooks(1, 10); }, 300));
+                    document.getElementById('searchManageUsers').addEventListener('input', debounce(function() { loadManageUsers(); }, 300));
+
+                    var searchBuku = document.getElementById('searchBuku');
+                    var searchPost = document.getElementById('searchPost');
+                    var searchReturn = document.getElementById('searchReturn');
+                    var filterMyLoansStudent = document.getElementById('filterMyLoansStudent');
+                    var filterAllLoansStudent = document.getElementById('filterAllLoansStudent');
+                    var filterAllLoansNIS = document.getElementById('filterAllLoansNIS');
+                    var filterAllLoansClass = document.getElementById('filterAllLoansClass');
+
+                    searchBuku.addEventListener('input', debounce(function() { loadBooks(1, 10); }, 300));
+                    searchPost.addEventListener('input', debounce(function() { loadManagePosts(1, 10); }, 300));
+                    searchReturn.addEventListener('input', debounce(function() { loadActiveLoans(1, 10); }, 300));
+                    filterMyLoansStudent.addEventListener('input', debounce(function() { loadMyLoans(1, 10); }, 300));
+                    filterAllLoansStudent.addEventListener('input', debounce(function() { loadAllLoans(1, 10); }, 300));
+                    filterAllLoansNIS.addEventListener('input', debounce(function() { loadAllLoans(1, 10); }, 300));
+                    filterAllLoansClass.addEventListener('input', debounce(function() { loadAllLoans(1, 10); }, 300));
+
+                    document.getElementById('filterMyLoansMonth').addEventListener('change', function() { loadMyLoans(1, 10); });
+                    document.getElementById('filterMyLoansYear').addEventListener('change', function() { loadMyLoans(1, 10); });
+                    document.getElementById('filterAllLoansMonth').addEventListener('change', function() { loadAllLoans(1, 10); });
+                    document.getElementById('filterAllLoansYear').addEventListener('change', function() { loadAllLoans(1, 10); });
+
+                    document.getElementById('pinjamSearchTitle').addEventListener('input', debounce(function() { loadBorrowableBooks(1, 12); }, 300));
+                    document.getElementById('pinjamSearchID').addEventListener('input', debounce(function() { loadBorrowableBooks(1, 12); }, 300));
+
+                    document.getElementById('printRiwayat').addEventListener('click', function() { printSection('page-riwayat'); });
+                    document.getElementById('printAllLoans').addEventListener('click', function() { printSection('page-all-loans'); });
+
+                    document.getElementById('postFormModal').addEventListener('hidden.bs.modal', function() {
+                        destroyCKEditor();
+                        document.getElementById('postForm').reset();
+                        document.getElementById('postIdInput').value = '';
+                    });
+
+                    navigateTo('beranda');
+                }
+
+                // Jika ada token, validasi sesi terlebih dahulu
                 if (savedToken && savedUser) {
                     currentToken = savedToken;
-                    currentUser = JSON.parse(savedUser);
-                    checkSessionAndUpdateUI();
+                    try {
+                        currentUser = JSON.parse(savedUser);
+                    } catch(e) {
+                        forceLogout();
+                        afterInit();
+                        return;
+                    }
+
+                    jsonpCall('checkSession', {}, function(res) {
+                        if (!res.success || !res.data || !res.data.valid) {
+                            forceLogout();
+                            showToast('Sesi tidak valid, silakan login.', 'warning');
+                            afterInit();
+                        } else {
+                            if (res.data.user) currentUser = res.data.user;
+                            updateNavUI();
+                            afterInit();
+                        }
+                    });
+                } else {
+                    forceLogout();
+                    afterInit();
                 }
-                renderSlider();
-                loadPosts('beranda', 1, 6);
-                loadLatestBooks();
-                updateNavUI();
-                populateYearDropdowns();
-
-                // Set current year in footer
-                document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-                document.querySelectorAll('.modal').forEach(function(modalEl) {
-                    modalEl.addEventListener('hidden.bs.modal', function() {
-                        document.body.focus();
-                    });
-                });
-
-                document.getElementById('brandLink').addEventListener('click', function(e) { e.preventDefault(); navigateTo('beranda'); });
-                document.querySelectorAll('.btn-outline-primary-custom[data-page]').forEach(function(el) {
-                    el.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        navigateTo(this.dataset.page);
-                    });
-                });
-
-                document.getElementById('btnLoginNav').addEventListener('click', showLoginModal);
-                document.getElementById('btnLogoutNav').addEventListener('click', logout);
-                document.getElementById('loginForm').addEventListener('submit', handleLogin);
-
-                document.getElementById('addPostBtn').addEventListener('click', function() { showPostForm(null); });
-                document.getElementById('postForm').addEventListener('submit', handleSavePost);
-
-                document.getElementById('addBookBtn').addEventListener('click', function() { showBookForm(null); });
-                document.getElementById('bookForm').addEventListener('submit', handleSaveBook);
-
-                document.getElementById('addUserBtn').addEventListener('click', function() { showUserForm(null); });
-                document.getElementById('userForm').addEventListener('submit', handleSaveUser);
-
-                document.getElementById('adminBorrowBtn').addEventListener('click', adminBorrowBook);
-                document.getElementById('refreshBorrowable').addEventListener('click', function() { loadBorrowableBooks(1, 12); });
-
-                document.getElementById('searchManageBooks').addEventListener('input', debounce(function() { loadManageBooks(1, 10); }, 300));
-                document.getElementById('searchManageUsers').addEventListener('input', debounce(function() { loadManageUsers(); }, 300));
-
-                var searchBuku = document.getElementById('searchBuku');
-                var searchPost = document.getElementById('searchPost');
-                var searchReturn = document.getElementById('searchReturn');
-                var filterMyLoansStudent = document.getElementById('filterMyLoansStudent');
-                var filterAllLoansStudent = document.getElementById('filterAllLoansStudent');
-                var filterAllLoansNIS = document.getElementById('filterAllLoansNIS');
-                var filterAllLoansClass = document.getElementById('filterAllLoansClass');
-
-                searchBuku.addEventListener('input', debounce(function() { loadBooks(1, 10); }, 300));
-                searchPost.addEventListener('input', debounce(function() { loadManagePosts(1, 10); }, 300));
-                searchReturn.addEventListener('input', debounce(function() { loadActiveLoans(1, 10); }, 300));
-                filterMyLoansStudent.addEventListener('input', debounce(function() { loadMyLoans(1, 10); }, 300));
-                filterAllLoansStudent.addEventListener('input', debounce(function() { loadAllLoans(1, 10); }, 300));
-                filterAllLoansNIS.addEventListener('input', debounce(function() { loadAllLoans(1, 10); }, 300));
-                filterAllLoansClass.addEventListener('input', debounce(function() { loadAllLoans(1, 10); }, 300));
-
-                document.getElementById('filterMyLoansMonth').addEventListener('change', function() { loadMyLoans(1, 10); });
-                document.getElementById('filterMyLoansYear').addEventListener('change', function() { loadMyLoans(1, 10); });
-                document.getElementById('filterAllLoansMonth').addEventListener('change', function() { loadAllLoans(1, 10); });
-                document.getElementById('filterAllLoansYear').addEventListener('change', function() { loadAllLoans(1, 10); });
-
-                document.getElementById('pinjamSearchTitle').addEventListener('input', debounce(function() { loadBorrowableBooks(1, 12); }, 300));
-                document.getElementById('pinjamSearchID').addEventListener('input', debounce(function() { loadBorrowableBooks(1, 12); }, 300));
-
-                document.getElementById('printRiwayat').addEventListener('click', function() { printSection('page-riwayat'); });
-                document.getElementById('printAllLoans').addEventListener('click', function() { printSection('page-all-loans'); });
-
-                document.getElementById('postFormModal').addEventListener('hidden.bs.modal', function() {
-                    destroyCKEditor();
-                    document.getElementById('postForm').reset();
-                    document.getElementById('postIdInput').value = '';
-                });
-
-                // Jika halaman detail diakses langsung (dari URL), tapi tidak ada parameter, maka tetap di beranda
-                navigateTo('beranda');
             }
 
-            // ===== DEBOUNCE =====
-            function debounce(fn, delay) {
-                var timer = null;
-                return function() {
-                    var context = this, args = arguments;
-                    clearTimeout(timer);
-                    timer = setTimeout(function() {
-                        fn.apply(context, args);
-                    }, delay);
-                };
-            }
-
+            // ===== START =====
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', init);
             } else {
                 init();
             }
+
         })();
     </script>
 </body>
