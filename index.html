@@ -1507,7 +1507,7 @@
             "use strict";
 
             // ===== KONFIGURASI =====
-            var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwlRa3P-oPxHOXqffEVY3I-_guvud7PG7uY7SjREy6_qDOW1_D5qTLGfXEiKs5ALMGu/exec';
+            var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFFgJpINQ2P0rNBZCevfElQKdqW4v2lnziAjw94UyQ2zK8L6DKXTk5ic5Briv0Q1Um/exec';
             var MAX_ACTIVE_LOANS = 20;
             var currentUser = null;
             var currentToken = null;
@@ -1581,7 +1581,6 @@
                 params.action = action;
                 params.callback = cbName;
                 if (currentToken) params.token = currentToken;
-                // Tambahkan timestamp untuk menghindari cache
                 params._ = Date.now();
 
                 var queryString = Object.keys(params).map(function(k) {
@@ -2212,36 +2211,16 @@
                                        classStr.toLowerCase().includes(search);
                             });
                         }
-                        var tbody = document.getElementById('manageUserTableBody');
-                        var html = '';
-                        if (filtered.length === 0) html = '<tr><td colspan="7" class="text-center">Tidak ada data.</td></tr>';
-                        filtered.forEach(function(u) {
-                            html += `<tr>
-                                <td>${u.UserID}</td><td>${u.NIS||'-'}</td><td>${escapeHtml(u.Name)}</td><td>${u.Class||'-'}</td>
-                                <td>${u.Username}</td><td><span class="badge ${u.Role==='Admin'?'bg-primary':'bg-info'}">${u.Role}</span></td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-warning me-1" data-userid="${u.UserID}" data-action="editUser"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger" data-userid="${u.UserID}" data-action="deleteUser"><i class="fas fa-trash"></i></button>
-                                </td></tr>`;
-                        });
-                        tbody.innerHTML = html;
-                        tbody.querySelectorAll('button[data-action]').forEach(function(btn) {
-                            btn.addEventListener('click', function() {
-                                var action = this.dataset.action;
-                                var id = this.dataset.userid;
-                                if (action === 'editUser') showUserForm(id);
-                                else if (action === 'deleteUser') deleteUser(id);
-                            });
-                        });
-                        renderPaginationControls('manageUserPagination', filtered.length, 1, 10, function(page, limit) {
+
+                        function renderUserPage(page, limit) {
                             var start = (page - 1) * limit;
                             var end = Math.min(start + limit, filtered.length);
                             var pageData = filtered.slice(start, end);
-                            var tbody2 = document.getElementById('manageUserTableBody');
-                            var html2 = '';
-                            if (pageData.length === 0) html2 = '<tr><td colspan="7" class="text-center">Tidak ada data.</td></tr>';
+                            var tbody = document.getElementById('manageUserTableBody');
+                            var html = '';
+                            if (pageData.length === 0) html = '<tr><td colspan="7" class="text-center">Tidak ada data.</td></tr>';
                             pageData.forEach(function(u) {
-                                html2 += `<tr>
+                                html += `<tr>
                                     <td>${u.UserID}</td><td>${u.NIS||'-'}</td><td>${escapeHtml(u.Name)}</td><td>${u.Class||'-'}</td>
                                     <td>${u.Username}</td><td><span class="badge ${u.Role==='Admin'?'bg-primary':'bg-info'}">${u.Role}</span></td>
                                     <td>
@@ -2249,8 +2228,8 @@
                                         <button class="btn btn-sm btn-outline-danger" data-userid="${u.UserID}" data-action="deleteUser"><i class="fas fa-trash"></i></button>
                                     </td></tr>`;
                             });
-                            tbody2.innerHTML = html2;
-                            tbody2.querySelectorAll('button[data-action]').forEach(function(btn) {
+                            tbody.innerHTML = html;
+                            tbody.querySelectorAll('button[data-action]').forEach(function(btn) {
                                 btn.addEventListener('click', function() {
                                     var action = this.dataset.action;
                                     var id = this.dataset.userid;
@@ -2258,8 +2237,10 @@
                                     else if (action === 'deleteUser') deleteUser(id);
                                 });
                             });
-                            renderPaginationControls('manageUserPagination', filtered.length, page, limit, arguments.callee);
-                        });
+                            renderPaginationControls('manageUserPagination', filtered.length, page, limit, renderUserPage);
+                        }
+
+                        renderUserPage(1, 10);
                     } else {
                         document.getElementById('manageUserTableBody').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
                         document.getElementById('manageUserPagination').innerHTML = '';
@@ -2373,20 +2354,25 @@
             function loadAllLoans(page, limit) {
                 page = page || 1;
                 limit = limit || 10;
-                var search = document.getElementById('filterAllLoansStudent').value.trim() || 
-                              document.getElementById('filterAllLoansNIS').value.trim() ||
-                              document.getElementById('filterAllLoansClass').value.trim();
+                var search = document.getElementById('filterAllLoansStudent').value.trim();
+                var nis = document.getElementById('filterAllLoansNIS').value.trim();
+                var cls = document.getElementById('filterAllLoansClass').value.trim();
+                var month = document.getElementById('filterAllLoansMonth').value;
+                var year = document.getElementById('filterAllLoansYear').value;
+
                 showSpinner();
-                jsonpCall('getLoans', { filter: 'all', allUsers: 'true', page: 1, limit: 9999, search: search }, function(res) {
+                jsonpCall('getLoans', {
+                    filter: 'all',
+                    allUsers: 'true',
+                    page: page,
+                    limit: limit,
+                    search: search,
+                    nis: nis,
+                    class: cls
+                }, function(res) {
                     hideSpinner();
                     if (res.success && res.data) {
                         var loans = res.data;
-                        var nisFilter = document.getElementById('filterAllLoansNIS').value.trim();
-                        var classFilter = document.getElementById('filterAllLoansClass').value.trim();
-                        if (nisFilter) loans = loans.filter(function(l) { return (l.StudentNIS || '').toLowerCase().includes(nisFilter.toLowerCase()); });
-                        if (classFilter) loans = loans.filter(function(l) { return (l.StudentClass || '').toLowerCase().includes(classFilter.toLowerCase()); });
-                        var month = document.getElementById('filterAllLoansMonth').value;
-                        var year = document.getElementById('filterAllLoansYear').value;
                         if (month || year) {
                             loans = loans.filter(function(l) {
                                 var dateObj = parseDateIndonesian(l.BorrowDate);
@@ -2420,7 +2406,7 @@
                             </tr>`;
                         });
                         tbody.innerHTML = html;
-                        renderPaginationControls('allLoansPagination', total, page, limit, function(newPage, newLimit) {
+                        renderPaginationControls('allLoansPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
                             loadAllLoans(newPage, newLimit);
                         });
                     } else {
@@ -2561,20 +2547,33 @@
             function setupSearchFilter() {
                 var searchStudent = document.getElementById('searchStudent');
                 var searchBook = document.getElementById('searchBook');
-                searchStudent.oninput = function() {
+
+                // Hapus listener lama jika ada
+                if (searchStudent._listener) {
+                    searchStudent.removeEventListener('input', searchStudent._listener);
+                }
+                var studentHandler = function() {
                     var filter = this.value.toLowerCase();
                     document.querySelectorAll('#selectStudent option').forEach(function(opt) {
                         var text = opt.textContent.toLowerCase();
                         opt.style.display = (text.indexOf(filter) > -1 || opt.value === '') ? '' : 'none';
                     });
                 };
-                searchBook.oninput = function() {
+                searchStudent.addEventListener('input', studentHandler);
+                searchStudent._listener = studentHandler;
+
+                if (searchBook._listener) {
+                    searchBook.removeEventListener('input', searchBook._listener);
+                }
+                var bookHandler = function() {
                     var filter = this.value.toLowerCase();
                     document.querySelectorAll('#selectBook option').forEach(function(opt) {
                         var text = opt.textContent.toLowerCase();
                         opt.style.display = (text.indexOf(filter) > -1 || opt.value === '') ? '' : 'none';
                     });
                 };
+                searchBook.addEventListener('input', bookHandler);
+                searchBook._listener = bookHandler;
             }
 
             function adminBorrowBook() {
