@@ -467,7 +467,7 @@
 
         /* ===== BLOG DETAIL ===== */
         .blog-container {
-            max-width: 860px;
+            max-width: 1200px;
             margin: 0 auto;
             background: #fff;
             border-radius: var(--border-radius);
@@ -490,12 +490,119 @@
             font-size: 4rem;
             color: #b0c4de;
         }
-        .blog-body { padding: 2.5rem; }
+        .blog-body { padding: 2rem 2.5rem; }
         .blog-title { font-weight: 800; font-size: 2.2rem; color: var(--dark); line-height: 1.3; }
         .blog-meta { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eef2f6; display: flex; align-items: center; gap: 1rem; }
         .blog-content { font-size: 1.1rem; line-height: 1.8; color: #2c3e50; }
         .blog-content img { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .blog-content iframe { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; aspect-ratio: 16/9; width: 100%; }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+            margin-bottom: 1.5rem;
+        }
+        .sidebar-section h5 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--dark);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sidebar-section h5 i { color: var(--accent); }
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f1f5f9;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .sidebar-item:hover {
+            background: var(--primary-light);
+            padding-left: 0.5rem;
+            border-radius: 8px;
+        }
+        .sidebar-item:last-child { border-bottom: none; }
+        .sidebar-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+            background: #e9ecef;
+        }
+        .sidebar-item .placeholder-thumb {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e9ecef;
+            border-radius: 8px;
+            flex-shrink: 0;
+            color: #adb5bd;
+            font-size: 1.5rem;
+        }
+        .sidebar-item .item-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .sidebar-item .item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark);
+            line-height: 1.3;
+            display: -webkit-box;
+     
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .sidebar-item .item-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.1rem;
+        }
+        .sidebar-item .book-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .sidebar-item .book-cover-small {
+            width: 40px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 4px;
+            flex-shrink: 0;
+            background: #e9ecef;
+        }
+        .sidebar-item .book-placeholder-small {
+            width: 40px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e9ecef;
+            border-radius: 4px;
+            flex-shrink: 0;
+            color: #adb5bd;
+            font-size: 1rem;
+        }
+        @media (max-width: 768px) {
+            .blog-body { padding: 1.5rem; }
+            .blog-title { font-size: 1.8rem; }
+            .blog-hero-image { max-height: 250px; }
+            .sidebar-section { padding: 1rem; }
+        }
 
         /* ===== PAGINATION ===== */
         .pagination-controls {
@@ -660,14 +767,163 @@
             margin-bottom: 0.3rem;
             color: var(--dark);
         }
+        /* ===== FOOTER BARU - PROFESIONAL & MENARIK ===== */
         .footer {
-            background: var(--primary-dark);
-            color: rgba(255,255,255,0.8);
-            text-align: center;
-            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #1a2f4a 100%);
+            color: rgba(255,255,255,0.85);
+            padding: 3rem 0 1.5rem 0;
             margin-top: auto;
-            font-size: 0.9rem;
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 -8px 30px rgba(0,0,0,0.15);
         }
+        .footer h5 {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: #fff;
+            position: relative;
+            padding-bottom: 0.6rem;
+        }
+        .footer h5::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        .footer h5:hover::after {
+            width: 70px;
+        }
+        .footer a {
+            color: rgba(255,255,255,0.7);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #fff;
+            text-decoration: none;
+            transform: translateX(4px);
+            display: inline-block;
+        }
+        .footer .list-unstyled li {
+            margin-bottom: 0.5rem;
+        }
+        .footer .list-unstyled li i {
+            width: 1.4rem;
+            color: var(--accent);
+            margin-right: 0.3rem;
+        }
+        .footer hr {
+            border-top: 1px solid rgba(255,255,255,0.15);
+            margin: 1.8rem 0;
+        }
+        .footer .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 1.2rem;
+            margin-right: 0.6rem;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer .social-icons a:hover {
+            background: var(--accent);
+            color: #fff !important;
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(230,163,60,0.4);
+            border-color: var(--accent);
+        }
+        .footer .social-icons a i {
+            transition: transform 0.3s;
+        }
+        .footer .social-icons a:hover i {
+            transform: rotate(8deg) scale(1.1);
+        }
+        .footer .footer-bottom {
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            padding-top: 0.5rem;
+        }
+        .footer .footer-bottom span {
+            color: var(--accent);
+        }
+        .footer .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+        }
+        .footer .contact-item i {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+            width: 1.4rem;
+        }
+        .footer .opening-hours {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            border-left: 3px solid var(--accent);
+        }
+        .footer .opening-hours li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.2rem 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.06);
+        }
+        .footer .opening-hours li:last-child {
+            border-bottom: none;
+        }
+        .footer .opening-hours .day {
+            color: rgba(255,255,255,0.7);
+        }
+        .footer .opening-hours .time {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                padding: 2rem 0 1rem 0;
+                text-align: center;
+            }
+            .footer h5::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer h5:hover::after {
+                width: 40px;
+            }
+            .footer .contact-item {
+                justify-content: center;
+            }
+            .footer .social-icons a {
+                margin: 0 0.3rem;
+            }
+            .footer .opening-hours li {
+                justify-content: center;
+                gap: 1rem;
+            }
+            .footer .col-md-3 {
+                margin-bottom: 2rem;
+            }
+            .footer .footer-bottom {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* ===== OTHER ===== */
         .map-container {
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -694,6 +950,8 @@
             .stat-card .stat-value { font-size: 1.8rem; }
             .navbar-brand img { height: 32px; }
             .carousel-caption h2 { font-size: 1.5rem; }
+            .blog-container .row { flex-direction: column; }
+            .sidebar-section { margin-top: 1rem; }
         }
 
         /* ===== CKEDITOR CUSTOM ===== */
@@ -826,16 +1084,39 @@
         <div class="page-section" id="page-semua-postingan">
             <div class="section-header"><h2>📰 Semua Postingan</h2></div>
             <div class="row g-4" id="allPostCards"></div>
+            <div id="allPostPagination" class="pagination-controls"></div>
         </div>
 
-        <!-- DETAIL POSTINGAN -->
+        <!-- DETAIL POSTINGAN (dengan sidebar) -->
         <div class="page-section" id="page-post-detail">
             <div class="blog-container">
-                <div id="blogHero"></div>
-                <div class="blog-body">
-                    <h1 class="blog-title" id="detailPostTitle"></h1>
-                    <div class="blog-meta" id="detailPostMeta"></div>
-                    <div class="blog-content" id="detailPostContent"></div>
+                <div class="row g-0">
+                    <!-- KOLOM KIRI: KONTEN UTAMA -->
+                    <div class="col-lg-8">
+                        <div id="blogHero"></div>
+                        <div class="blog-body">
+                            <h1 class="blog-title" id="detailPostTitle"></h1>
+                            <div class="blog-meta" id="detailPostMeta"></div>
+                            <div class="blog-content" id="detailPostContent"></div>
+                        </div>
+                    </div>
+                    <!-- KOLOM KANAN: SIDEBAR -->
+                    <div class="col-lg-4 p-3 p-lg-4" style="background: #f8fafc;">
+                        <!-- Postingan Terbaru -->
+                        <div class="sidebar-section">
+                            <h5><i class="fas fa-newspaper"></i> Postingan Terbaru</h5>
+                            <div id="sidebarRecentPosts">
+                                <div class="text-muted small">Memuat...</div>
+                            </div>
+                        </div>
+                        <!-- Buku Terbaru -->
+                        <div class="sidebar-section">
+                            <h5><i class="fas fa-book"></i> Buku Terbaru</h5>
+                            <div id="sidebarRecentBooks">
+                                <div class="text-muted small">Memuat...</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -957,7 +1238,7 @@
             </div>
         </div>
 
-        <!-- MANAJEMEN BUKU (dengan pencarian) -->
+        <!-- MANAJEMEN BUKU -->
         <div class="page-section" id="page-manage-books">
             <div class="section-header">
                 <h2>📚 Manajemen Buku</h2>
@@ -979,7 +1260,7 @@
             </div>
         </div>
 
-        <!-- MANAJEMEN USER (dengan pencarian) -->
+        <!-- MANAJEMEN USER -->
         <div class="page-section" id="page-manage-users">
             <div class="section-header">
                 <h2>👥 Manajemen User</h2>
@@ -1089,8 +1370,83 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <div class="footer">&copy; Copyright by Perpustakaan SMAN 1 Leuwimunding 2026</div>
+    <!-- ===== FOOTER BARU - PROFESIONAL & MENARIK ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Kolom 1: Tentang Perpustakaan -->
+                <div class="col-md-3">
+                    <h5><i class="fas fa-book-open me-2"></i>Perpustakaan</h5>
+                    <p style="font-size:0.95rem; opacity:0.85;">SMAN 1 Leuwimunding</p>
+                    <p style="font-size:0.9rem; opacity:0.75; line-height:1.6;">
+                        Menjembatani ilmu, membangun peradaban. Sumber belajar dan literasi bagi seluruh warga sekolah.
+                    </p>
+                    <div class="social-icons mt-3">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Kolom 2: Tautan Cepat -->
+                <div class="col-md-3">
+                    <h5>Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" data-page="beranda"><i class="fas fa-chevron-right" style="font-size:0.6rem;"></i> Beranda</a></li>
+                        <li><a href="#" data-page="buku"><i class="fas fa-chevron-right" style="font-size:0.6rem;"></i> Koleksi Buku</a></li>
+                        <li><a href="#" data-page="semua-postingan"><i class="fas fa-chevron-right" style="font-size:0.6rem;"></i> Postingan</a></li>
+                        <li><a href="#" data-page="dashboard" id="footerDashLink" style="display:none;"><i class="fas fa-chevron-right" style="font-size:0.6rem;"></i> Dashboard</a></li>
+                        <li><a href="#" data-page="manage-posts" id="footerManageLink" style="display:none;"><i class="fas fa-chevron-right" style="font-size:0.6rem;"></i> Kelola</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3: Kontak -->
+                <div class="col-md-3">
+                    <h5>Hubungi Kami</h5>
+                    <div class="contact-item">
+                        <i class="fas fa-map-pin"></i>
+                        <span>Jalan Raya Leuwimunding, Kec. Leuwimunding, Kab. Majalengka, Jawa Barat</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>(023) 1234567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>perpus@smansa.sch.id</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <span>www.sma1le.sch.id</span>
+                    </div>
+                </div>
+
+                <!-- Kolom 4: Jam Buka -->
+                <div class="col-md-3">
+                    <h5>Jam Buka</h5>
+                    <div class="opening-hours">
+                        <ul class="list-unstyled mb-0">
+                            <li><span class="day">Senin - Jumat</span><span class="time">06.30 - 15.00</span></li>
+                            <li><span class="day">Sabtu & Minggu</span><span class="time">Tutup</span></li>
+                            <li><span class="day">Hari Libur</span><span class="time">Tutup</span></li>
+                        </ul>
+                    </div>
+                    <div style="margin-top:1rem; font-size:0.85rem; opacity:0.7;">
+                        <i class="fas fa-coffee me-1"></i> Istirahat: 12.00 - 13.00 (Jumat)
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="footer-bottom">
+                &copy; <span id="currentYear"></span> Perpustakaan SMAN 1 Leuwimunding. All rights reserved.
+                <span style="opacity:0.5; margin:0 0.5rem;">|</span>
+                <span style="opacity:0.6;">Dibangun dengan <i class="fas fa-heart" style="color:var(--accent);"></i> untuk literasi.</span>
+            </div>
+        </div>
+    </footer>
 
     <!-- PRINT AREA -->
     <div id="printArea" style="display:none;"></div>
@@ -1219,7 +1575,7 @@
         (function() {
             "use strict";
 
-            var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFjuSludGxjMnQN53IYcNq4uBv99SJQIDjIxEl2oJRfbPIPadI1rV8zTp0TnOACtIn/exec';
+            var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx8BddYfE3ZKD-FIFVrHZFq6ii4gbkH5ZNSjxA2oZQDmcbOqq8TT3FlA4iEo4ZV1sT1/exec'; // GANTI
             var MAX_ACTIVE_LOANS = 20;
             var currentUser = null;
             var currentToken = null;
@@ -1323,197 +1679,46 @@
                 return '<div class="book-cover-placeholder" style="height:' + height + '; display:flex;"><i class="fas fa-book"></i></div>';
             }
 
-            // ===== PAGINATION STATE =====
-            var paginationStates = {};
-
-            function buildPaginationControls(paginationId, totalItems, currentPage, pageSize, renderFn, containerId, isGrid) {
-                var el = document.getElementById(paginationId);
-                if (!el) return;
-
-                var totalPages = Math.ceil(totalItems / pageSize) || 1;
+            // ===== PAGINATION HELPERS =====
+            function renderPaginationControls(containerId, total, currentPage, limit, fetchFn) {
+                var container = document.getElementById(containerId);
+                if (!container) return;
+                var totalPages = Math.ceil(total / limit) || 1;
                 if (currentPage > totalPages) currentPage = totalPages;
                 if (currentPage < 1) currentPage = 1;
 
-                paginationStates[paginationId] = {
-                    totalItems: totalItems,
-                    currentPage: currentPage,
-                    pageSize: pageSize,
-                    renderFn: renderFn,
-                    containerId: containerId,
-                    isGrid: isGrid
-                };
-
-                var start = (currentPage - 1) * pageSize + 1;
-                var end = Math.min(currentPage * pageSize, totalItems);
-
                 var html = '';
+                var start = (currentPage - 1) * limit + 1;
+                var end = Math.min(currentPage * limit, total);
+
                 html += '<button class="btn-prev" ' + (currentPage <= 1 ? 'disabled' : '') + ' data-page="' + (currentPage - 1) + '"><i class="fas fa-chevron-left"></i> Sebelumnya</button>';
                 for (var p = 1; p <= totalPages; p++) {
                     html += '<button class="' + (p === currentPage ? 'active-page' : '') + '" data-page="' + p + '">' + p + '</button>';
                 }
                 html += '<button class="btn-next" ' + (currentPage >= totalPages ? 'disabled' : '') + ' data-page="' + (currentPage + 1) + '">Selanjutnya <i class="fas fa-chevron-right"></i></button>';
-                html += '<span class="pagination-info">' + start + '-' + end + ' dari ' + totalItems + '</span>';
+                html += '<span class="pagination-info">' + start + '-' + end + ' dari ' + total + '</span>';
                 html += ' <select class="page-size-select">';
                 var sizes = [10, 20, 50, 100];
                 sizes.forEach(function(s) {
-                    html += '<option value="' + s + '" ' + (s === pageSize ? 'selected' : '') + '>' + s + '</option>';
+                    html += '<option value="' + s + '" ' + (s === limit ? 'selected' : '') + '>' + s + '</option>';
                 });
                 html += '</select>';
 
-                el.innerHTML = html;
+                container.innerHTML = html;
 
-                el.querySelectorAll('button[data-page]').forEach(function(btn) {
-                    btn.addEventListener('click', function(e) {
+                container.querySelectorAll('button[data-page]').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
                         var page = parseInt(this.dataset.page);
                         if (page >= 1 && page <= totalPages) {
-                            var state = paginationStates[paginationId];
-                            if (state) {
-                                state.currentPage = page;
-                                renderPagination(paginationId);
-                            }
+                            fetchFn(page, limit);
                         }
                     });
                 });
 
-                el.querySelector('.page-size-select').addEventListener('change', function(e) {
-                    var newSize = parseInt(this.value);
-                    var state = paginationStates[paginationId];
-                    if (state) {
-                        state.pageSize = newSize;
-                        state.currentPage = 1;
-                        renderPagination(paginationId);
-                    }
+                container.querySelector('.page-size-select').addEventListener('change', function() {
+                    var newLimit = parseInt(this.value);
+                    fetchFn(1, newLimit);
                 });
-            }
-
-            function renderPagination(paginationId) {
-                var state = paginationStates[paginationId];
-                if (!state) return;
-                var container = document.getElementById(state.containerId);
-                if (!container) return;
-
-                var totalItems = state.totalItems;
-                var pageSize = state.pageSize;
-                var currentPage = state.currentPage;
-                var totalPages = Math.ceil(totalItems / pageSize) || 1;
-                if (currentPage > totalPages) currentPage = totalPages;
-                if (currentPage < 1) currentPage = 1;
-                state.currentPage = currentPage;
-
-                var start = (currentPage - 1) * pageSize;
-                var end = Math.min(start + pageSize, totalItems);
-                var paginationEl = document.getElementById(paginationId);
-                var dataStr = paginationEl.getAttribute('data-data');
-                var data = dataStr ? JSON.parse(dataStr) : [];
-                var pageData = data.slice(start, end);
-
-                var html = '';
-                if (pageData.length === 0) {
-                    html = state.isGrid ? '<div class="col-12 text-center text-muted py-5">Tidak ada data.</div>' :
-                                         '<tr><td colspan="10" class="text-center">Tidak ada data.</td></tr>';
-                } else {
-                    pageData.forEach(function(item, idx) {
-                        html += state.renderFn(item, idx, start + idx);
-                    });
-                }
-                container.innerHTML = html;
-
-                // Re-attach event listeners untuk tombol aksi (jika ada)
-                var containerId = state.containerId;
-                if (containerId === 'manageBookTableBody') {
-                    container.querySelectorAll('button[data-action]').forEach(function(btn) {
-                        btn.addEventListener('click', function() {
-                            var action = this.dataset.action;
-                            var id = this.dataset.bookid;
-                            if (action === 'editBook') showBookForm(id);
-                            else if (action === 'deleteBook') deleteBook(id);
-                        });
-                    });
-                } else if (containerId === 'manageUserTableBody') {
-                    container.querySelectorAll('button[data-action]').forEach(function(btn) {
-                        btn.addEventListener('click', function() {
-                            var action = this.dataset.action;
-                            var id = this.dataset.userid;
-                            if (action === 'editUser') showUserForm(id);
-                            else if (action === 'deleteUser') deleteUser(id);
-                        });
-                    });
-                } else if (containerId === 'bookTableBody') {
-                    container.querySelectorAll('button[data-action="borrowFromTable"]').forEach(function(btn) {
-                        btn.addEventListener('click', function() {
-                            var bookId = this.dataset.bookid;
-                            var duration = parseInt(document.getElementById('bookLoanDuration').value) || 365;
-                            if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
-                            executeBorrowBook(bookId, duration);
-                        });
-                    });
-                } else if (containerId === 'borrowBookGrid') {
-                    container.querySelectorAll('button[data-action="borrowFromPinjam"]').forEach(function(btn) {
-                        btn.addEventListener('click', function() {
-                            var bookId = this.dataset.bookid;
-                            var duration = parseInt(document.getElementById('studentLoanDuration').value) || 365;
-                            if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
-                            executeBorrowBook(bookId, duration);
-                        });
-                    });
-                } else if (containerId === 'activeLoanTable') {
-                    container.querySelectorAll('button[data-action="returnBook"]').forEach(function(btn) {
-                        btn.addEventListener('click', function() {
-                            var loanId = this.dataset.loanid;
-                            returnBook(loanId);
-                        });
-                    });
-                }
-
-                buildPaginationControls(paginationId, totalItems, currentPage, pageSize, state.renderFn, state.containerId, state.isGrid);
-            }
-
-            function renderPaginatedTableWithData(containerId, paginationId, data, defaultPageSize, renderRow) {
-                var paginationEl = document.getElementById(paginationId);
-                if (paginationEl) paginationEl.setAttribute('data-data', JSON.stringify(data));
-                var state = paginationStates[paginationId];
-                var pageSize = (state && state.pageSize) ? state.pageSize : (defaultPageSize || 10);
-                var currentPage = (state && state.currentPage) ? state.currentPage : 1;
-                paginationStates[paginationId] = {
-                    totalItems: data.length,
-                    currentPage: currentPage,
-                    pageSize: pageSize,
-                    renderFn: renderRow,
-                    containerId: containerId,
-                    isGrid: false
-                };
-                buildPaginationControls(paginationId, data.length, currentPage, pageSize, renderRow, containerId, false);
-                renderPagination(paginationId);
-            }
-
-            function renderPaginatedGrid(containerId, paginationId, data, defaultPageSize, renderCard) {
-                var paginationEl = document.getElementById(paginationId);
-                if (paginationEl) paginationEl.setAttribute('data-data', JSON.stringify(data));
-                var state = paginationStates[paginationId];
-                var pageSize = (state && state.pageSize) ? state.pageSize : (defaultPageSize || 12);
-                var currentPage = (state && state.currentPage) ? state.currentPage : 1;
-                paginationStates[paginationId] = {
-                    totalItems: data.length,
-                    currentPage: currentPage,
-                    pageSize: pageSize,
-                    renderFn: renderCard,
-                    containerId: containerId,
-                    isGrid: true
-                };
-                buildPaginationControls(paginationId, data.length, currentPage, pageSize, renderCard, containerId, true);
-                renderPagination(paginationId);
-            }
-
-            // ===== DEBOUNCE =====
-            function debounce(fn, delay) {
-                var timer = null;
-                return function() {
-                    var context = this, args = arguments;
-                    clearTimeout(timer);
-                    timer = setTimeout(function() {
-                        fn.apply(context, args);
-                    }, delay);
-                };
             }
 
             // ===== AUTH & NAV =====
@@ -1525,6 +1730,8 @@
                 var userInfo = document.getElementById('userInfo');
                 var btnLogin = document.getElementById('btnLoginNav');
                 var btnLogout = document.getElementById('btnLogoutNav');
+                var footerDashLink = document.getElementById('footerDashLink');
+                var footerManageLink = document.getElementById('footerManageLink');
 
                 if (currentUser && currentUser.Role === 'Admin') {
                     var liDash = document.createElement('li');
@@ -1572,6 +1779,9 @@
                     userInfo.style.display = 'inline';
                     btnLogin.style.display = 'none';
                     btnLogout.style.display = 'inline-flex';
+
+                    if (footerDashLink) footerDashLink.style.display = 'inline';
+                    if (footerManageLink) footerManageLink.style.display = 'inline';
                 } else if (currentUser && currentUser.Role === 'Siswa') {
                     var liPinjam = document.createElement('li');
                     liPinjam.className = 'nav-item';
@@ -1597,13 +1807,18 @@
                     userInfo.style.display = 'inline';
                     btnLogin.style.display = 'none';
                     btnLogout.style.display = 'inline-flex';
+
+                    if (footerDashLink) footerDashLink.style.display = 'none';
+                    if (footerManageLink) footerManageLink.style.display = 'none';
                 } else {
                     userInfo.style.display = 'none';
                     btnLogin.style.display = 'inline-flex';
                     btnLogout.style.display = 'none';
+                    if (footerDashLink) footerDashLink.style.display = 'none';
+                    if (footerManageLink) footerManageLink.style.display = 'none';
                 }
 
-                document.querySelectorAll('#navLinks a[data-page], .dropdown-item[data-page]').forEach(function(el) {
+                document.querySelectorAll('#navLinks a[data-page], .dropdown-item[data-page], .footer a[data-page]').forEach(function(el) {
                     el.addEventListener('click', function(e) {
                         e.preventDefault();
                         navigateTo(this.dataset.page);
@@ -1730,79 +1945,951 @@
 
                 requestAnimationFrame(function() {
                     setTimeout(function() {
-                        if (page === 'beranda') { loadPosts('beranda'); loadLatestBooks(); }
-                        else if (page === 'semua-postingan') loadPosts('semua');
-                        else if (page === 'buku') loadBooks();
-                        else if (page === 'pinjam') loadBorrowableBooks();
-                        else if (page === 'riwayat') loadMyLoans();
+                        if (page === 'beranda') { loadPosts('beranda', 1, 6); loadLatestBooks(); }
+                        else if (page === 'semua-postingan') loadPosts('semua', 1, 10);
+                        else if (page === 'buku') loadBooks(1, 10);
+                        else if (page === 'pinjam') loadBorrowableBooks(1, 12);
+                        else if (page === 'riwayat') loadMyLoans(1, 10);
                         else if (page === 'dashboard') loadDashboard();
-                        else if (page === 'manage-posts') loadManagePosts();
-                        else if (page === 'manage-books') loadManageBooks();
+                        else if (page === 'manage-posts') loadManagePosts(1, 10);
+                        else if (page === 'manage-books') loadManageBooks(1, 10);
                         else if (page === 'manage-users') loadManageUsers();
-                        else if (page === 'pengembalian') loadActiveLoans();
+                        else if (page === 'pengembalian') loadActiveLoans(1, 10);
                         else if (page === 'peminjaman-admin') loadAdminPeminjamanForm();
-                        else if (page === 'all-loans') loadAllLoans();
+                        else if (page === 'all-loans') loadAllLoans(1, 10);
+                        else if (page === 'post-detail') {
+                            // Tidak load ulang, karena sudah diisi oleh viewPostDetail
+                        }
                     }, 0);
                 });
             }
 
-            function populateYearDropdowns() {
-                var currentYear = new Date().getFullYear();
-                var years = [];
-                for (var y = currentYear - 5; y <= currentYear + 1; y++) years.push(y);
-                var options = years.map(function(y) { return '<option value="' + y + '">' + y + '</option>'; }).join('');
-                document.getElementById('filterMyLoansYear').innerHTML += options;
-                document.getElementById('filterAllLoansYear').innerHTML += options;
-            }
-
-            function printSection(sectionId) {
-                var tableId = (sectionId === 'page-riwayat') ? 'myLoansTable' : 'allLoansTable';
-                var $table = document.getElementById(tableId);
-                if (!$table) { showToast('Tidak ada tabel untuk dicetak.', 'warning'); return; }
-                var $section = document.getElementById(sectionId);
-                var title = $section.querySelector('.section-header h2')?.textContent || 'Riwayat Peminjaman';
-                var now = new Date();
-                var dateStr = now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' }) + ' ' +
-                    now.toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit' });
-                var printContent = '';
-                printContent += '<div style="font-family: Arial, sans-serif; padding: 20px; max-width: 100%;">';
-                printContent += '<h2 style="text-align: center; margin-bottom: 5px;">' + title + '</h2>';
-                printContent += '<p style="text-align: center; font-size: 12px; color: #888; margin: 0 0 15px 0;">Dicetak pada: ' + dateStr + '</p>';
-                var cloneTable = $table.cloneNode(true);
-                var headerCells = cloneTable.querySelectorAll('thead th');
-                var actionIndex = -1;
-                headerCells.forEach(function(th, idx) {
-                    if (th.textContent.trim().toLowerCase() === 'aksi') {
-                        actionIndex = idx;
+            // ===== SIDEBAR FUNCTIONS =====
+            function loadSidebarPosts() {
+                jsonpCall('getPosts', { page: 1, limit: 5 }, function(res) {
+                    var container = document.getElementById('sidebarRecentPosts');
+                    if (res.success && res.data && res.data.length > 0) {
+                        var html = '';
+                        res.data.forEach(function(post) {
+                            var hasThumb = post.ThumbnailURL && post.ThumbnailURL.trim() !== '';
+                            var thumbHtml = hasThumb ? '<img src="' + post.ThumbnailURL + '" alt="' + escapeHtml(post.Title) + '" onerror="this.style.display=\'none\'; this.parentNode.querySelector(\'.placeholder-thumb\').style.display=\'flex\';">' :
+                                                      '<div class="placeholder-thumb"><i class="fas fa-image"></i></div>';
+                            html += `
+                            <div class="sidebar-item" data-postid="${post.PostID}">
+                                ${thumbHtml}
+                                <div class="item-content">
+                                    <div class="item-title">${escapeHtml(post.Title)}</div>
+                                    <div class="item-meta"><i class="far fa-calendar-alt"></i> ${post.DatePosted || '-'}</div>
+                                </div>
+                            </div>`;
+                        });
+                        container.innerHTML = html;
+                        container.querySelectorAll('.sidebar-item').forEach(function(item) {
+                            item.addEventListener('click', function() {
+                                var postId = this.dataset.postid;
+                                viewPostDetail(postId);
+                            });
+                        });
+                    } else {
+                        container.innerHTML = '<div class="text-muted small">Tidak ada postingan.</div>';
                     }
                 });
-                if (actionIndex !== -1) {
-                    cloneTable.querySelectorAll('thead th').forEach(function(th, idx) {
-                        if (idx === actionIndex) th.remove();
+            }
+
+            function loadSidebarBooks() {
+                jsonpCall('getBooks', { page: 1, limit: 5 }, function(res) {
+                    var container = document.getElementById('sidebarRecentBooks');
+                    if (res.success && res.data && res.data.length > 0) {
+                        var html = '';
+                        res.data.forEach(function(book) {
+                            var coverHtml = book.CoverURL && book.CoverURL.trim() !== '' ?
+                                '<img src="' + book.CoverURL + '" class="book-cover-small" alt="' + escapeHtml(book.Title) + '" onerror="this.style.display=\'none\'; this.parentNode.querySelector(\'.book-placeholder-small\').style.display=\'flex\';">' :
+                                '<div class="book-placeholder-small"><i class="fas fa-book"></i></div>';
+                            html += `
+                            <div class="sidebar-item">
+                                ${coverHtml}
+                                <div class="item-content">
+                                    <div class="item-title">${escapeHtml(book.Title)}</div>
+                                    <div class="item-meta">${escapeHtml(book.Author)}</div>
+                                </div>
+                            </div>`;
+                        });
+                        container.innerHTML = html;
+                    } else {
+                        container.innerHTML = '<div class="text-muted small">Tidak ada buku.</div>';
+                    }
+                });
+            }
+
+            // ===== POSTS =====
+            function loadPosts(mode, page, limit) {
+                page = page || 1;
+                limit = limit || (mode === 'beranda' ? 6 : 10);
+                var containerId = mode === 'beranda' ? 'postCards' : 'allPostCards';
+                var params = { page: page, limit: limit };
+                if (mode === 'semua') params.all = 'true';
+                showSpinner();
+                jsonpCall('getPosts', params, function(res) {
+                    hideSpinner();
+                    var container = document.getElementById(containerId);
+                    if (res.success && res.data) {
+                        var posts = res.data;
+                        var html = '';
+                        if (posts.length === 0) html = '<div class="col-12 text-center text-muted py-5">Belum ada postingan.</div>';
+                        posts.forEach(function(post) {
+                            var excerpt = post.Content.replace(/<[^>]*>/g, '').substring(0, 100) + '...';
+                            var hasThumb = post.ThumbnailURL && post.ThumbnailURL.trim() !== '';
+                            var thumbHtml = hasThumb ? '<img src="' + post.ThumbnailURL + '" class="card-img-top" alt="' + post.Title + '" onerror="this.style.display=\'none\'; this.parentNode.querySelector(\'.placeholder-img\').style.display=\'flex\';">' : '';
+                            var placeholderHtml = hasThumb ? '<div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i></div>' : '<div class="placeholder-img"><i class="fas fa-image"></i></div>';
+                            html += `
+                            <div class="col-lg-4 col-md-6">
+                                <div class="post-card">
+                                    ${thumbHtml}${placeholderHtml}
+                                    <div class="card-body">
+                                        <h5 class="card-title">${escapeHtml(post.Title)}</h5>
+                                        <p class="card-text">${escapeHtml(excerpt)}</p>
+                                        <small class="card-date"><i class="far fa-calendar-alt"></i> ${post.DatePosted||'-'}</small>
+                                        <button class="btn-read" data-postid="${post.PostID}">Baca Selengkapnya →</button>
+                                    </div>
+                                </div>
+                            </div>`;
+                        });
+                        container.innerHTML = html;
+                        container.querySelectorAll('.btn-read').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                viewPostDetail(this.dataset.postid);
+                            });
+                        });
+                        if (mode === 'semua') {
+                            renderPaginationControls('allPostPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
+                                loadPosts('semua', newPage, newLimit);
+                            });
+                        }
+                    } else {
+                        container.innerHTML = '<div class="col-12 text-center text-muted py-5">Gagal memuat postingan.</div>';
+                    }
+                });
+            }
+
+            function viewPostDetail(postId) {
+                showSpinner();
+                jsonpCall('getPosts', { all: 'true' }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var post = res.data.find(function(p) { return p.PostID === postId; });
+                        if (post) {
+                            var hasThumb = post.ThumbnailURL && post.ThumbnailURL.trim() !== '';
+                            var heroHtml = hasThumb ?
+                                '<img src="' + post.ThumbnailURL + '" class="blog-hero-image" alt="' + escapeHtml(post.Title) + '" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' +
+                                '<div class="blog-hero-placeholder" style="display:none;"><i class="fas fa-image"></i></div>' :
+                                '<div class="blog-hero-placeholder"><i class="fas fa-newspaper"></i></div>';
+                            document.getElementById('blogHero').innerHTML = heroHtml;
+                            document.getElementById('detailPostTitle').textContent = post.Title;
+                            document.getElementById('detailPostMeta').innerHTML = '<i class="far fa-calendar-alt"></i> ' + (post.DatePosted || '-');
+                            document.getElementById('detailPostContent').innerHTML = post.Content;
+                            document.querySelectorAll('.page-section').forEach(function(el) { el.classList.remove('active'); });
+                            document.getElementById('page-post-detail').classList.add('active');
+                            document.querySelectorAll('#navLinks .nav-link').forEach(function(el) { el.classList.remove('active'); });
+                            window.scrollTo(0, 0);
+                            // Muat sidebar
+                            loadSidebarPosts();
+                            loadSidebarBooks();
+                        }
+                    }
+                });
+            }
+
+            // ===== BOOKS =====
+            function loadBooks(page, limit) {
+                page = page || 1;
+                limit = limit || 10;
+                var search = document.getElementById('searchBuku').value.trim();
+                showSpinner();
+                jsonpCall('getBooks', { page: page, limit: limit, search: search }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var books = res.data;
+                        var tbody = document.getElementById('bookTableBody');
+                        var html = '';
+                        if (books.length === 0) html = '<tr><td colspan="10" class="text-center">Tidak ada data.</td></tr>';
+                        books.forEach(function(b) {
+                            var avail = parseInt(b.AvailableCopies) || 0;
+                            var action = '';
+                            if (currentUser && currentUser.Role === 'Siswa' && avail > 0) {
+                                action = '<button class="btn btn-sm btn-accent" data-bookid="'+b.BookID+'" data-action="borrowFromTable">Pinjam</button>';
+                            }
+                            html += `<tr>
+                                <td><div style="width:40px;height:60px;">${getBookCoverHtml(b, '60px')}</div></td>
+                                <td>${b.BookID}</td><td>${escapeHtml(b.Title)}</td><td>${escapeHtml(b.Author)}</td>
+                                <td>${b.ISBN||'-'}</td><td>${b.Publisher||'-'}</td><td>${b.Category||'-'}</td><td>${b.Year||'-'}</td>
+                                <td><span class="badge ${avail>0?'bg-success':'bg-danger'}">${avail}</span></td>
+                                <td>${action}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                        tbody.querySelectorAll('button[data-action="borrowFromTable"]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var bookId = this.dataset.bookid;
+                                var duration = parseInt(document.getElementById('bookLoanDuration').value) || 365;
+                                if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
+                                executeBorrowBook(bookId, duration);
+                            });
+                        });
+                        renderPaginationControls('bookPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
+                            loadBooks(newPage, newLimit);
+                        });
+                    } else {
+                        document.getElementById('bookTableBody').innerHTML = '<tr><td colspan="10" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('bookPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            function loadLatestBooks() {
+                jsonpCall('getBooks', { page: 1, limit: 6 }, function(res) {
+                    if (res.success && res.data) {
+                        var latest = res.data;
+                        var html = '';
+                        latest.forEach(function(b) {
+                            html += `
+                            <div class="col-lg-2 col-md-3 col-6">
+                                <div class="book-mini-card">
+                                    ${getBookCoverHtml(b, '120px')}
+                                    <div class="book-title mt-2">${escapeHtml(b.Title)}</div>
+                                    <div class="book-author">${escapeHtml(b.Author)}</div>
+                                </div>
+                            </div>`;
+                        });
+                        document.getElementById('latestBooks').innerHTML = html || '<div class="col-12 text-muted">Belum ada buku.</div>';
+                    }
+                });
+            }
+
+            // ===== MANAGE BOOKS =====
+            function loadManageBooks(page, limit) {
+                page = page || 1;
+                limit = limit || 10;
+                var search = document.getElementById('searchManageBooks').value.trim();
+                showSpinner();
+                jsonpCall('getBooks', { page: page, limit: limit, search: search }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var books = res.data;
+                        var tbody = document.getElementById('manageBookTableBody');
+                        var html = '';
+                        if (books.length === 0) html = '<tr><td colspan="8" class="text-center">Tidak ada data.</td></tr>';
+                        books.forEach(function(b) {
+                            html += `<tr>
+                                <td><div style="width:40px;height:60px;">${getBookCoverHtml(b, '60px')}</div></td>
+                                <td>${b.BookID}</td><td>${escapeHtml(b.Title)}</td><td>${escapeHtml(b.Author)}</td><td>${b.ISBN||'-'}</td>
+                                <td>${b.TotalCopies||0}</td><td>${b.AvailableCopies||0}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-warning me-1" data-bookid="${b.BookID}" data-action="editBook"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger" data-bookid="${b.BookID}" data-action="deleteBook"><i class="fas fa-trash"></i></button>
+                                </td></tr>`;
+                        });
+                        tbody.innerHTML = html;
+                        tbody.querySelectorAll('button[data-action]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var action = this.dataset.action;
+                                var id = this.dataset.bookid;
+                                if (action === 'editBook') showBookForm(id);
+                                else if (action === 'deleteBook') deleteBook(id);
+                            });
+                        });
+                        renderPaginationControls('manageBookPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
+                            loadManageBooks(newPage, newLimit);
+                        });
+                    } else {
+                        document.getElementById('manageBookTableBody').innerHTML = '<tr><td colspan="8" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('manageBookPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            // ===== MANAGE POSTS =====
+            function loadManagePosts(page, limit) {
+                page = page || 1;
+                limit = limit || 10;
+                var search = document.getElementById('searchPost').value.trim();
+                showSpinner();
+                jsonpCall('getPosts', { page: page, limit: limit, search: search }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var posts = res.data;
+                        var tbody = document.getElementById('managePostTableBody');
+                        var html = '';
+                        if (posts.length === 0) html = '<tr><td colspan="4" class="text-center">Tidak ada data.</td></tr>';
+                        posts.forEach(function(p) {
+                            html += `<tr>
+                                <td>${p.PostID}</td><td>${escapeHtml(p.Title)}</td><td>${p.DatePosted||'-'}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-warning me-1" data-postid="${p.PostID}" data-action="editPost"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger" data-postid="${p.PostID}" data-action="deletePost"><i class="fas fa-trash"></i></button>
+                                </td></tr>`;
+                        });
+                        tbody.innerHTML = html;
+                        tbody.querySelectorAll('button[data-action]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var action = this.dataset.action;
+                                var id = this.dataset.postid;
+                                if (action === 'editPost') showPostForm(id);
+                                else if (action === 'deletePost') deletePost(id);
+                            });
+                        });
+                        renderPaginationControls('managePostPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
+                            loadManagePosts(newPage, newLimit);
+                        });
+                    } else {
+                        document.getElementById('managePostTableBody').innerHTML = '<tr><td colspan="4" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('managePostPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            // ===== MANAGE USERS =====
+            function loadManageUsers() {
+                showSpinner();
+                jsonpCall('getUsers', {}, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var search = document.getElementById('searchManageUsers').value.toLowerCase().trim();
+                        var filtered = res.data;
+                        if (search) {
+                            filtered = filtered.filter(function(u) {
+                                var nisStr = String(u.NIS || '');
+                                var nameStr = String(u.Name || '');
+                                var classStr = String(u.Class || '');
+                                return nisStr.toLowerCase().includes(search) ||
+                                       nameStr.toLowerCase().includes(search) ||
+                                       classStr.toLowerCase().includes(search);
+                            });
+                        }
+                        var tbody = document.getElementById('manageUserTableBody');
+                        var html = '';
+                        if (filtered.length === 0) html = '<tr><td colspan="7" class="text-center">Tidak ada data.</td></tr>';
+                        filtered.forEach(function(u) {
+                            html += `<tr>
+                                <td>${u.UserID}</td><td>${u.NIS||'-'}</td><td>${escapeHtml(u.Name)}</td><td>${u.Class||'-'}</td>
+                                <td>${u.Username}</td><td><span class="badge ${u.Role==='Admin'?'bg-primary':'bg-info'}">${u.Role}</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-warning me-1" data-userid="${u.UserID}" data-action="editUser"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger" data-userid="${u.UserID}" data-action="deleteUser"><i class="fas fa-trash"></i></button>
+                                </td></tr>`;
+                        });
+                        tbody.innerHTML = html;
+                        tbody.querySelectorAll('button[data-action]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var action = this.dataset.action;
+                                var id = this.dataset.userid;
+                                if (action === 'editUser') showUserForm(id);
+                                else if (action === 'deleteUser') deleteUser(id);
+                            });
+                        });
+                        // Pagination sederhana untuk user (frontend)
+                        renderPaginationControls('manageUserPagination', filtered.length, 1, 10, function(page, limit) {
+                            // Karena data sudah diambil semua, kita hanya perlu potong ulang
+                            var start = (page - 1) * limit;
+                            var end = Math.min(start + limit, filtered.length);
+                            var pageData = filtered.slice(start, end);
+                            var tbody2 = document.getElementById('manageUserTableBody');
+                            var html2 = '';
+                            if (pageData.length === 0) html2 = '<tr><td colspan="7" class="text-center">Tidak ada data.</td></tr>';
+                            pageData.forEach(function(u) {
+                                html2 += `<tr>
+                                    <td>${u.UserID}</td><td>${u.NIS||'-'}</td><td>${escapeHtml(u.Name)}</td><td>${u.Class||'-'}</td>
+                                    <td>${u.Username}</td><td><span class="badge ${u.Role==='Admin'?'bg-primary':'bg-info'}">${u.Role}</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-warning me-1" data-userid="${u.UserID}" data-action="editUser"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-sm btn-outline-danger" data-userid="${u.UserID}" data-action="deleteUser"><i class="fas fa-trash"></i></button>
+                                    </td></tr>`;
+                            });
+                            tbody2.innerHTML = html2;
+                            tbody2.querySelectorAll('button[data-action]').forEach(function(btn) {
+                                btn.addEventListener('click', function() {
+                                    var action = this.dataset.action;
+                                    var id = this.dataset.userid;
+                                    if (action === 'editUser') showUserForm(id);
+                                    else if (action === 'deleteUser') deleteUser(id);
+                                });
+                            });
+                            renderPaginationControls('manageUserPagination', filtered.length, page, limit, arguments.callee);
+                        });
+                    } else {
+                        document.getElementById('manageUserTableBody').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('manageUserPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            // ===== BORROWABLE BOOKS (GRID) =====
+            function loadBorrowableBooks(page, limit) {
+                page = page || 1;
+                limit = limit || 12;
+                var searchTitle = document.getElementById('pinjamSearchTitle').value.trim();
+                var searchID = document.getElementById('pinjamSearchID').value.trim();
+                var search = searchTitle || searchID;
+                showSpinner();
+                jsonpCall('getBooks', { page: 1, limit: 9999, search: search }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var available = res.data.filter(function(b) { return parseInt(b.AvailableCopies) > 0; });
+                        if (searchID) {
+                            available = available.filter(function(b) { return b.BookID.toLowerCase().includes(searchID.toLowerCase()); });
+                        }
+                        var total = available.length;
+                        var start = (page - 1) * limit;
+                        var end = Math.min(start + limit, total);
+                        var pageData = available.slice(start, end);
+                        var grid = document.getElementById('borrowBookGrid');
+                        var html = '';
+                        if (pageData.length === 0) html = '<div class="col-12 text-center text-muted py-5">Tidak ada buku tersedia.</div>';
+                        pageData.forEach(function(b) {
+                            html += `
+                            <div class="col-lg-3 col-md-4 col-6">
+                                <div class="book-mini-card" style="text-align:left;">
+                                    ${getBookCoverHtml(b, '160px')}
+                                    <strong style="font-size:0.9rem;">${escapeHtml(b.Title)}</strong>
+                                    <p style="font-size:0.8rem;color:#888;margin:0.2rem 0;">${escapeHtml(b.Author)}</p>
+                                    <small class="text-success">Tersedia: ${b.AvailableCopies} | ID: ${b.BookID}</small>
+                                    <button class="btn btn-accent btn-sm w-100 mt-2" data-bookid="${b.BookID}" data-action="borrowFromPinjam">Pinjam</button>
+                                </div>
+                            </div>`;
+                        });
+                        grid.innerHTML = html;
+                        grid.querySelectorAll('button[data-action="borrowFromPinjam"]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var bookId = this.dataset.bookid;
+                                var duration = parseInt(document.getElementById('studentLoanDuration').value) || 365;
+                                if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
+                                executeBorrowBook(bookId, duration);
+                            });
+                        });
+                        renderPaginationControls('borrowPagination', total, page, limit, function(newPage, newLimit) {
+                            loadBorrowableBooks(newPage, newLimit);
+                        });
+                    } else {
+                        document.getElementById('borrowBookGrid').innerHTML = '<div class="col-12 text-center text-muted py-5">Gagal memuat data.</div>';
+                        document.getElementById('borrowPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            // ===== LOANS =====
+            function loadMyLoans(page, limit) {
+                page = page || 1;
+                limit = limit || 10;
+                var search = document.getElementById('filterMyLoansStudent').value.trim();
+                showSpinner();
+                jsonpCall('getLoans', { filter: 'all', page: 1, limit: 9999, search: search }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var loans = res.data;
+                        var month = document.getElementById('filterMyLoansMonth').value;
+                        var year = document.getElementById('filterMyLoansYear').value;
+                        if (month || year) {
+                            loans = loans.filter(function(l) {
+                                var dateObj = parseDateIndonesian(l.BorrowDate);
+                                if (!dateObj) return false;
+                                var m = ('0' + (dateObj.getMonth() + 1)).slice(-2);
+                                var y = dateObj.getFullYear().toString();
+                                if (month && m !== month) return false;
+                                if (year && y !== year) return false;
+                                return true;
+                            });
+                        }
+                        var total = loans.length;
+                        var start = (page - 1) * limit;
+                        var end = Math.min(start + limit, total);
+                        var pageData = loans.slice(start, end);
+                        var tbody = document.getElementById('myLoanTableBody');
+                        var html = '';
+                        if (pageData.length === 0) html = '<tr><td colspan="6" class="text-center">Tidak ada data.</td></tr>';
+                        var today = new Date(); today.setHours(0,0,0,0);
+                        pageData.forEach(function(l) {
+                            var isLate = l.Status === 'Dipinjam' && new Date(l.DueDate) < today;
+                            var statusHtml = l.Status === 'Dikembalikan' ? '<span class="badge badge-status badge-dikembalikan">Dikembalikan</span>' : (isLate ? '<span class="badge badge-status badge-terlambat">Terlambat</span>' : '<span class="badge badge-status badge-dipinjam">Dipinjam</span>');
+                            html += `<tr class="${isLate ? 'table-danger' : ''}">
+                                <td>${l.LoanID}</td><td>${escapeHtml(l.BookTitle || l.BookID)}</td>
+                                <td>${l.BorrowDate}</td><td>${l.DueDate}</td><td>${l.ReturnDate || '-'}</td><td>${statusHtml}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                        renderPaginationControls('myLoansPagination', total, page, limit, function(newPage, newLimit) {
+                            loadMyLoans(newPage, newLimit);
+                        });
+                    } else {
+                        document.getElementById('myLoanTableBody').innerHTML = '<tr><td colspan="6" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('myLoansPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            function loadAllLoans(page, limit) {
+                page = page || 1;
+                limit = limit || 10;
+                var search = document.getElementById('filterAllLoansStudent').value.trim() || 
+                              document.getElementById('filterAllLoansNIS').value.trim() ||
+                              document.getElementById('filterAllLoansClass').value.trim();
+                showSpinner();
+                jsonpCall('getLoans', { filter: 'all', allUsers: 'true', page: 1, limit: 9999, search: search }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var loans = res.data;
+                        var nisFilter = document.getElementById('filterAllLoansNIS').value.trim();
+                        var classFilter = document.getElementById('filterAllLoansClass').value.trim();
+                        if (nisFilter) loans = loans.filter(function(l) { return (l.StudentNIS || '').toLowerCase().includes(nisFilter.toLowerCase()); });
+                        if (classFilter) loans = loans.filter(function(l) { return (l.StudentClass || '').toLowerCase().includes(classFilter.toLowerCase()); });
+                        var month = document.getElementById('filterAllLoansMonth').value;
+                        var year = document.getElementById('filterAllLoansYear').value;
+                        if (month || year) {
+                            loans = loans.filter(function(l) {
+                                var dateObj = parseDateIndonesian(l.BorrowDate);
+                                if (!dateObj) return false;
+                                var m = ('0' + (dateObj.getMonth() + 1)).slice(-2);
+                                var y = dateObj.getFullYear().toString();
+                                if (month && m !== month) return false;
+                                if (year && y !== year) return false;
+                                return true;
+                            });
+                        }
+                        var total = loans.length;
+                        var start = (page - 1) * limit;
+                        var end = Math.min(start + limit, total);
+                        var pageData = loans.slice(start, end);
+                        var tbody = document.getElementById('allLoanTableBody');
+                        var html = '';
+                        if (pageData.length === 0) html = '<tr><td colspan="9" class="text-center">Tidak ada data.</td></tr>';
+                        pageData.forEach(function(l) {
+                            var statusBadge = l.Status === 'Dikembalikan' ? '<span class="badge badge-dikembalikan">Dikembalikan</span>' : '<span class="badge badge-dipinjam">Dipinjam</span>';
+                            html += `<tr>
+                                <td>${l.LoanID}</td>
+                                <td>${escapeHtml(l.StudentNIS || '-')}</td>
+                                <td>${escapeHtml(l.StudentName || l.UserID)}</td>
+                                <td>${escapeHtml(l.StudentClass || '-')}</td>
+                                <td>${escapeHtml(l.BookTitle || l.BookID)}</td>
+                                <td>${l.BorrowDate}</td>
+                                <td>${l.DueDate}</td>
+                                <td>${l.ReturnDate || '-'}</td>
+                                <td>${statusBadge}</td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                        renderPaginationControls('allLoansPagination', total, page, limit, function(newPage, newLimit) {
+                            loadAllLoans(newPage, newLimit);
+                        });
+                    } else {
+                        document.getElementById('allLoanTableBody').innerHTML = '<tr><td colspan="9" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('allLoansPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            function loadActiveLoans(page, limit) {
+                page = page || 1;
+                limit = limit || 10;
+                var search = document.getElementById('searchReturn').value.trim();
+                showSpinner();
+                jsonpCall('getLoans', { filter: 'active', allUsers: 'true', page: page, limit: limit, search: search }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var loans = res.data;
+                        var tbody = document.getElementById('activeLoanTable');
+                        var html = '';
+                        if (loans.length === 0) html = '<tr><td colspan="7" class="text-center">Tidak ada pinjaman aktif.</td></tr>';
+                        var today = new Date(); today.setHours(0,0,0,0);
+                        loans.forEach(function(l) {
+                            var isLate = new Date(l.DueDate) < today;
+                            html += `<tr class="${isLate ? 'table-danger' : ''}">
+                                <td>${l.LoanID}</td><td>${escapeHtml(l.StudentName || l.UserID)}</td>
+                                <td>${escapeHtml(l.BookTitle || l.BookID)}</td>
+                                <td>${l.BorrowDate}</td><td>${l.DueDate}</td>
+                                <td>${isLate ? '<span class="badge badge-status badge-terlambat">Terlambat</span>' : '<span class="badge badge-status badge-dipinjam">Dipinjam</span>'}</td>
+                                <td><button class="btn btn-sm btn-success" data-loanid="${l.LoanID}" data-action="returnBook"><i class="fas fa-undo"></i> Kembalikan</button></td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                        tbody.querySelectorAll('button[data-action="returnBook"]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var loanId = this.dataset.loanid;
+                                returnBook(loanId);
+                            });
+                        });
+                        renderPaginationControls('activeLoanPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
+                            loadActiveLoans(newPage, newLimit);
+                        });
+                    } else {
+                        document.getElementById('activeLoanTable').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('activeLoanPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            function loadAdminActiveLoans(page, limit) {
+                page = page || 1;
+                limit = limit || 10;
+                jsonpCall('getLoans', { filter: 'active', allUsers: 'true', page: page, limit: limit }, function(res) {
+                    if (res.success && res.data) {
+                        var loans = res.data;
+                        var tbody = document.getElementById('adminActiveLoanTable');
+                        var html = '';
+                        if (loans.length === 0) html = '<tr><td colspan="6" class="text-center">Tidak ada pinjaman aktif.</td></tr>';
+                        loans.forEach(function(l) {
+                            html += `<tr>
+                                <td>${l.LoanID}</td><td>${escapeHtml(l.StudentName)}</td><td>${escapeHtml(l.BookTitle)}</td>
+                                <td>${l.BorrowDate}</td><td>${l.DueDate}</td>
+                                <td><span class="badge badge-dipinjam">Dipinjam</span></td>
+                            </tr>`;
+                        });
+                        tbody.innerHTML = html;
+                        renderPaginationControls('adminLoanPagination', res.total, res.page, res.limit, function(newPage, newLimit) {
+                            loadAdminActiveLoans(newPage, newLimit);
+                        });
+                    } else {
+                        document.getElementById('adminActiveLoanTable').innerHTML = '<tr><td colspan="6" class="text-center">Tidak ada data.</td></tr>';
+                        document.getElementById('adminLoanPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            // ===== OTHER FUNCTIONS =====
+            function executeBorrowBook(bookId, duration) {
+                if (!currentUser || currentUser.Role !== 'Siswa') return showToast('Anda harus login sebagai siswa.', 'warning');
+                showSpinner();
+                jsonpCall('getBooks', { page: 1, limit: 9999 }, function(resB) {
+                    if (!resB.success) { hideSpinner(); return; }
+                    var book = resB.data.find(function(b) { return b.BookID === bookId; });
+                    if (!book) { hideSpinner(); return; }
+                    jsonpCall('getLoans', { filter: 'active', page: 1, limit: 9999 }, function(resL) {
+                        hideSpinner();
+                        if (resL.success && resL.data && resL.data.length >= MAX_ACTIVE_LOANS)
+                            return showToast('⚠️ Anda sudah meminjam ' + MAX_ACTIVE_LOANS + ' buku (maksimum).', 'warning');
+                        var dueDate = new Date(); dueDate.setDate(dueDate.getDate() + duration);
+                        var dueStr = formatDateIndonesian(dueDate.toISOString().split('T')[0]);
+                        showConfirm('Pinjam "<strong>' + escapeHtml(book.Title) + '</strong>"?<br><small>Jatuh tempo: <strong>' + dueStr + '</strong> (' + duration + ' hari)</small>', function() {
+                            showSpinner();
+                            jsonpCall('borrowBook', { bookId: bookId, loanDuration: duration }, function(res) {
+                                hideSpinner();
+                                if (res.success) { showToast('Buku berhasil dipinjam! Jatuh tempo: ' + dueStr, 'success');
+                                    loadBorrowableBooks(1, 12);
+                                    loadMyLoans(1, 10);
+                                    loadBooks(1, 10); } else showToast(res.message || 'Gagal meminjam.', 'error');
+                            });
+                        });
                     });
-                    cloneTable.querySelectorAll('tbody tr').forEach(function(tr) {
-                        var tds = tr.querySelectorAll('td');
-                        if (tds[actionIndex]) tds[actionIndex].remove();
+                });
+            }
+
+            function returnBook(loanId) {
+                showConfirm('Kembalikan buku ini?', function() {
+                    showSpinner();
+                    jsonpCall('returnBook', { loanId: loanId }, function(res) {
+                        hideSpinner();
+                        if (res.success) { showToast('Buku berhasil dikembalikan.', 'success');
+                            loadActiveLoans(1, 10);
+                            loadManageBooks(1, 10); } else showToast(res.message || 'Gagal mengembalikan.', 'error');
+                    });
+                });
+            }
+
+            function loadAdminPeminjamanForm() {
+                showSpinner();
+                jsonpCall('getUsers', {}, function(resUsers) {
+                    if (resUsers.success) {
+                        var optStudent = '<option value="">-- Pilih Siswa --</option>';
+                        resUsers.data.forEach(function(u) { if (u.Role === 'Siswa') optStudent += '<option value="' + u.UserID + '">' + u.Name + ' (' + (u.Class || '-') + ')</option>'; });
+                        document.getElementById('selectStudent').innerHTML = optStudent;
+                    }
+                    jsonpCall('getBooks', { page: 1, limit: 9999 }, function(resBooks) {
+                        hideSpinner();
+                        if (resBooks.success) {
+                            var optBook = '<option value="">-- Pilih Buku --</option>';
+                            resBooks.data.forEach(function(b) { if (parseInt(b.AvailableCopies) > 0) optBook += '<option value="' + b.BookID + '">' + b.Title + ' (Tersedia: ' + b.AvailableCopies + ')</option>'; });
+                            document.getElementById('selectBook').innerHTML = optBook;
+                        }
+                    });
+                });
+                loadAdminActiveLoans(1, 10);
+                setupSearchFilter();
+            }
+
+            function setupSearchFilter() {
+                var searchStudent = document.getElementById('searchStudent');
+                var searchBook = document.getElementById('searchBook');
+                searchStudent.oninput = function() {
+                    var filter = this.value.toLowerCase();
+                    document.querySelectorAll('#selectStudent option').forEach(function(opt) {
+                        var text = opt.textContent.toLowerCase();
+                        opt.style.display = (text.indexOf(filter) > -1 || opt.value === '') ? '' : 'none';
+                    });
+                };
+                searchBook.oninput = function() {
+                    var filter = this.value.toLowerCase();
+                    document.querySelectorAll('#selectBook option').forEach(function(opt) {
+                        var text = opt.textContent.toLowerCase();
+                        opt.style.display = (text.indexOf(filter) > -1 || opt.value === '') ? '' : 'none';
+                    });
+                };
+            }
+
+            function adminBorrowBook() {
+                var studentId = document.getElementById('selectStudent').value;
+                var bookId = document.getElementById('selectBook').value;
+                var duration = parseInt(document.getElementById('adminLoanDuration').value) || 365;
+                if (!studentId || !bookId) return showToast('Pilih siswa dan buku.', 'warning');
+                if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
+                showSpinner();
+                jsonpCall('borrowBookForStudent', { studentId: studentId, bookId: bookId, loanDuration: duration }, function(res) {
+                    hideSpinner();
+                    if (res.success) { showToast(res.message, 'success');
+                        loadAdminPeminjamanForm(); } else showToast(res.message || 'Gagal meminjamkan.', 'error');
+                });
+            }
+
+            function loadDashboard() {
+                showSpinner();
+                jsonpCall('getStats', {}, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var s = res.data;
+                        document.getElementById('statsRow').innerHTML = `
+                            <div class="col-lg-3 col-md-6"><div class="stat-card"><div class="stat-icon"><i class="fas fa-book"></i></div><div class="stat-value">${s.totalBooks||0}</div><div class="stat-label">Total Buku</div></div></div>
+                            <div class="col-lg-3 col-md-6"><div class="stat-card success"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-value">${s.availableBooks||0}</div><div class="stat-label">Buku Tersedia</div></div></div>
+                            <div class="col-lg-3 col-md-6"><div class="stat-card accent"><div class="stat-icon"><i class="fas fa-hand-holding"></i></div><div class="stat-value">${s.activeLoans||0}</div><div class="stat-label">Dipinjam (Aktif)</div></div></div>
+                            <div class="col-lg-3 col-md-6"><div class="stat-card danger"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">${s.totalStudents||0}</div><div class="stat-label">Jumlah Siswa</div></div></div>
+                        `;
+                        if (s.lateLoans && s.lateLoans.length > 0) {
+                            var lateHtml = '';
+                            s.lateLoans.forEach(function(l) {
+                                var daysLate = Math.floor((new Date() - new Date(l.DueDate)) / (1000 * 60 * 60 * 24));
+                                lateHtml += '<tr class="table-danger"><td>' + l.LoanID + '</td><td>' + escapeHtml(l.StudentName || '') + '</td><td>' + escapeHtml(l.BookTitle || '') + '</td><td>' + l.DueDate + '</td><td>' + daysLate + ' hari</td></tr>';
+                            });
+                            document.getElementById('lateLoanTable').innerHTML = lateHtml;
+                        } else document.getElementById('lateLoanTable').innerHTML = '<tr><td colspan="5" class="text-center text-success">✅ Tidak ada peminjaman terlambat.</td></tr>';
+                    }
+                });
+            }
+
+            // ===== FORMS =====
+            function showBookForm(bookId) {
+                bookId = bookId || null;
+                document.getElementById('bookIdInput').value = '';
+                document.getElementById('bookTitle').value = '';
+                document.getElementById('bookIsbn').value = '';
+                document.getElementById('bookAuthor').value = '';
+                document.getElementById('bookPublisher').value = '';
+                document.getElementById('bookCategory').value = '';
+                document.getElementById('bookYear').value = '';
+                document.getElementById('bookTotalCopies').value = '1';
+                document.getElementById('bookCoverURL').value = '';
+                document.getElementById('bookFormTitle').textContent = 'Tambah Buku';
+                if (bookId) {
+                    showSpinner();
+                    jsonpCall('getBooks', { page: 1, limit: 9999 }, function(res) {
+                        hideSpinner();
+                        if (res.success && res.data) {
+                            var book = res.data.find(function(b) { return b.BookID === bookId; });
+                            if (book) {
+                                document.getElementById('bookIdInput').value = book.BookID;
+                                document.getElementById('bookTitle').value = book.Title;
+                                document.getElementById('bookIsbn').value = book.ISBN || '';
+                                document.getElementById('bookAuthor').value = book.Author;
+                                document.getElementById('bookPublisher').value = book.Publisher || '';
+                                document.getElementById('bookCategory').value = book.Category || '';
+                                document.getElementById('bookYear').value = book.Year || '';
+                                document.getElementById('bookTotalCopies').value = book.TotalCopies || 1;
+                                document.getElementById('bookCoverURL').value = book.CoverURL || '';
+                                document.getElementById('bookFormTitle').textContent = 'Edit Buku';
+                            }
+                        }
                     });
                 }
-                cloneTable.classList.add('print-table');
-                printContent += cloneTable.outerHTML;
-                printContent += '<p style="text-align: center; font-size: 11px; color: #888; margin-top: 20px;">© Perpustakaan SMAN 1 Leuwimunding</p>';
-                printContent += '</div>';
+                new bootstrap.Modal(document.getElementById('bookFormModal')).show();
+            }
 
-                var printArea = document.getElementById('printArea');
-                printArea.innerHTML = printContent;
-                printArea.style.display = 'block';
-                setTimeout(function() {
-                    window.print();
-                    printArea.style.display = 'none';
-                    printArea.innerHTML = '';
-                }, 300);
-                window.onafterprint = function() {
-                    printArea.style.display = 'none';
-                    printArea.innerHTML = '';
-                    window.onafterprint = null;
+            function handleSaveBook(e) {
+                e.preventDefault();
+                var bookId = document.getElementById('bookIdInput').value;
+                var data = {
+                    title: document.getElementById('bookTitle').value.trim(),
+                    isbn: document.getElementById('bookIsbn').value.trim(),
+                    author: document.getElementById('bookAuthor').value.trim(),
+                    publisher: document.getElementById('bookPublisher').value.trim(),
+                    category: document.getElementById('bookCategory').value.trim(),
+                    year: document.getElementById('bookYear').value.trim(),
+                    totalCopies: document.getElementById('bookTotalCopies').value.trim(),
+                    coverURL: document.getElementById('bookCoverURL').value.trim()
                 };
+                if (!data.title || !data.author) return showToast('Judul dan penulis wajib diisi.', 'warning');
+                if (!data.totalCopies || parseInt(data.totalCopies) < 1) return showToast('Total eksemplar minimal 1.', 'warning');
+                showSpinner();
+                var action = bookId ? 'updateBook' : 'addBook';
+                var params = data;
+                if (bookId) params.bookId = bookId;
+                jsonpCall(action, params, function(res) {
+                    hideSpinner();
+                    if (res.success) {
+                        bootstrap.Modal.getInstance(document.getElementById('bookFormModal')).hide();
+                        showToast('Buku berhasil disimpan.', 'success');
+                        loadManageBooks(1, 10);
+                        loadLatestBooks();
+                    } else showToast(res.message || 'Gagal menyimpan.', 'error');
+                });
+            }
+
+            function deleteBook(bookId) {
+                showConfirm('Hapus buku ini?', function() {
+                    showSpinner();
+                    jsonpCall('deleteBook', { bookId: bookId }, function(res) {
+                        hideSpinner();
+                        if (res.success) { showToast('Buku dihapus.', 'success'); loadManageBooks(1, 10); loadLatestBooks(); }
+                        else showToast(res.message || 'Gagal menghapus.', 'error');
+                    });
+                });
+            }
+
+            function showPostForm(postId) {
+                postId = postId || null;
+                document.getElementById('postIdInput').value = postId || '';
+                document.getElementById('postTitle').value = '';
+                document.getElementById('postThumbnail').value = '';
+                destroyCKEditor();
+
+                var modal = new bootstrap.Modal(document.getElementById('postFormModal'));
+                if (postId) {
+                    document.getElementById('postFormTitle').innerHTML = '<i class="fas fa-edit me-2" style="color:var(--accent);"></i>Edit Postingan';
+                    showSpinner();
+                    jsonpCall('getPosts', { all: 'true' }, function(res) {
+                        hideSpinner();
+                        if (res.success && res.data) {
+                            var post = res.data.find(function(p) { return p.PostID === postId; });
+                            if (post) {
+                                document.getElementById('postIdInput').value = post.PostID;
+                                document.getElementById('postTitle').value = post.Title;
+                                document.getElementById('postThumbnail').value = post.ThumbnailURL || '';
+                                modal.show();
+                                document.getElementById('postFormModal').addEventListener('shown.bs.modal', function() {
+                                    initCKEditor(post.Content || '');
+                                }, { once: true });
+                            }
+                        }
+                    });
+                } else {
+                    document.getElementById('postFormTitle').innerHTML = '<i class="fas fa-pen-fancy me-2" style="color:var(--accent);"></i>Tambah Postingan';
+                    modal.show();
+                    document.getElementById('postFormModal').addEventListener('shown.bs.modal', function() {
+                        initCKEditor('');
+                    }, { once: true });
+                }
+            }
+
+            function handleSavePost(e) {
+                e.preventDefault();
+                var postId = document.getElementById('postIdInput').value;
+                var title = document.getElementById('postTitle').value.trim();
+                var thumbnailURL = document.getElementById('postThumbnail').value.trim();
+                var content = getCKEditorContent();
+
+                if (!title || !content) return showToast('Judul dan konten wajib diisi.', 'warning');
+
+                showSpinner();
+                var action = postId ? 'updatePost' : 'addPost';
+                var params = { title: title, thumbnailURL: thumbnailURL, content: content };
+                if (postId) params.postId = postId;
+
+                jsonpCall(action, params, function(res) {
+                    hideSpinner();
+                    if (res.success) {
+                        bootstrap.Modal.getInstance(document.getElementById('postFormModal')).hide();
+                        showToast('Postingan berhasil disimpan.', 'success');
+                        loadManagePosts(1, 10);
+                        loadPosts('beranda', 1, 6);
+                    } else showToast(res.message || 'Gagal menyimpan.', 'error');
+                });
+            }
+
+            function deletePost(postId) {
+                showConfirm('Hapus postingan ini?', function() {
+                    showSpinner();
+                    jsonpCall('deletePost', { postId: postId }, function(res) {
+                        hideSpinner();
+                        if (res.success) { showToast('Postingan dihapus.', 'success'); loadManagePosts(1, 10); loadPosts('beranda', 1, 6); }
+                        else showToast(res.message || 'Gagal menghapus.', 'error');
+                    });
+                });
+            }
+
+            function showUserForm(userId) {
+                userId = userId || null;
+                document.getElementById('userIdInput').value = '';
+                document.getElementById('userNis').value = '';
+                document.getElementById('userName').value = '';
+                document.getElementById('userClass').value = '';
+                document.getElementById('userUsername').value = '';
+                document.getElementById('userPassword').value = '';
+                document.getElementById('userRole').value = 'Siswa';
+                document.getElementById('userEmail').value = '';
+                document.getElementById('userPhone').value = '';
+                document.getElementById('userFormTitle').textContent = 'Tambah User';
+                if (userId) {
+                    showSpinner();
+                    jsonpCall('getUsers', {}, function(res) {
+                        hideSpinner();
+                        if (res.success && res.data) {
+                            var user = res.data.find(function(u) { return u.UserID === userId; });
+                            if (user) {
+                                document.getElementById('userIdInput').value = user.UserID;
+                                document.getElementById('userNis').value = user.NIS || '';
+                                document.getElementById('userName').value = user.Name;
+                                document.getElementById('userClass').value = user.Class || '';
+                                document.getElementById('userUsername').value = user.Username;
+                                document.getElementById('userPassword').value = user.Password;
+                                document.getElementById('userRole').value = user.Role;
+                                document.getElementById('userEmail').value = user.Email || '';
+                                document.getElementById('userPhone').value = user.Phone || '';
+                                document.getElementById('userFormTitle').textContent = 'Edit User';
+                            }
+                        }
+                    });
+                }
+                new bootstrap.Modal(document.getElementById('userFormModal')).show();
+            }
+
+            function handleSaveUser(e) {
+                e.preventDefault();
+                var userId = document.getElementById('userIdInput').value;
+                var data = {
+                    nis: document.getElementById('userNis').value.trim(),
+                    name: document.getElementById('userName').value.trim(),
+                    class: document.getElementById('userClass').value.trim(),
+                    username: document.getElementById('userUsername').value.trim(),
+                    password: document.getElementById('userPassword').value.trim(),
+                    role: document.getElementById('userRole').value,
+                    email: document.getElementById('userEmail').value.trim(),
+                    phone: document.getElementById('userPhone').value.trim()
+                };
+                if (!data.name || !data.username || !data.password) return showToast('Nama, username, dan password wajib.', 'warning');
+                showSpinner();
+                var action = userId ? 'updateUser' : 'addUser';
+                var params = data;
+                if (userId) params.userId = userId;
+                jsonpCall(action, params, function(res) {
+                    hideSpinner();
+                    if (res.success) { bootstrap.Modal.getInstance(document.getElementById('userFormModal')).hide();
+                        showToast('User berhasil disimpan.', 'success');
+                        loadManageUsers(); } else showToast(res.message || 'Gagal menyimpan.', 'error');
+                });
+            }
+
+            function deleteUser(userId) {
+                showConfirm('Hapus user ini?', function() {
+                    showSpinner();
+                    jsonpCall('deleteUser', { userId: userId }, function(res) {
+                        hideSpinner();
+                        if (res.success) { showToast('User dihapus.', 'success');
+                            loadManageUsers(); } else showToast(res.message || 'Gagal menghapus.', 'error');
+                    });
+                });
             }
 
             // ===== CKEDITOR =====
@@ -1926,12 +3013,16 @@
 
             function destroyCKEditor() {
                 if (ckeditorInstance) {
-                    ckeditorInstance.destroy().then(function() {
+                    try {
+                        ckeditorInstance.destroy().then(function() {
+                            ckeditorInstance = null;
+                        }).catch(function(err) {
+                            console.warn('CKEditor destroy error:', err);
+                            ckeditorInstance = null;
+                        });
+                    } catch(e) {
                         ckeditorInstance = null;
-                    }).catch(function(err) {
-                        console.warn('CKEditor destroy error:', err);
-                        ckeditorInstance = null;
-                    });
+                    }
                 } else {
                     document.getElementById('ckeditor-editor').value = '';
                 }
@@ -1944,763 +3035,65 @@
                 return document.getElementById('ckeditor-editor').value;
             }
 
-            // ===== POSTS =====
-            function loadPosts(mode) {
-                showSpinner();
-                var params = {};
-                if (mode === 'semua') params.all = 'true';
-                jsonpCall('getPosts', params, function(res) {
-                    hideSpinner();
-                    var containerId = mode === 'beranda' ? 'postCards' : 'allPostCards';
-                    var container = document.getElementById(containerId);
-                    if (res.success && res.data) {
-                        var posts = mode === 'beranda' ? res.data.slice(0, 6) : res.data;
-                        var html = '';
-                        if (posts.length === 0) html = '<div class="col-12 text-center text-muted py-5">Belum ada postingan.</div>';
-                        posts.forEach(function(post) {
-                            var excerpt = post.Content.replace(/<[^>]*>/g, '').substring(0, 100) + '...';
-                            var hasThumb = post.ThumbnailURL && post.ThumbnailURL.trim() !== '';
-                            var thumbHtml = hasThumb ? '<img src="' + post.ThumbnailURL + '" class="card-img-top" alt="' + post.Title + '" onerror="this.style.display=\'none\'; this.parentNode.querySelector(\'.placeholder-img\').style.display=\'flex\';">' : '';
-                            var placeholderHtml = hasThumb ? '<div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i></div>' : '<div class="placeholder-img"><i class="fas fa-image"></i></div>';
-                            html += `
-                            <div class="col-lg-4 col-md-6">
-                                <div class="post-card">
-                                    ${thumbHtml}${placeholderHtml}
-                                    <div class="card-body">
-                                        <h5 class="card-title">${escapeHtml(post.Title)}</h5>
-                                        <p class="card-text">${escapeHtml(excerpt)}</p>
-                                        <small class="card-date"><i class="far fa-calendar-alt"></i> ${post.DatePosted||'-'}</small>
-                                        <button class="btn-read" data-postid="${post.PostID}">Baca Selengkapnya →</button>
-                                    </div>
-                                </div>
-                            </div>`;
-                        });
-                        container.innerHTML = html;
-                        container.querySelectorAll('.btn-read').forEach(function(btn) {
-                            btn.addEventListener('click', function() {
-                                viewPostDetail(this.dataset.postid);
-                            });
-                        });
-                    } else container.innerHTML = '<div class="col-12 text-center text-muted py-5">Gagal memuat postingan.</div>';
-                });
+            // ===== POPULATE YEAR DROPDOWNS =====
+            function populateYearDropdowns() {
+                var currentYear = new Date().getFullYear();
+                var years = [];
+                for (var y = currentYear - 5; y <= currentYear + 1; y++) years.push(y);
+                var options = years.map(function(y) { return '<option value="' + y + '">' + y + '</option>'; }).join('');
+                document.getElementById('filterMyLoansYear').innerHTML += options;
+                document.getElementById('filterAllLoansYear').innerHTML += options;
             }
 
-            function viewPostDetail(postId) {
-                showSpinner();
-                jsonpCall('getPosts', { all: 'true' }, function(res) {
-                    hideSpinner();
-                    if (res.success && res.data) {
-                        var post = res.data.find(function(p) { return p.PostID === postId; });
-                        if (post) {
-                            var hasThumb = post.ThumbnailURL && post.ThumbnailURL.trim() !== '';
-                            var heroHtml = hasThumb ?
-                                '<img src="' + post.ThumbnailURL + '" class="blog-hero-image" alt="' + escapeHtml(post.Title) + '" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' +
-                                '<div class="blog-hero-placeholder" style="display:none;"><i class="fas fa-image"></i></div>' :
-                                '<div class="blog-hero-placeholder"><i class="fas fa-newspaper"></i></div>';
-                            document.getElementById('blogHero').innerHTML = heroHtml;
-                            document.getElementById('detailPostTitle').textContent = post.Title;
-                            document.getElementById('detailPostMeta').innerHTML = '<i class="far fa-calendar-alt"></i> ' + (post.DatePosted || '-');
-                            document.getElementById('detailPostContent').innerHTML = post.Content;
-                            document.querySelectorAll('.page-section').forEach(function(el) { el.classList.remove('active'); });
-                            document.getElementById('page-post-detail').classList.add('active');
-                            document.querySelectorAll('#navLinks .nav-link').forEach(function(el) { el.classList.remove('active'); });
-                            window.scrollTo(0, 0);
-                        }
+            // ===== PRINT =====
+            function printSection(sectionId) {
+                var tableId = (sectionId === 'page-riwayat') ? 'myLoansTable' : 'allLoansTable';
+                var $table = document.getElementById(tableId);
+                if (!$table) { showToast('Tidak ada tabel untuk dicetak.', 'warning'); return; }
+                var $section = document.getElementById(sectionId);
+                var title = $section.querySelector('.section-header h2')?.textContent || 'Riwayat Peminjaman';
+                var now = new Date();
+                var dateStr = now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' }) + ' ' +
+                    now.toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit' });
+                var printContent = '';
+                printContent += '<div style="font-family: Arial, sans-serif; padding: 20px; max-width: 100%;">';
+                printContent += '<h2 style="text-align: center; margin-bottom: 5px;">' + title + '</h2>';
+                printContent += '<p style="text-align: center; font-size: 12px; color: #888; margin: 0 0 15px 0;">Dicetak pada: ' + dateStr + '</p>';
+                var cloneTable = $table.cloneNode(true);
+                var headerCells = cloneTable.querySelectorAll('thead th');
+                var actionIndex = -1;
+                headerCells.forEach(function(th, idx) {
+                    if (th.textContent.trim().toLowerCase() === 'aksi') {
+                        actionIndex = idx;
                     }
                 });
-            }
-
-            // ===== BOOKS =====
-            function loadBooks() {
-                showSpinner();
-                jsonpCall('getBooks', {}, function(res) {
-                    hideSpinner();
-                    if (res.success && res.data) {
-                        var search = (document.getElementById('searchBuku').value || '').toLowerCase();
-                        var filtered = res.data.filter(function(b) { return b.Title.toLowerCase().includes(search) || b.Author.toLowerCase().includes(search) || (b.ISBN || '').toLowerCase().includes(search); });
-                        renderPaginatedTableWithData(
-                            'bookTableBody',
-                            'bookPagination',
-                            filtered,
-                            10,
-                            function(b, index, rowNum) {
-                                var avail = parseInt(b.AvailableCopies) || 0;
-                                var action = '';
-                                if (currentUser && currentUser.Role === 'Siswa' && avail > 0) {
-                                    action = '<button class="btn btn-sm btn-accent" data-bookid="'+b.BookID+'" data-action="borrowFromTable">Pinjam</button>';
-                                }
-                                return `<tr>
-                                    <td><div style="width:40px;height:60px;">${getBookCoverHtml(b, '60px')}</div></td>
-                                    <td>${b.BookID}</td><td>${escapeHtml(b.Title)}</td><td>${escapeHtml(b.Author)}</td>
-                                    <td>${b.ISBN||'-'}</td><td>${b.Publisher||'-'}</td><td>${b.Category||'-'}</td><td>${b.Year||'-'}</td>
-                                    <td><span class="badge ${avail>0?'bg-success':'bg-danger'}">${avail}</span></td>
-                                    <td>${action}</td>
-                                </tr>`;
-                            }
-                        );
-                    } else {
-                        document.getElementById('bookTableBody').innerHTML = '<tr><td colspan="10" class="text-center">Gagal memuat data.</td></tr>';
-                        document.getElementById('bookPagination').innerHTML = '';
-                    }
-                });
-            }
-
-            function loadLatestBooks() {
-                jsonpCall('getBooks', {}, function(res) {
-                    if (res.success && res.data) {
-                        var latest = res.data.slice(-6).reverse();
-                        var html = '';
-                        latest.forEach(function(b) {
-                            html += `
-                            <div class="col-lg-2 col-md-3 col-6">
-                                <div class="book-mini-card">
-                                    ${getBookCoverHtml(b, '120px')}
-                                    <div class="book-title mt-2">${escapeHtml(b.Title)}</div>
-                                    <div class="book-author">${escapeHtml(b.Author)}</div>
-                                </div>
-                            </div>`;
-                        });
-                        document.getElementById('latestBooks').innerHTML = html || '<div class="col-12 text-muted">Belum ada buku.</div>';
-                    }
-                });
-            }
-
-            // ===== MANAGE BOOKS (dengan pencarian) =====
-            function loadManageBooks() {
-                showSpinner();
-                jsonpCall('getBooks', {}, function(res) {
-                    hideSpinner();
-                    if (res.success && res.data) {
-                        var search = document.getElementById('searchManageBooks').value.toLowerCase().trim();
-                        var filtered = res.data;
-                        if (search) {
-                            filtered = filtered.filter(function(b) {
-                                return b.Title.toLowerCase().includes(search) ||
-                                       b.BookID.toLowerCase().includes(search);
-                            });
-                        }
-                        // Reset pagination state agar halaman kembali ke 1
-                        delete paginationStates['manageBookPagination'];
-                        renderPaginatedTableWithData(
-                            'manageBookTableBody',
-                            'manageBookPagination',
-                            filtered,
-                            10,
-                            function(b) {
-                                return `<tr>
-                                    <td><div style="width:40px;height:60px;">${getBookCoverHtml(b, '60px')}</div></td>
-                                    <td>${b.BookID}</td><td>${escapeHtml(b.Title)}</td><td>${escapeHtml(b.Author)}</td><td>${b.ISBN||'-'}</td>
-                                    <td>${b.TotalCopies||0}</td><td>${b.AvailableCopies||0}</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-warning me-1" data-bookid="${b.BookID}" data-action="editBook"><i class="fas fa-edit"></i></button>
-                                        <button class="btn btn-sm btn-outline-danger" data-bookid="${b.BookID}" data-action="deleteBook"><i class="fas fa-trash"></i></button>
-                                    </td></tr>`;
-                            }
-                        );
-                    } else {
-                        document.getElementById('manageBookTableBody').innerHTML = '<tr><td colspan="8" class="text-center">Gagal memuat data.</td></tr>';
-                        document.getElementById('manageBookPagination').innerHTML = '';
-                    }
-                });
-            }
-
-            // ===== MANAGE POSTS =====
-            function loadManagePosts() {
-                showSpinner();
-                jsonpCall('getPosts', { all: 'true' }, function(res) {
-                    hideSpinner();
-                    if (res.success && res.data) {
-                        var search = (document.getElementById('searchPost').value || '').toLowerCase();
-                        var filtered = res.data.filter(function(p) { return p.Title.toLowerCase().includes(search); });
-                        renderPaginatedTableWithData(
-                            'managePostTableBody',
-                            'managePostPagination',
-                            filtered,
-                            10,
-                            function(p) {
-                                return `<tr>
-                                    <td>${p.PostID}</td><td>${escapeHtml(p.Title)}</td><td>${p.DatePosted||'-'}</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-warning me-1" data-postid="${p.PostID}" data-action="editPost"><i class="fas fa-edit"></i></button>
-                                        <button class="btn btn-sm btn-outline-danger" data-postid="${p.PostID}" data-action="deletePost"><i class="fas fa-trash"></i></button>
-                                    </td></tr>`;
-                            }
-                        );
-                    } else {
-                        document.getElementById('managePostTableBody').innerHTML = '<tr><td colspan="4" class="text-center">Gagal memuat data.</td></tr>';
-                        document.getElementById('managePostPagination').innerHTML = '';
-                    }
-                });
-            }
-
-            // ===== MANAGE USERS (DIPERBAIKI) =====
-            function loadManageUsers() {
-                showSpinner();
-                jsonpCall('getUsers', {}, function(res) {
-                    hideSpinner();
-                    if (res.success && res.data) {
-                        var search = document.getElementById('searchManageUsers').value.toLowerCase().trim();
-                        var filtered = res.data;
-                        if (search) {
-                            filtered = filtered.filter(function(u) {
-                                // Pastikan NIS diubah menjadi string
-                                var nisStr = String(u.NIS || '');
-                                var nameStr = String(u.Name || '');
-                                var classStr = String(u.Class || '');
-                                return nisStr.toLowerCase().includes(search) ||
-                                       nameStr.toLowerCase().includes(search) ||
-                                       classStr.toLowerCase().includes(search);
-                            });
-                        }
-                        // Reset pagination state agar halaman kembali ke 1
-                        delete paginationStates['manageUserPagination'];
-                        renderPaginatedTableWithData(
-                            'manageUserTableBody',
-                            'manageUserPagination',
-                            filtered,
-                            10,
-                            function(u) {
-                                return `<tr>
-                                    <td>${u.UserID}</td><td>${u.NIS||'-'}</td><td>${escapeHtml(u.Name)}</td><td>${u.Class||'-'}</td>
-                                    <td>${u.Username}</td><td><span class="badge ${u.Role==='Admin'?'bg-primary':'bg-info'}">${u.Role}</span></td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-warning me-1" data-userid="${u.UserID}" data-action="editUser"><i class="fas fa-edit"></i></button>
-                                        <button class="btn btn-sm btn-outline-danger" data-userid="${u.UserID}" data-action="deleteUser"><i class="fas fa-trash"></i></button>
-                                    </td></tr>`;
-                            }
-                        );
-                    } else {
-                        document.getElementById('manageUserTableBody').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
-                        document.getElementById('manageUserPagination').innerHTML = '';
-                    }
-                });
-            }
-
-            // ===== BORROWABLE BOOKS (GRID) =====
-            function loadBorrowableBooks() {
-                showSpinner();
-                jsonpCall('getBooks', {}, function(res) {
-                    hideSpinner();
-                    if (res.success && res.data) {
-                        var searchTitle = (document.getElementById('pinjamSearchTitle').value || '').toLowerCase().trim();
-                        var searchID = (document.getElementById('pinjamSearchID').value || '').toLowerCase().trim();
-                        var available = res.data.filter(function(b) { return parseInt(b.AvailableCopies) > 0; });
-                        if (searchTitle) available = available.filter(function(b) { return b.Title.toLowerCase().includes(searchTitle); });
-                        if (searchID) available = available.filter(function(b) { return b.BookID.toLowerCase().includes(searchID); });
-
-                        renderPaginatedGrid(
-                            'borrowBookGrid',
-                            'borrowPagination',
-                            available,
-                            12,
-                            function(b) {
-                                return `
-                                <div class="col-lg-3 col-md-4 col-6">
-                                    <div class="book-mini-card" style="text-align:left;">
-                                        ${getBookCoverHtml(b, '160px')}
-                                        <strong style="font-size:0.9rem;">${escapeHtml(b.Title)}</strong>
-                                        <p style="font-size:0.8rem;color:#888;margin:0.2rem 0;">${escapeHtml(b.Author)}</p>
-                                        <small class="text-success">Tersedia: ${b.AvailableCopies} | ID: ${b.BookID}</small>
-                                        <button class="btn btn-accent btn-sm w-100 mt-2" data-bookid="${b.BookID}" data-action="borrowFromPinjam">Pinjam</button>
-                                    </div>
-                                </div>`;
-                            }
-                        );
-                    } else {
-                        document.getElementById('borrowBookGrid').innerHTML = '<div class="col-12 text-center text-muted py-5">Gagal memuat data.</div>';
-                        document.getElementById('borrowPagination').innerHTML = '';
-                    }
-                });
-            }
-
-            // ===== LOANS =====
-            function loadMyLoans() {
-                showSpinner();
-                jsonpCall('getLoans', { filter: 'all' }, function(res) {
-                    hideSpinner();
-                    if (res.success && res.data) {
-                        var loans = res.data;
-                        var studentFilter = document.getElementById('filterMyLoansStudent').value.toLowerCase().trim();
-                        if (studentFilter) loans = loans.filter(function(l) { return (l.StudentName || '').toLowerCase().includes(studentFilter); });
-                        var month = document.getElementById('filterMyLoansMonth').value;
-                        var year = document.getElementById('filterMyLoansYear').value;
-                        if (month || year) {
-                            loans = loans.filter(function(l) {
-                                var dateObj = parseDateIndonesian(l.BorrowDate);
-                                if (!dateObj) return false;
-                                var m = ('0' + (dateObj.getMonth() + 1)).slice(-2);
-                                var y = dateObj.getFullYear().toString();
-                                if (month && m !== month) return false;
-                                if (year && y !== year) return false;
-                                return true;
-                            });
-                        }
-                        var today = new Date(); today.setHours(0,0,0,0);
-                        renderPaginatedTableWithData(
-                            'myLoanTableBody',
-                            'myLoansPagination',
-                            loans,
-                            10,
-                            function(l) {
-                                var isLate = l.Status === 'Dipinjam' && new Date(l.DueDate) < today;
-                                var statusHtml = l.Status === 'Dikembalikan' ? '<span class="badge badge-status badge-dikembalikan">Dikembalikan</span>' : (isLate ? '<span class="badge badge-status badge-terlambat">Terlambat</span>' : '<span class="badge badge-status badge-dipinjam">Dipinjam</span>');
-                                return `<tr class="${isLate ? 'table-danger' : ''}">
-                                    <td>${l.LoanID}</td><td>${escapeHtml(l.BookTitle || l.BookID)}</td>
-                                    <td>${l.BorrowDate}</td><td>${l.DueDate}</td><td>${l.ReturnDate || '-'}</td><td>${statusHtml}</td>
-                                </tr>`;
-                            }
-                        );
-                    } else {
-                        document.getElementById('myLoanTableBody').innerHTML = '<tr><td colspan="6" class="text-center">Gagal memuat data.</td></tr>';
-                        document.getElementById('myLoansPagination').innerHTML = '';
-                    }
-                });
-            }
-
-            function loadAllLoans() {
-                showSpinner();
-                jsonpCall('getLoans', { filter: 'all', allUsers: 'true' }, function(res) {
-                    hideSpinner();
-                    if (res.success && res.data) {
-                        var loans = res.data;
-                        var studentFilter = document.getElementById('filterAllLoansStudent').value.toLowerCase().trim();
-                        if (studentFilter) loans = loans.filter(function(l) { return (l.StudentName || '').toLowerCase().includes(studentFilter); });
-                        var nisFilter = document.getElementById('filterAllLoansNIS').value.toLowerCase().trim();
-                        if (nisFilter) loans = loans.filter(function(l) { return (l.StudentNIS || '').toLowerCase().includes(nisFilter); });
-                        var classFilter = document.getElementById('filterAllLoansClass').value.toLowerCase().trim();
-                        if (classFilter) loans = loans.filter(function(l) { return (l.StudentClass || '').toLowerCase().includes(classFilter); });
-                        var month = document.getElementById('filterAllLoansMonth').value;
-                        var year = document.getElementById('filterAllLoansYear').value;
-                        if (month || year) {
-                            loans = loans.filter(function(l) {
-                                var dateObj = parseDateIndonesian(l.BorrowDate);
-                                if (!dateObj) return false;
-                                var m = ('0' + (dateObj.getMonth() + 1)).slice(-2);
-                                var y = dateObj.getFullYear().toString();
-                                if (month && m !== month) return false;
-                                if (year && y !== year) return false;
-                                return true;
-                            });
-                        }
-                        renderPaginatedTableWithData(
-                            'allLoanTableBody',
-                            'allLoansPagination',
-                            loans,
-                            10,
-                            function(l) {
-                                var statusBadge = l.Status === 'Dikembalikan' ? '<span class="badge badge-dikembalikan">Dikembalikan</span>' : '<span class="badge badge-dipinjam">Dipinjam</span>';
-                                return `<tr>
-                                    <td>${l.LoanID}</td>
-                                    <td>${escapeHtml(l.StudentNIS || '-')}</td>
-                                    <td>${escapeHtml(l.StudentName || l.UserID)}</td>
-                                    <td>${escapeHtml(l.StudentClass || '-')}</td>
-                                    <td>${escapeHtml(l.BookTitle || l.BookID)}</td>
-                                    <td>${l.BorrowDate}</td>
-                                    <td>${l.DueDate}</td>
-                                    <td>${l.ReturnDate || '-'}</td>
-                                    <td>${statusBadge}</td>
-                                </tr>`;
-                            }
-                        );
-                    } else {
-                        document.getElementById('allLoanTableBody').innerHTML = '<tr><td colspan="9" class="text-center">Gagal memuat data.</td></tr>';
-                        document.getElementById('allLoansPagination').innerHTML = '';
-                    }
-                });
-            }
-
-            function loadActiveLoans() {
-                showSpinner();
-                jsonpCall('getLoans', { filter: 'active', allUsers: 'true' }, function(res) {
-                    hideSpinner();
-                    if (res.success && res.data) {
-                        var search = (document.getElementById('searchReturn').value || '').toLowerCase();
-                        var today = new Date(); today.setHours(0,0,0,0);
-                        var filtered = res.data.filter(function(l) { return (l.StudentName || '').toLowerCase().includes(search) || (l.LoanID || '').toLowerCase().includes(search); });
-                        renderPaginatedTableWithData(
-                            'activeLoanTable',
-                            'activeLoanPagination',
-                            filtered,
-                            10,
-                            function(l) {
-                                var isLate = new Date(l.DueDate) < today;
-                                return `<tr class="${isLate ? 'table-danger' : ''}">
-                                    <td>${l.LoanID}</td><td>${escapeHtml(l.StudentName || l.UserID)}</td>
-                                    <td>${escapeHtml(l.BookTitle || l.BookID)}</td>
-                                    <td>${l.BorrowDate}</td><td>${l.DueDate}</td>
-                                    <td>${isLate ? '<span class="badge badge-status badge-terlambat">Terlambat</span>' : '<span class="badge badge-status badge-dipinjam">Dipinjam</span>'}</td>
-                                    <td><button class="btn btn-sm btn-success" data-loanid="${l.LoanID}" data-action="returnBook"><i class="fas fa-undo"></i> Kembalikan</button></td>
-                                </tr>`;
-                            }
-                        );
-                    } else {
-                        document.getElementById('activeLoanTable').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
-                        document.getElementById('activeLoanPagination').innerHTML = '';
-                    }
-                });
-            }
-
-            function loadAdminActiveLoans() {
-                jsonpCall('getLoans', { filter: 'active', allUsers: 'true' }, function(res) {
-                    if (res.success && res.data) {
-                        renderPaginatedTableWithData(
-                            'adminActiveLoanTable',
-                            'adminLoanPagination',
-                            res.data,
-                            10,
-                            function(l) {
-                                return `<tr>
-                                    <td>${l.LoanID}</td><td>${escapeHtml(l.StudentName)}</td><td>${escapeHtml(l.BookTitle)}</td>
-                                    <td>${l.BorrowDate}</td><td>${l.DueDate}</td>
-                                    <td><span class="badge badge-dipinjam">Dipinjam</span></td>
-                                </tr>`;
-                            }
-                        );
-                    } else {
-                        document.getElementById('adminActiveLoanTable').innerHTML = '<tr><td colspan="6" class="text-center">Tidak ada data.</td></tr>';
-                        document.getElementById('adminLoanPagination').innerHTML = '';
-                    }
-                });
-            }
-
-            // ===== OTHER FUNCTIONS =====
-            function executeBorrowBook(bookId, duration) {
-                if (!currentUser || currentUser.Role !== 'Siswa') return showToast('Anda harus login sebagai siswa.', 'warning');
-                showSpinner();
-                jsonpCall('getBooks', {}, function(resB) {
-                    if (!resB.success) { hideSpinner(); return; }
-                    var book = resB.data.find(function(b) { return b.BookID === bookId; });
-                    if (!book) { hideSpinner(); return; }
-                    jsonpCall('getLoans', { filter: 'active' }, function(resL) {
-                        hideSpinner();
-                        if (resL.success && resL.data && resL.data.length >= MAX_ACTIVE_LOANS)
-                            return showToast('⚠️ Anda sudah meminjam ' + MAX_ACTIVE_LOANS + ' buku (maksimum).', 'warning');
-                        var dueDate = new Date(); dueDate.setDate(dueDate.getDate() + duration);
-                        var dueStr = formatDateIndonesian(dueDate.toISOString().split('T')[0]);
-                        showConfirm('Pinjam "<strong>' + escapeHtml(book.Title) + '</strong>"?<br><small>Jatuh tempo: <strong>' + dueStr + '</strong> (' + duration + ' hari)</small>', function() {
-                            showSpinner();
-                            jsonpCall('borrowBook', { bookId: bookId, loanDuration: duration }, function(res) {
-                                hideSpinner();
-                                if (res.success) { showToast('Buku berhasil dipinjam! Jatuh tempo: ' + dueStr, 'success');
-                                    loadBorrowableBooks();
-                                    loadMyLoans();
-                                    loadBooks(); } else showToast(res.message || 'Gagal meminjam.', 'error');
-                            });
-                        });
+                if (actionIndex !== -1) {
+                    cloneTable.querySelectorAll('thead th').forEach(function(th, idx) {
+                        if (idx === actionIndex) th.remove();
                     });
-                });
-            }
-
-            function returnBook(loanId) {
-                showConfirm('Kembalikan buku ini?', function() {
-                    showSpinner();
-                    jsonpCall('returnBook', { loanId: loanId }, function(res) {
-                        hideSpinner();
-                        if (res.success) { showToast('Buku berhasil dikembalikan.', 'success');
-                            loadActiveLoans();
-                            loadManageBooks(); } else showToast(res.message || 'Gagal mengembalikan.', 'error');
-                    });
-                });
-            }
-
-            function loadAdminPeminjamanForm() {
-                showSpinner();
-                jsonpCall('getUsers', {}, function(resUsers) {
-                    if (resUsers.success) {
-                        var optStudent = '<option value="">-- Pilih Siswa --</option>';
-                        resUsers.data.forEach(function(u) { if (u.Role === 'Siswa') optStudent += '<option value="' + u.UserID + '">' + u.Name + ' (' + (u.Class || '-') + ')</option>'; });
-                        document.getElementById('selectStudent').innerHTML = optStudent;
-                    }
-                    jsonpCall('getBooks', {}, function(resBooks) {
-                        hideSpinner();
-                        if (resBooks.success) {
-                            var optBook = '<option value="">-- Pilih Buku --</option>';
-                            resBooks.data.forEach(function(b) { if (parseInt(b.AvailableCopies) > 0) optBook += '<option value="' + b.BookID + '">' + b.Title + ' (Tersedia: ' + b.AvailableCopies + ')</option>'; });
-                            document.getElementById('selectBook').innerHTML = optBook;
-                        }
-                    });
-                });
-                loadAdminActiveLoans();
-                setupSearchFilter();
-            }
-
-            function setupSearchFilter() {
-                var searchStudent = document.getElementById('searchStudent');
-                var searchBook = document.getElementById('searchBook');
-                searchStudent.oninput = function() {
-                    var filter = this.value.toLowerCase();
-                    document.querySelectorAll('#selectStudent option').forEach(function(opt) {
-                        var text = opt.textContent.toLowerCase();
-                        opt.style.display = (text.indexOf(filter) > -1 || opt.value === '') ? '' : 'none';
-                    });
-                };
-                searchBook.oninput = function() {
-                    var filter = this.value.toLowerCase();
-                    document.querySelectorAll('#selectBook option').forEach(function(opt) {
-                        var text = opt.textContent.toLowerCase();
-                        opt.style.display = (text.indexOf(filter) > -1 || opt.value === '') ? '' : 'none';
-                    });
-                };
-            }
-
-            function adminBorrowBook() {
-                var studentId = document.getElementById('selectStudent').value;
-                var bookId = document.getElementById('selectBook').value;
-                var duration = parseInt(document.getElementById('adminLoanDuration').value) || 365;
-                if (!studentId || !bookId) return showToast('Pilih siswa dan buku.', 'warning');
-                if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
-                showSpinner();
-                jsonpCall('borrowBookForStudent', { studentId: studentId, bookId: bookId, loanDuration: duration }, function(res) {
-                    hideSpinner();
-                    if (res.success) { showToast(res.message, 'success');
-                        loadAdminPeminjamanForm(); } else showToast(res.message || 'Gagal meminjamkan.', 'error');
-                });
-            }
-
-            function loadDashboard() {
-                showSpinner();
-                jsonpCall('getStats', {}, function(res) {
-                    hideSpinner();
-                    if (res.success && res.data) {
-                        var s = res.data;
-                        document.getElementById('statsRow').innerHTML = `
-                            <div class="col-lg-3 col-md-6"><div class="stat-card"><div class="stat-icon"><i class="fas fa-book"></i></div><div class="stat-value">${s.totalBooks||0}</div><div class="stat-label">Total Buku</div></div></div>
-                            <div class="col-lg-3 col-md-6"><div class="stat-card success"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-value">${s.availableBooks||0}</div><div class="stat-label">Buku Tersedia</div></div></div>
-                            <div class="col-lg-3 col-md-6"><div class="stat-card accent"><div class="stat-icon"><i class="fas fa-hand-holding"></i></div><div class="stat-value">${s.activeLoans||0}</div><div class="stat-label">Dipinjam (Aktif)</div></div></div>
-                            <div class="col-lg-3 col-md-6"><div class="stat-card danger"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">${s.totalStudents||0}</div><div class="stat-label">Jumlah Siswa</div></div></div>
-                        `;
-                        if (s.lateLoans && s.lateLoans.length > 0) {
-                            var lateHtml = '';
-                            s.lateLoans.forEach(function(l) {
-                                var daysLate = Math.floor((new Date() - new Date(l.DueDate)) / (1000 * 60 * 60 * 24));
-                                lateHtml += '<tr class="table-danger"><td>' + l.LoanID + '</td><td>' + escapeHtml(l.StudentName || '') + '</td><td>' + escapeHtml(l.BookTitle || '') + '</td><td>' + l.DueDate + '</td><td>' + daysLate + ' hari</td></tr>';
-                            });
-                            document.getElementById('lateLoanTable').innerHTML = lateHtml;
-                        } else document.getElementById('lateLoanTable').innerHTML = '<tr><td colspan="5" class="text-center text-success">✅ Tidak ada peminjaman terlambat.</td></tr>';
-                    }
-                });
-            }
-
-            // ===== FORMS =====
-            function showBookForm(bookId) {
-                bookId = bookId || null;
-                document.getElementById('bookIdInput').value = '';
-                document.getElementById('bookTitle').value = '';
-                document.getElementById('bookIsbn').value = '';
-                document.getElementById('bookAuthor').value = '';
-                document.getElementById('bookPublisher').value = '';
-                document.getElementById('bookCategory').value = '';
-                document.getElementById('bookYear').value = '';
-                document.getElementById('bookTotalCopies').value = '1';
-                document.getElementById('bookCoverURL').value = '';
-                document.getElementById('bookFormTitle').textContent = 'Tambah Buku';
-                if (bookId) {
-                    showSpinner();
-                    jsonpCall('getBooks', {}, function(res) {
-                        hideSpinner();
-                        if (res.success && res.data) {
-                            var book = res.data.find(function(b) { return b.BookID === bookId; });
-                            if (book) {
-                                document.getElementById('bookIdInput').value = book.BookID;
-                                document.getElementById('bookTitle').value = book.Title;
-                                document.getElementById('bookIsbn').value = book.ISBN || '';
-                                document.getElementById('bookAuthor').value = book.Author;
-                                document.getElementById('bookPublisher').value = book.Publisher || '';
-                                document.getElementById('bookCategory').value = book.Category || '';
-                                document.getElementById('bookYear').value = book.Year || '';
-                                document.getElementById('bookTotalCopies').value = book.TotalCopies || 1;
-                                document.getElementById('bookCoverURL').value = book.CoverURL || '';
-                                document.getElementById('bookFormTitle').textContent = 'Edit Buku';
-                            }
-                        }
+                    cloneTable.querySelectorAll('tbody tr').forEach(function(tr) {
+                        var tds = tr.querySelectorAll('td');
+                        if (tds[actionIndex]) tds[actionIndex].remove();
                     });
                 }
-                new bootstrap.Modal(document.getElementById('bookFormModal')).show();
-            }
+                cloneTable.classList.add('print-table');
+                printContent += cloneTable.outerHTML;
+                printContent += '<p style="text-align: center; font-size: 11px; color: #888; margin-top: 20px;">© Perpustakaan SMAN 1 Leuwimunding</p>';
+                printContent += '</div>';
 
-            function handleSaveBook(e) {
-                e.preventDefault();
-                var bookId = document.getElementById('bookIdInput').value;
-                var data = {
-                    title: document.getElementById('bookTitle').value.trim(),
-                    isbn: document.getElementById('bookIsbn').value.trim(),
-                    author: document.getElementById('bookAuthor').value.trim(),
-                    publisher: document.getElementById('bookPublisher').value.trim(),
-                    category: document.getElementById('bookCategory').value.trim(),
-                    year: document.getElementById('bookYear').value.trim(),
-                    totalCopies: document.getElementById('bookTotalCopies').value.trim(),
-                    coverURL: document.getElementById('bookCoverURL').value.trim()
+                var printArea = document.getElementById('printArea');
+                printArea.innerHTML = printContent;
+                printArea.style.display = 'block';
+                setTimeout(function() {
+                    window.print();
+                    printArea.style.display = 'none';
+                    printArea.innerHTML = '';
+                }, 300);
+                window.onafterprint = function() {
+                    printArea.style.display = 'none';
+                    printArea.innerHTML = '';
+                    window.onafterprint = null;
                 };
-                if (!data.title || !data.author) return showToast('Judul dan penulis wajib diisi.', 'warning');
-                if (!data.totalCopies || parseInt(data.totalCopies) < 1) return showToast('Total eksemplar minimal 1.', 'warning');
-                showSpinner();
-                var action = bookId ? 'updateBook' : 'addBook';
-                var params = data;
-                if (bookId) params.bookId = bookId;
-                jsonpCall(action, params, function(res) {
-                    hideSpinner();
-                    if (res.success) {
-                        bootstrap.Modal.getInstance(document.getElementById('bookFormModal')).hide();
-                        showToast('Buku berhasil disimpan.', 'success');
-                        loadManageBooks();
-                        loadLatestBooks();
-                    } else showToast(res.message || 'Gagal menyimpan.', 'error');
-                });
-            }
-
-            function deleteBook(bookId) {
-                showConfirm('Hapus buku ini?', function() {
-                    showSpinner();
-                    jsonpCall('deleteBook', { bookId: bookId }, function(res) {
-                        hideSpinner();
-                        if (res.success) { showToast('Buku dihapus.', 'success'); loadManageBooks(); loadLatestBooks(); }
-                        else showToast(res.message || 'Gagal menghapus.', 'error');
-                    });
-                });
-            }
-
-            function showPostForm(postId) {
-                postId = postId || null;
-                document.getElementById('postIdInput').value = postId || '';
-                document.getElementById('postTitle').value = '';
-                document.getElementById('postThumbnail').value = '';
-                destroyCKEditor();
-
-                var modal = new bootstrap.Modal(document.getElementById('postFormModal'));
-                if (postId) {
-                    document.getElementById('postFormTitle').innerHTML = '<i class="fas fa-edit me-2" style="color:var(--accent);"></i>Edit Postingan';
-                    showSpinner();
-                    jsonpCall('getPosts', { all: 'true' }, function(res) {
-                        hideSpinner();
-                        if (res.success && res.data) {
-                            var post = res.data.find(function(p) { return p.PostID === postId; });
-                            if (post) {
-                                document.getElementById('postIdInput').value = post.PostID;
-                                document.getElementById('postTitle').value = post.Title;
-                                document.getElementById('postThumbnail').value = post.ThumbnailURL || '';
-                                modal.show();
-                                document.getElementById('postFormModal').addEventListener('shown.bs.modal', function() {
-                                    initCKEditor(post.Content || '');
-                                }, { once: true });
-                            }
-                        }
-                    });
-                } else {
-                    document.getElementById('postFormTitle').innerHTML = '<i class="fas fa-pen-fancy me-2" style="color:var(--accent);"></i>Tambah Postingan';
-                    modal.show();
-                    document.getElementById('postFormModal').addEventListener('shown.bs.modal', function() {
-                        initCKEditor('');
-                    }, { once: true });
-                }
-            }
-
-            function handleSavePost(e) {
-                e.preventDefault();
-                var postId = document.getElementById('postIdInput').value;
-                var title = document.getElementById('postTitle').value.trim();
-                var thumbnailURL = document.getElementById('postThumbnail').value.trim();
-                var content = getCKEditorContent();
-
-                if (!title || !content) return showToast('Judul dan konten wajib diisi.', 'warning');
-
-                showSpinner();
-                var action = postId ? 'updatePost' : 'addPost';
-                var params = { title: title, thumbnailURL: thumbnailURL, content: content };
-                if (postId) params.postId = postId;
-
-                jsonpCall(action, params, function(res) {
-                    hideSpinner();
-                    if (res.success) {
-                        bootstrap.Modal.getInstance(document.getElementById('postFormModal')).hide();
-                        showToast('Postingan berhasil disimpan.', 'success');
-                        loadManagePosts();
-                        loadPosts('beranda');
-                    } else showToast(res.message || 'Gagal menyimpan.', 'error');
-                });
-            }
-
-            function deletePost(postId) {
-                showConfirm('Hapus postingan ini?', function() {
-                    showSpinner();
-                    jsonpCall('deletePost', { postId: postId }, function(res) {
-                        hideSpinner();
-                        if (res.success) { showToast('Postingan dihapus.', 'success'); loadManagePosts(); loadPosts('beranda'); }
-                        else showToast(res.message || 'Gagal menghapus.', 'error');
-                    });
-                });
-            }
-
-            function showUserForm(userId) {
-                userId = userId || null;
-                document.getElementById('userIdInput').value = '';
-                document.getElementById('userNis').value = '';
-                document.getElementById('userName').value = '';
-                document.getElementById('userClass').value = '';
-                document.getElementById('userUsername').value = '';
-                document.getElementById('userPassword').value = '';
-                document.getElementById('userRole').value = 'Siswa';
-                document.getElementById('userEmail').value = '';
-                document.getElementById('userPhone').value = '';
-                document.getElementById('userFormTitle').textContent = 'Tambah User';
-                if (userId) {
-                    showSpinner();
-                    jsonpCall('getUsers', {}, function(res) {
-                        hideSpinner();
-                        if (res.success && res.data) {
-                            var user = res.data.find(function(u) { return u.UserID === userId; });
-                            if (user) {
-                                document.getElementById('userIdInput').value = user.UserID;
-                                document.getElementById('userNis').value = user.NIS || '';
-                                document.getElementById('userName').value = user.Name;
-                                document.getElementById('userClass').value = user.Class || '';
-                                document.getElementById('userUsername').value = user.Username;
-                                document.getElementById('userPassword').value = user.Password;
-                                document.getElementById('userRole').value = user.Role;
-                                document.getElementById('userEmail').value = user.Email || '';
-                                document.getElementById('userPhone').value = user.Phone || '';
-                                document.getElementById('userFormTitle').textContent = 'Edit User';
-                            }
-                        }
-                    });
-                }
-                new bootstrap.Modal(document.getElementById('userFormModal')).show();
-            }
-
-            function handleSaveUser(e) {
-                e.preventDefault();
-                var userId = document.getElementById('userIdInput').value;
-                var data = {
-                    nis: document.getElementById('userNis').value.trim(),
-                    name: document.getElementById('userName').value.trim(),
-                    class: document.getElementById('userClass').value.trim(),
-                    username: document.getElementById('userUsername').value.trim(),
-                    password: document.getElementById('userPassword').value.trim(),
-                    role: document.getElementById('userRole').value,
-                    email: document.getElementById('userEmail').value.trim(),
-                    phone: document.getElementById('userPhone').value.trim()
-                };
-                if (!data.name || !data.username || !data.password) return showToast('Nama, username, dan password wajib.', 'warning');
-                showSpinner();
-                var action = userId ? 'updateUser' : 'addUser';
-                var params = data;
-                if (userId) params.userId = userId;
-                jsonpCall(action, params, function(res) {
-                    hideSpinner();
-                    if (res.success) { bootstrap.Modal.getInstance(document.getElementById('userFormModal')).hide();
-                        showToast('User berhasil disimpan.', 'success');
-                        loadManageUsers(); } else showToast(res.message || 'Gagal menyimpan.', 'error');
-                });
-            }
-
-            function deleteUser(userId) {
-                showConfirm('Hapus user ini?', function() {
-                    showSpinner();
-                    jsonpCall('deleteUser', { userId: userId }, function(res) {
-                        hideSpinner();
-                        if (res.success) { showToast('User dihapus.', 'success');
-                            loadManageUsers(); } else showToast(res.message || 'Gagal menghapus.', 'error');
-                    });
-                });
             }
 
             // ===== INIT =====
@@ -2713,10 +3106,13 @@
                     checkSessionAndUpdateUI();
                 }
                 renderSlider();
-                loadPosts('beranda');
+                loadPosts('beranda', 1, 6);
                 loadLatestBooks();
                 updateNavUI();
                 populateYearDropdowns();
+
+                // Set current year in footer
+                document.getElementById('currentYear').textContent = new Date().getFullYear();
 
                 document.querySelectorAll('.modal').forEach(function(modalEl) {
                     modalEl.addEventListener('hidden.bs.modal', function() {
@@ -2746,16 +3142,10 @@
                 document.getElementById('userForm').addEventListener('submit', handleSaveUser);
 
                 document.getElementById('adminBorrowBtn').addEventListener('click', adminBorrowBook);
-                document.getElementById('refreshBorrowable').addEventListener('click', loadBorrowableBooks);
+                document.getElementById('refreshBorrowable').addEventListener('click', function() { loadBorrowableBooks(1, 12); });
 
-                // ===== PENCARIAN MANAJEMEN BUKU & USER (dengan debounce) =====
-                document.getElementById('searchManageBooks').addEventListener('input', debounce(function() {
-                    loadManageBooks();
-                }, 300));
-
-                document.getElementById('searchManageUsers').addEventListener('input', debounce(function() {
-                    loadManageUsers();
-                }, 300));
+                document.getElementById('searchManageBooks').addEventListener('input', debounce(function() { loadManageBooks(1, 10); }, 300));
+                document.getElementById('searchManageUsers').addEventListener('input', debounce(function() { loadManageUsers(); }, 300));
 
                 var searchBuku = document.getElementById('searchBuku');
                 var searchPost = document.getElementById('searchPost');
@@ -2765,18 +3155,21 @@
                 var filterAllLoansNIS = document.getElementById('filterAllLoansNIS');
                 var filterAllLoansClass = document.getElementById('filterAllLoansClass');
 
-                searchBuku.addEventListener('input', debounce(loadBooks, 300));
-                searchPost.addEventListener('input', debounce(loadManagePosts, 300));
-                searchReturn.addEventListener('input', debounce(loadActiveLoans, 300));
-                filterMyLoansStudent.addEventListener('input', debounce(loadMyLoans, 300));
-                filterAllLoansStudent.addEventListener('input', debounce(loadAllLoans, 300));
-                filterAllLoansNIS.addEventListener('input', debounce(loadAllLoans, 300));
-                filterAllLoansClass.addEventListener('input', debounce(loadAllLoans, 300));
+                searchBuku.addEventListener('input', debounce(function() { loadBooks(1, 10); }, 300));
+                searchPost.addEventListener('input', debounce(function() { loadManagePosts(1, 10); }, 300));
+                searchReturn.addEventListener('input', debounce(function() { loadActiveLoans(1, 10); }, 300));
+                filterMyLoansStudent.addEventListener('input', debounce(function() { loadMyLoans(1, 10); }, 300));
+                filterAllLoansStudent.addEventListener('input', debounce(function() { loadAllLoans(1, 10); }, 300));
+                filterAllLoansNIS.addEventListener('input', debounce(function() { loadAllLoans(1, 10); }, 300));
+                filterAllLoansClass.addEventListener('input', debounce(function() { loadAllLoans(1, 10); }, 300));
 
-                document.getElementById('filterMyLoansMonth').addEventListener('change', loadMyLoans);
-                document.getElementById('filterMyLoansYear').addEventListener('change', loadMyLoans);
-                document.getElementById('filterAllLoansMonth').addEventListener('change', loadAllLoans);
-                document.getElementById('filterAllLoansYear').addEventListener('change', loadAllLoans);
+                document.getElementById('filterMyLoansMonth').addEventListener('change', function() { loadMyLoans(1, 10); });
+                document.getElementById('filterMyLoansYear').addEventListener('change', function() { loadMyLoans(1, 10); });
+                document.getElementById('filterAllLoansMonth').addEventListener('change', function() { loadAllLoans(1, 10); });
+                document.getElementById('filterAllLoansYear').addEventListener('change', function() { loadAllLoans(1, 10); });
+
+                document.getElementById('pinjamSearchTitle').addEventListener('input', debounce(function() { loadBorrowableBooks(1, 12); }, 300));
+                document.getElementById('pinjamSearchID').addEventListener('input', debounce(function() { loadBorrowableBooks(1, 12); }, 300));
 
                 document.getElementById('printRiwayat').addEventListener('click', function() { printSection('page-riwayat'); });
                 document.getElementById('printAllLoans').addEventListener('click', function() { printSection('page-all-loans'); });
@@ -2786,6 +3179,21 @@
                     document.getElementById('postForm').reset();
                     document.getElementById('postIdInput').value = '';
                 });
+
+                // Jika halaman detail diakses langsung (dari URL), tapi tidak ada parameter, maka tetap di beranda
+                navigateTo('beranda');
+            }
+
+            // ===== DEBOUNCE =====
+            function debounce(fn, delay) {
+                var timer = null;
+                return function() {
+                    var context = this, args = arguments;
+                    clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        fn.apply(context, args);
+                    }, delay);
+                };
             }
 
             if (document.readyState === 'loading') {
