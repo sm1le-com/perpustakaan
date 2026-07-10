@@ -1,0 +1,2760 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan SMAN 1 Leuwimunding</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --primary: #1e3a5f;
+            --primary-dark: #0f2940;
+            --primary-light: #e8f0f7;
+            --accent: #e6a33c;
+            --accent-hover: #cf8b2c;
+            --accent-light: #fef5e7;
+            --success: #2e7d32;
+            --danger: #c62828;
+            --warning: #ef6c00;
+            --dark: #1e272e;
+            --text: #2c3e50;
+            --text-muted: #6c7a8a;
+            --light-bg: #f4f7fc;
+            --card-bg: #ffffff;
+            --card-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            --card-shadow-hover: 0 12px 40px rgba(0,0,0,0.15);
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            --font-heading: 'Segoe UI', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: var(--font-body);
+            background: var(--light-bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: rgba(30,58,95,0.92);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            padding: 0.6rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1050;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .navbar-brand img { height: 40px; width: auto; }
+        .navbar-brand { font-weight: 700; font-size: 1.4rem; color: #fff !important; letter-spacing: -0.5px; }
+        .navbar-nav .nav-link {
+            color: rgba(255,255,255,0.85) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            border-radius: 40px;
+            margin: 0 3px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition);
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            background: rgba(255,255,255,0.15);
+            color: #fff !important;
+            transform: translateY(-1px);
+        }
+        .btn-login {
+            background: var(--accent);
+            color: #fff !important;
+            border-radius: 40px;
+            padding: 0.4rem 1.6rem !important;
+            font-weight: 600;
+            border: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(230,163,60,0.35);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .btn-login:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230,163,60,0.45);
+        }
+        .btn-logout {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.5);
+            color: #fff !important;
+            border-radius: 40px;
+            padding: 0.35rem 1.4rem !important;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .btn-logout:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
+        }
+        .user-badge {
+            background: rgba(255,255,255,0.13);
+            color: #fff;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .navbar-toggler { border: none; color: #fff; }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        .dropdown-menu {
+            border: none;
+            border-radius: 14px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            background: #fff;
+            margin-top: 0.6rem;
+            padding: 0.4rem 0;
+            min-width: 200px;
+        }
+        .dropdown-item {
+            padding: 0.6rem 1.4rem;
+            font-weight: 500;
+            color: var(--text);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .dropdown-item:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        .dropdown-item i { width: 1.4rem; color: var(--accent); }
+
+        /* ===== CAROUSEL ===== */
+        .carousel-section {
+            margin-bottom: 2rem;
+            border-radius: 0 0 40px 40px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        .carousel-item {
+            height: 480px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .carousel-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15,41,64,0.85) 0%, rgba(15,41,64,0.2) 70%);
+            z-index: 1;
+        }
+        .carousel-caption {
+            bottom: 3.5rem;
+            left: 8%;
+            right: 8%;
+            text-align: left;
+            z-index: 2;
+        }
+        .carousel-caption h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+            animation: fadeUp 0.8s ease;
+        }
+        .carousel-caption p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 550px;
+            animation: fadeUp 0.8s ease 0.15s both;
+        }
+        .carousel-caption .btn-slider {
+            background: var(--accent);
+            color: #fff;
+            border-radius: 40px;
+            padding: 0.7rem 2.2rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(230,163,60,0.4);
+            border: none;
+            animation: fadeUp 0.8s ease 0.3s both;
+        }
+        .carousel-caption .btn-slider:hover {
+            background: #fff;
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(30px); }
+            to { opacity:1; transform:translateY(0); }
+        }
+        .carousel-indicators button {
+            width: 30px;
+            height: 4px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+        .carousel-indicators .active {
+            width: 40px;
+            background: var(--accent);
+        }
+        .carousel-control-prev, .carousel-control-next {
+            opacity: 0;
+            transition: opacity 0.3s;
+            width: 5%;
+        }
+        .carousel-section:hover .carousel-control-prev,
+        .carousel-section:hover .carousel-control-next {
+            opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+            .carousel-item { height: 300px; }
+            .carousel-caption h2 { font-size: 1.8rem; }
+            .carousel-caption p { font-size: 0.9rem; }
+        }
+
+        /* ===== SECTION HEADER ===== */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.8rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: var(--dark);
+            position: relative;
+            padding-left: 16px;
+        }
+        .section-header h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10%;
+            height: 80%;
+            width: 5px;
+            background: var(--accent);
+            border-radius: 6px;
+        }
+
+        /* ===== CARD POST ===== */
+        .post-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .post-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-6px);
+        }
+        .post-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            background: #e9ecef;
+            width: 100%;
+        }
+        .post-card .placeholder-img {
+            height: 200px;
+            background: linear-gradient(135deg, #e9ecef, #dee2e6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: #a0b3c6;
+        }
+        .post-card .card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .post-card .card-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+            color: var(--dark);
+        }
+        .post-card .card-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            flex: 1;
+            margin-bottom: 1rem;
+        }
+        .post-card .card-date {
+            font-size: 0.8rem;
+            color: #a0b3c6;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-read {
+            background: var(--primary);
+            color: #fff;
+            border-radius: 40px;
+            padding: 0.4rem 1.4rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border: none;
+            transition: var(--transition);
+            align-self: flex-start;
+            box-shadow: 0 4px 12px rgba(30,58,95,0.2);
+        }
+        .btn-read:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(30,58,95,0.3);
+            color: #fff;
+        }
+
+        /* ===== BOOK MINI CARD ===== */
+        .book-mini-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.04);
+            height: 100%;
+        }
+        .book-mini-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-5px);
+        }
+        .book-cover-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .book-cover-placeholder {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: #fff;
+            font-size: 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 4px 12px rgba(52,152,219,0.3);
+        }
+        .book-mini-card .book-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+        }
+        .book-mini-card .book-author {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== TABLES ===== */
+        .table-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .table {
+            margin-bottom: 0;
+        }
+        .table thead th {
+            background: #f8fafc;
+            border-bottom: 2px solid #e2e8f0;
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            padding: 0.9rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+        .table tbody td {
+            padding: 0.8rem 1rem;
+            vertical-align: middle;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        /* ===== BADGES ===== */
+        .badge-status {
+            font-size: 0.7rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        .badge-dipinjam { background: #fff3cd; color: #856404; }
+        .badge-dikembalikan { background: #d4edda; color: #155724; }
+        .badge-terlambat { background: #f8d7da; color: #721c24; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
+
+        /* ===== STAT CARDS ===== */
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.6rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-4px); }
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--primary);
+            border-radius: 6px 0 0 6px;
+        }
+        .stat-card.accent::after { background: var(--accent); }
+        .stat-card.success::after { background: var(--success); }
+        .stat-card.danger::after { background: var(--danger); }
+        .stat-card .stat-icon { font-size: 2.2rem; margin-bottom: 0.6rem; color: var(--primary); }
+        .stat-card.accent .stat-icon { color: var(--accent); }
+        .stat-card.success .stat-icon { color: var(--success); }
+        .stat-card.danger .stat-icon { color: var(--danger); }
+        .stat-card .stat-value { font-size: 2.4rem; font-weight: 800; color: var(--dark); }
+        .stat-card .stat-label { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; }
+
+        /* ===== BLOG DETAIL ===== */
+        .blog-container {
+            max-width: 860px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .blog-hero-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        .blog-hero-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #e8f0f7, #fdf3e6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #b0c4de;
+        }
+        .blog-body { padding: 2.5rem; }
+        .blog-title { font-weight: 800; font-size: 2.2rem; color: var(--dark); line-height: 1.3; }
+        .blog-meta { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eef2f6; display: flex; align-items: center; gap: 1rem; }
+        .blog-content { font-size: 1.1rem; line-height: 1.8; color: #2c3e50; }
+        .blog-content img { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .blog-content iframe { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; aspect-ratio: 16/9; width: 100%; }
+
+        /* ===== PAGINATION ===== */
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 0;
+            flex-wrap: wrap;
+        }
+        .pagination-controls button {
+            border: 1px solid #dce4ec;
+            background: #fff;
+            padding: 0.35rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            cursor: pointer;
+            color: var(--text);
+        }
+        .pagination-controls button:hover:not(:disabled) {
+            background: var(--primary-light);
+            border-color: var(--primary);
+        }
+        .pagination-controls button.active-page {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+        .pagination-controls button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .pagination-controls select {
+            padding: 0.3rem 0.6rem;
+            border-radius: 8px;
+            border: 1px solid #dce4ec;
+            font-size: 0.85rem;
+            background: #fff;
+            cursor: pointer;
+        }
+        .pagination-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-left: 0.4rem;
+        }
+
+        /* ===== MODAL ===== */
+        .modal-content {
+            border-radius: 18px;
+            border: none;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+        .modal-header {
+            border-bottom: 1px solid #eef2f6;
+            padding: 1.2rem 1.8rem;
+            background: #fafbfc;
+            border-radius: 18px 18px 0 0;
+        }
+        .modal-body { padding: 1.8rem; }
+
+        /* ===== TOAST ===== */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .custom-toast {
+            background: #fff;
+            border-radius: 12px;
+            padding: 0.8rem 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            border-left: 5px solid var(--success);
+            animation: slideIn 0.4s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            backdrop-filter: blur(4px);
+        }
+        .custom-toast.error { border-left-color: var(--danger); }
+        .custom-toast.warning { border-left-color: var(--warning); }
+        @keyframes slideIn {
+            from { transform: translateX(120%); opacity:0; }
+            to { transform: translateX(0); opacity:1; }
+        }
+
+        /* ===== SPINNER ===== */
+        .spinner-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9998;
+        }
+
+        /* ===== UTILITY ===== */
+        .btn-primary-custom {
+            background: var(--primary);
+            border: none;
+            color: #fff;
+            border-radius: 40px;
+            padding: 0.6rem 2rem;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(30,58,95,0.3);
+        }
+        .btn-primary-custom:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(30,58,95,0.4);
+        }
+        .btn-accent {
+            background: var(--accent);
+            border: none;
+            color: #fff;
+            border-radius: 40px;
+            padding: 0.6rem 2rem;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(230,163,60,0.35);
+        }
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(230,163,60,0.45);
+        }
+        .btn-outline-primary-custom {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+            border-radius: 40px;
+            padding: 0.4rem 1.6rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .btn-outline-primary-custom:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #dce4ec;
+            padding: 0.6rem 1rem;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.2rem rgba(230,163,60,0.25);
+        }
+        .form-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+        .map-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-top: 1.5rem;
+        }
+        .map-container iframe {
+            display: block;
+            width: 100%;
+            height: 380px;
+            border: 0;
+        }
+
+        .page-section { display: none; padding: 1.5rem 0; }
+        .page-section.active { display: block; animation: fadeUp 0.4s ease; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .section-header h2 { font-size: 1.3rem; }
+            .blog-body { padding: 1.5rem; }
+            .blog-title { font-size: 1.8rem; }
+            .blog-hero-image { max-height: 250px; }
+            .map-container iframe { height: 250px; }
+            .stat-card .stat-value { font-size: 1.8rem; }
+            .navbar-brand img { height: 32px; }
+            .carousel-caption h2 { font-size: 1.5rem; }
+        }
+
+        /* ===== CKEDITOR CUSTOM ===== */
+        .ck-editor__editable { min-height: 280px; }
+        .ck-editor__editable_inline { padding: 1rem; }
+        .ck-button.ck-custom-btn {
+            padding: 0 10px;
+            background: transparent;
+            border: none;
+            color: #333;
+            cursor: pointer;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border-radius: 4px;
+            height: 36px;
+            margin: 0 2px;
+        }
+        .ck-button.ck-custom-btn:hover { background: rgba(0,0,0,0.05); }
+        .ck-button.ck-custom-btn i { font-size: 14px; }
+        .post-modal-label { font-weight: 600; color: var(--dark); margin-bottom: 0.3rem; }
+        .post-modal-label .required { color: var(--danger); }
+        .post-modal-editor-wrapper {
+            border: 1px solid #dce4ec;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .post-modal-editor-wrapper .ck-editor__editable { min-height: 300px; }
+
+        /* Print */
+        @media print {
+            body * { visibility: hidden; }
+            #printArea, #printArea * { visibility: visible; }
+            #printArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: #fff;
+                display: block !important;
+                padding: 0;
+            }
+            #printArea .print-table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 12px;
+            }
+            #printArea .print-table th,
+            #printArea .print-table td {
+                border: 1px solid #333;
+                padding: 6px 10px;
+                text-align: left;
+            }
+            #printArea .print-table th { background: #f2f2f2; font-weight: bold; }
+            #printArea .print-table tbody tr:nth-child(even) { background: #fafafa; }
+            #printArea .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Toast & Spinner -->
+    <div class="toast-container" id="toastContainer"></div>
+    <div class="spinner-overlay" id="spinner" style="display:none;">
+        <div class="spinner-border text-warning" style="width:3rem;height:3rem;" role="status"><span class="visually-hidden">Loading...</span></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#" id="brandLink">
+                <img src="LOGO.png" alt="Logo" height="40">
+             
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto" id="navLinks">
+                    <li class="nav-item"><a class="nav-link active" href="#" data-page="beranda"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-page="buku"><i class="fas fa-book"></i> Koleksi Buku</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-2" id="navRight">
+                    <span id="userInfo" style="display:none;"></span>
+                    <button class="btn-login" id="btnLoginNav"><i class="fas fa-sign-in-alt"></i> Masuk</button>
+                    <button class="btn-logout" id="btnLogoutNav" style="display:none;"><i class="fas fa-sign-out-alt"></i> Keluar</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container" id="mainContent">
+        <!-- BERANDA -->
+        <div class="page-section active" id="page-beranda">
+            <div id="heroCarousel" class="carousel slide carousel-section" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-indicators" id="carouselIndicators"></div>
+                <div class="carousel-inner" id="carouselInner"></div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+
+            <div class="section-header mt-4">
+                <h2>📰 Postingan Terbaru</h2>
+                <button class="btn btn-outline-primary-custom btn-sm" data-page="semua-postingan">Lihat Semua <i class="fas fa-arrow-right ms-1"></i></button>
+            </div>
+            <div class="row g-4" id="postCards"></div>
+
+            <hr class="my-5">
+            <div class="section-header">
+                <h2>📚 Buku Terbaru</h2>
+                <button class="btn btn-outline-primary-custom btn-sm" data-page="buku">Lihat Semua <i class="fas fa-arrow-right ms-1"></i></button>
+            </div>
+            <div class="row g-3" id="latestBooks"></div>
+
+            <hr class="my-5">
+            <div class="section-header">
+                <h2><i class="fas fa-map-marked-alt" style="color:var(--accent);"></i> Lokasi Kami</h2>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps?q=SMAN+1+Leuwimunding&output=embed" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="text-muted text-center mt-2"><small>Jalan Raya Leuwimunding, Kec. Leuwimunding, Kab. Majalengka, Jawa Barat</small></p>
+        </div>
+
+        <!-- SEMUA POSTINGAN -->
+        <div class="page-section" id="page-semua-postingan">
+            <div class="section-header"><h2>📰 Semua Postingan</h2></div>
+            <div class="row g-4" id="allPostCards"></div>
+        </div>
+
+        <!-- DETAIL POSTINGAN -->
+        <div class="page-section" id="page-post-detail">
+            <div class="blog-container">
+
+                <div id="blogHero"></div>
+                <div class="blog-body">
+                    <h1 class="blog-title" id="detailPostTitle"></h1>
+                    <div class="blog-meta" id="detailPostMeta"></div>
+                    <div class="blog-content" id="detailPostContent"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KOLEKSI BUKU -->
+        <div class="page-section" id="page-buku">
+            <div class="section-header">
+                <h2>📚 Koleksi Buku</h2>
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                        <label class="form-label mb-0" style="font-weight:500;font-size:0.9rem;" for="bookLoanDuration">Durasi:</label>
+                        <input type="number" class="form-control" id="bookLoanDuration" value="365" min="1" max="365" style="width:80px;">
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" id="searchBuku" placeholder="Cari buku..." style="min-width:160px;">
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="bookTable">
+                        <thead><tr><th>Cover</th><th>ID</th><th>Judul</th><th>Penulis</th><th>ISBN</th><th>Penerbit</th><th>Kategori</th><th>Tahun</th><th>Tersedia</th><th>Aksi</th></tr></thead>
+                        <tbody id="bookTableBody"></tbody>
+                    </table>
+                </div>
+                <div id="bookPagination" class="pagination-controls"></div>
+            </div>
+        </div>
+
+        <!-- PINJAM BUKU (Siswa) -->
+        <div class="page-section" id="page-pinjam">
+            <div class="section-header"><h2>📖 Pinjam Buku</h2></div>
+            <div class="alert alert-info"><i class="fas fa-info-circle"></i> Maksimal <strong>20 buku</strong> aktif. Durasi 1–365 hari.</div>
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                    <label class="form-label" for="pinjamSearchTitle">Cari Judul</label>
+                    <input type="text" class="form-control" id="pinjamSearchTitle" placeholder="Judul...">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="pinjamSearchID">Cari ID</label>
+                    <input type="text" class="form-control" id="pinjamSearchID" placeholder="ID Buku...">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="studentLoanDuration">Durasi (hari)</label>
+                    <input type="number" class="form-control" id="studentLoanDuration" value="365" min="1" max="365">
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button class="btn btn-outline-primary-custom w-100" id="refreshBorrowable"><i class="fas fa-sync"></i> Refresh</button>
+                </div>
+            </div>
+            <div class="row g-4" id="borrowBookGrid"></div>
+            <div id="borrowPagination" class="pagination-controls"></div>
+        </div>
+
+        <!-- RIWAYAT SAYA (Siswa) -->
+        <div class="page-section" id="page-riwayat">
+            <div class="section-header">
+                <h2>📋 Riwayat Peminjaman Saya</h2>
+                <div class="d-flex gap-2 no-print">
+                    <button class="btn btn-accent btn-sm" id="printRiwayat"><i class="fas fa-print"></i> Cetak</button>
+                </div>
+            </div>
+            <div class="row g-3 mb-3 no-print">
+                <div class="col-md-4"><label class="form-label">Cari Nama</label><input type="text" class="form-control" id="filterMyLoansStudent" placeholder="Nama..."></div>
+                <div class="col-md-3"><label class="form-label">Bulan</label>
+                    <select class="form-control" id="filterMyLoansMonth">
+                        <option value="">-- Semua --</option>
+                        <option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option>
+                        <option value="04">Apr</option><option value="05">Mei</option><option value="06">Jun</option>
+                        <option value="07">Jul</option><option value="08">Agu</option><option value="09">Sep</option>
+                        <option value="10">Okt</option><option value="11">Nov</option><option value="12">Des</option>
+                    </select>
+                </div>
+                <div class="col-md-3"><label class="form-label">Tahun</label>
+                    <select class="form-control" id="filterMyLoansYear"><option value="">-- Semua --</option></select>
+                </div>
+            </div>
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="myLoansTable">
+                        <thead><tr><th>ID</th><th>Buku</th><th>Pinjam</th><th>Jatuh Tempo</th><th>Kembali</th><th>Status</th></tr></thead>
+                        <tbody id="myLoanTableBody"></tbody>
+                    </table>
+                </div>
+                <div id="myLoansPagination" class="pagination-controls"></div>
+            </div>
+        </div>
+
+        <!-- DASHBOARD ADMIN -->
+        <div class="page-section" id="page-dashboard">
+            <div class="section-header"><h2>📊 Dashboard Admin</h2></div>
+            <div class="row g-4 mb-5" id="statsRow"></div>
+            <h5 class="mb-3"><i class="fas fa-exclamation-triangle text-danger"></i> Peminjaman Terlambat</h5>
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead><tr><th>ID</th><th>Siswa</th><th>Buku</th><th>Jatuh Tempo</th><th>Keterlambatan</th></tr></thead>
+                        <tbody id="lateLoanTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- MANAJEMEN POSTINGAN -->
+        <div class="page-section" id="page-manage-posts">
+            <div class="section-header">
+                <h2>📝 Manajemen Postingan</h2>
+                <button class="btn btn-accent btn-sm" id="addPostBtn"><i class="fas fa-plus"></i> Tambah</button>
+            </div>
+            <input type="text" class="form-control mb-3 w-50" id="searchPost" placeholder="Cari postingan...">
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead><tr><th>ID</th><th>Judul</th><th>Tanggal</th><th>Aksi</th></tr></thead>
+                        <tbody id="managePostTableBody"></tbody>
+                    </table>
+                </div>
+                <div id="managePostPagination" class="pagination-controls"></div>
+            </div>
+        </div>
+
+        <!-- MANAJEMEN BUKU -->
+        <div class="page-section" id="page-manage-books">
+            <div class="section-header">
+                <h2>📚 Manajemen Buku</h2>
+                <button class="btn btn-accent btn-sm" id="addBookBtn"><i class="fas fa-plus"></i> Tambah</button>
+            </div>
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead><tr><th>Cover</th><th>ID</th><th>Judul</th><th>Penulis</th><th>ISBN</th><th>Total</th><th>Tersedia</th><th>Aksi</th></tr></thead>
+                        <tbody id="manageBookTableBody"></tbody>
+                    </table>
+                </div>
+                <div id="manageBookPagination" class="pagination-controls"></div>
+            </div>
+        </div>
+
+        <!-- MANAJEMEN USER -->
+        <div class="page-section" id="page-manage-users">
+            <div class="section-header">
+                <h2>👥 Manajemen User</h2>
+                <button class="btn btn-accent btn-sm" id="addUserBtn"><i class="fas fa-plus"></i> Tambah</button>
+            </div>
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead><tr><th>ID</th><th>NIS</th><th>Nama</th><th>Kelas</th><th>Username</th><th>Role</th><th>Aksi</th></tr></thead>
+                        <tbody id="manageUserTableBody"></tbody>
+                    </table>
+                </div>
+                <div id="manageUserPagination" class="pagination-controls"></div>
+            </div>
+        </div>
+
+        <!-- PENGEMBALIAN -->
+        <div class="page-section" id="page-pengembalian">
+            <div class="section-header"><h2>🔄 Pengembalian Buku</h2></div>
+            <input type="text" class="form-control mb-3 w-50" id="searchReturn" placeholder="Cari nama siswa atau ID pinjaman...">
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead><tr><th>ID</th><th>Siswa</th><th>Buku</th><th>Pinjam</th><th>Jatuh Tempo</th><th>Status</th><th>Aksi</th></tr></thead>
+                        <tbody id="activeLoanTable"></tbody>
+                    </table>
+                </div>
+                <div id="activeLoanPagination" class="pagination-controls"></div>
+            </div>
+        </div>
+
+        <!-- PEMINJAMAN MANUAL -->
+        <div class="page-section" id="page-peminjaman-admin">
+            <div class="section-header"><h2>📥 Peminjaman Manual (Admin)</h2></div>
+            <div class="alert alert-info"><i class="fas fa-info-circle"></i> Pilih siswa dan buku yang tersedia. Maksimal 20 aktif.</div>
+            <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                    <label class="form-label">Cari Siswa</label>
+                    <input type="text" class="form-control" id="searchStudent" placeholder="Nama...">
+                    <label class="form-label mt-2">Pilih Siswa</label>
+                    <select class="form-control" id="selectStudent"><option value="">-- Pilih --</option></select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Cari Buku</label>
+                    <input type="text" class="form-control" id="searchBook" placeholder="Judul...">
+                    <label class="form-label mt-2">Pilih Buku (Tersedia)</label>
+                    <select class="form-control" id="selectBook"><option value="">-- Pilih --</option></select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Durasi (hari)</label>
+                    <input type="number" class="form-control" id="adminLoanDuration" value="365" min="1" max="365">
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button class="btn btn-accent w-100" id="adminBorrowBtn"><i class="fas fa-hand-holding"></i> Pinjamkan</button>
+                </div>
+            </div>
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead><tr><th>ID</th><th>Siswa</th><th>Buku</th><th>Pinjam</th><th>Jatuh Tempo</th><th>Status</th></tr></thead>
+                        <tbody id="adminActiveLoanTable"></tbody>
+                    </table>
+                </div>
+                <div id="adminLoanPagination" class="pagination-controls"></div>
+            </div>
+        </div>
+
+        <!-- RIWAYAT SEMUA -->
+        <div class="page-section" id="page-all-loans">
+            <div class="section-header">
+                <h2>📋 Riwayat Semua Peminjaman</h2>
+                <div class="d-flex gap-2 no-print">
+                    <button class="btn btn-accent btn-sm" id="printAllLoans"><i class="fas fa-print"></i> Cetak</button>
+                </div>
+            </div>
+            <div class="row g-3 mb-3 no-print">
+                <div class="col-md-3"><label class="form-label">Nama</label><input type="text" class="form-control" id="filterAllLoansStudent" placeholder="Nama..."></div>
+                <div class="col-md-2"><label class="form-label">NIS</label><input type="text" class="form-control" id="filterAllLoansNIS" placeholder="NIS..."></div>
+                <div class="col-md-2"><label class="form-label">Kelas</label><input type="text" class="form-control" id="filterAllLoansClass" placeholder="Kelas..."></div>
+                <div class="col-md-2"><label class="form-label">Bulan</label>
+                    <select class="form-control" id="filterAllLoansMonth">
+                        <option value="">-- Semua --</option>
+                        <option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option>
+                        <option value="04">Apr</option><option value="05">Mei</option><option value="06">Jun</option>
+                        <option value="07">Jul</option><option value="08">Agu</option><option value="09">Sep</option>
+                        <option value="10">Okt</option><option value="11">Nov</option><option value="12">Des</option>
+                    </select>
+                </div>
+                <div class="col-md-2"><label class="form-label">Tahun</label>
+                    <select class="form-control" id="filterAllLoansYear"><option value="">-- Semua --</option></select>
+                </div>
+            </div>
+            <div class="table-container">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="allLoansTable">
+                        <thead><tr><th>ID</th><th>NIS</th><th>Nama</th><th>Kelas</th><th>Buku</th><th>Pinjam</th><th>Jatuh Tempo</th><th>Kembali</th><th>Status</th></tr></thead>
+                        <tbody id="allLoanTableBody"></tbody>
+                    </table>
+                </div>
+                <div id="allLoansPagination" class="pagination-controls"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">&copy; Copyright by Perpustakaan SMAN 1 Leuwimunding 2026</div>
+
+    <!-- PRINT AREA -->
+    <div id="printArea" style="display:none;"></div>
+
+    <!-- ===== MODAL POSTINGAN ===== -->
+    <div class="modal fade" id="postFormModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postFormTitle"><i class="fas fa-pen-fancy me-2" style="color:var(--accent);"></i>Tambah Postingan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="postForm">
+                        <input type="hidden" id="postIdInput">
+                        <div class="mb-3">
+                            <label class="post-modal-label">Judul <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="postTitle" placeholder="Masukkan judul..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="post-modal-label">Thumbnail URL <span class="text-muted">(opsional)</span></label>
+                            <input type="url" class="form-control" id="postThumbnail" placeholder="https://...">
+                        </div>
+                        <div class="mb-3">
+                            <label class="post-modal-label">Konten <span class="required">*</span></label>
+                            <div class="post-modal-editor-wrapper">
+                                <textarea id="ckeditor-editor" style="height:0;"></textarea>
+                            </div>
+                            <small class="text-muted">Gunakan toolbar untuk format, gambar URL, atau video YouTube.</small>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-accent" id="savePostBtn"><i class="fas fa-save me-1"></i> Simpan</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL LOGIN -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><h5 class="modal-title"><i class="fas fa-sign-in-alt"></i> Masuk</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3"><label class="form-label">Username</label><input type="text" class="form-control" id="loginUsername" required autocomplete="username"></div>
+                        <div class="mb-3"><label class="form-label">Password</label><input type="password" class="form-control" id="loginPassword" required autocomplete="current-password"></div>
+                        <button type="submit" class="btn btn-primary-custom w-100"><i class="fas fa-sign-in-alt"></i> Masuk</button>
+                    </form>
+                    <p class="text-muted mt-3 small text-center">🔒 Demo: password plain text.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL BUKU -->
+    <div class="modal fade" id="bookFormModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><h5 class="modal-title" id="bookFormTitle">Tambah Buku</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <form id="bookForm">
+                        <input type="hidden" id="bookIdInput">
+                        <div class="row">
+                            <div class="col-md-8 mb-3"><label class="form-label">Judul</label><input type="text" class="form-control" id="bookTitle" required></div>
+                            <div class="col-md-4 mb-3"><label class="form-label">ISBN</label><input type="text" class="form-control" id="bookIsbn"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3"><label class="form-label">Penulis</label><input type="text" class="form-control" id="bookAuthor" required></div>
+                            <div class="col-md-6 mb-3"><label class="form-label">Penerbit</label><input type="text" class="form-control" id="bookPublisher"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3"><label class="form-label">Kategori</label><input type="text" class="form-control" id="bookCategory"></div>
+                            <div class="col-md-4 mb-3"><label class="form-label">Tahun</label><input type="number" class="form-control" id="bookYear"></div>
+                            <div class="col-md-4 mb-3"><label class="form-label">Total Eksemplar</label><input type="number" class="form-control" id="bookTotalCopies" required min="1"></div>
+                        </div>
+                        <div class="mb-3"><label class="form-label">Cover URL (opsional)</label><input type="url" class="form-control" id="bookCoverURL" placeholder="https://..."></div>
+                        <button type="submit" class="btn btn-accent"><i class="fas fa-save"></i> Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL USER -->
+    <div class="modal fade" id="userFormModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><h5 class="modal-title" id="userFormTitle">Tambah User</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <form id="userForm">
+                        <input type="hidden" id="userIdInput">
+                        <div class="mb-3"><label class="form-label">NIS (opsional)</label><input type="text" class="form-control" id="userNis"></div>
+                        <div class="mb-3"><label class="form-label">Nama</label><input type="text" class="form-control" id="userName" required></div>
+                        <div class="mb-3"><label class="form-label">Kelas (siswa)</label><input type="text" class="form-control" id="userClass"></div>
+                        <div class="mb-3"><label class="form-label">Username</label><input type="text" class="form-control" id="userUsername" required></div>
+                        <div class="mb-3"><label class="form-label">Password</label><input type="text" class="form-control" id="userPassword" required></div>
+                        <div class="mb-3"><label class="form-label">Role</label><select class="form-control" id="userRole"><option value="Siswa">Siswa</option><option value="Admin">Admin</option></select></div>
+                        <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" id="userEmail"></div>
+                        <div class="mb-3"><label class="form-label">Phone</label><input type="text" class="form-control" id="userPhone"></div>
+                        <button type="submit" class="btn btn-accent"><i class="fas fa-save"></i> Simpan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL KONFIRMASI -->
+    <div class="modal fade" id="confirmModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header"><h6 class="modal-title">Konfirmasi</h6><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body" id="confirmBody"></div>
+                <div class="modal-footer"><button class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button><button class="btn btn-danger btn-sm" id="confirmBtn">Ya</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== LIBRARY JS ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <script>
+        (function() {
+            "use strict";
+
+            var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFjuSludGxjMnQN53IYcNq4uBv99SJQIDjIxEl2oJRfbPIPadI1rV8zTp0TnOACtIn/exec';
+            var MAX_ACTIVE_LOANS = 20;
+            var currentUser = null;
+            var currentToken = null;
+            var ckeditorInstance = null;
+            var SLIDER_DATA = [
+                { image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1200&h=500&fit=crop', title: 'Temukan Dunia Melalui Buku', caption: 'Jelajahi ribuan koleksi buku berkualitas untuk menunjang prestasi dan wawasan.', btnText: 'Jelajahi Koleksi', link: 'buku' },
+                { image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=500&fit=crop', title: 'Baca, Pelajari, Berkembang', caption: 'Perpustakaan SMAN 1 Leuwimunding menyediakan lingkungan nyaman untuk membaca dan belajar.', btnText: 'Kunjungi Perpustakaan', link: 'beranda' },
+                { image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=500&fit=crop', title: 'Ilmu Pengetahuan Tanpa Batas', caption: 'Mulai perjalanan intelektualmu bersama kami. Buku adalah jendela dunia.', btnText: 'Lihat Artikel', link: 'semua-postingan' }
+            ];
+
+            // ===== UTILITY =====
+            function showSpinner() { document.getElementById('spinner').style.display = 'flex'; }
+            function hideSpinner() { document.getElementById('spinner').style.display = 'none'; }
+
+            function showToast(msg, type) {
+                type = type || 'success';
+                var icons = { success:'✅', error:'❌', warning:'⚠️', info:'ℹ️' };
+                var container = document.getElementById('toastContainer');
+                var toast = document.createElement('div');
+                toast.className = 'custom-toast ' + type;
+                toast.innerHTML = (icons[type]||'') + ' ' + msg;
+                container.appendChild(toast);
+                setTimeout(function() {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateX(100%)';
+                    setTimeout(function() { toast.remove(); }, 400);
+                }, 3500);
+            }
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                var div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
+            function formatDateIndonesian(dateStr) {
+                if (!dateStr) return '';
+                var d = new Date(dateStr);
+                if (isNaN(d.getTime())) return dateStr;
+                var months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+                return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+            }
+
+            function parseDateIndonesian(dateStr) {
+                var months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+                var parts = dateStr.split(' ');
+                if (parts.length !== 3) return null;
+                var day = parseInt(parts[0]);
+                var month = months.indexOf(parts[1]);
+                var year = parseInt(parts[2]);
+                if (isNaN(day) || month === -1 || isNaN(year)) return null;
+                return new Date(year, month, day);
+            }
+
+            function jsonpCall(action, params, callback) {
+                var cbName = 'jsonp_cb_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+                params.action = action;
+                params.callback = cbName;
+                if (currentToken) params.token = currentToken;
+
+                var queryString = Object.keys(params).map(function(k) { return encodeURIComponent(k) + '=' + encodeURIComponent(params[k]); }).join('&');
+                var script = document.createElement('script');
+                script.src = APPS_SCRIPT_URL + '?' + queryString;
+
+                window[cbName] = function(response) {
+                    delete window[cbName];
+                    document.head.removeChild(script);
+                    if (response.success === false && response.message === 'SESSION_EXPIRED') {
+                        forceLogout();
+                        showToast('Sesi berakhir, silakan login kembali.', 'warning');
+                        return;
+                    }
+                    callback(response);
+                };
+                script.onerror = function() {
+                    delete window[cbName];
+                    document.head.removeChild(script);
+                    callback({ success: false, message: 'Gagal terhubung ke server.' });
+                };
+                document.head.appendChild(script);
+            }
+
+            function showConfirm(message, onConfirm) {
+                document.getElementById('confirmBody').innerHTML = message;
+                var confirmBtn = document.getElementById('confirmBtn');
+                confirmBtn.onclick = function() {
+                    bootstrap.Modal.getInstance(document.getElementById('confirmModal')).hide();
+                    onConfirm();
+                };
+                new bootstrap.Modal(document.getElementById('confirmModal')).show();
+            }
+
+            function getBookCoverHtml(book, height) {
+                height = height || '200px';
+                var coverUrl = book.CoverURL && book.CoverURL.trim() !== '';
+                if (coverUrl) {
+                    return '<img src="' + book.CoverURL + '" alt="' + escapeHtml(book.Title) + '" class="book-cover-img" style="height:' + height + ';" onerror="this.style.display=\'none\'; this.parentNode.querySelector(\'.book-cover-placeholder\').style.display=\'flex\';">' +
+                           '<div class="book-cover-placeholder" style="height:' + height + '; display:none;"><i class="fas fa-book"></i></div>';
+                }
+                return '<div class="book-cover-placeholder" style="height:' + height + '; display:flex;"><i class="fas fa-book"></i></div>';
+            }
+
+            // ===== PAGINATION STATE =====
+            var paginationStates = {};
+
+            function buildPaginationControls(paginationId, totalItems, currentPage, pageSize, renderFn, containerId, isGrid) {
+                var el = document.getElementById(paginationId);
+                if (!el) return;
+
+                var totalPages = Math.ceil(totalItems / pageSize) || 1;
+                if (currentPage > totalPages) currentPage = totalPages;
+                if (currentPage < 1) currentPage = 1;
+
+                paginationStates[paginationId] = {
+                    totalItems: totalItems,
+                    currentPage: currentPage,
+                    pageSize: pageSize,
+                    renderFn: renderFn,
+                    containerId: containerId,
+                    isGrid: isGrid
+                };
+
+                var start = (currentPage - 1) * pageSize + 1;
+                var end = Math.min(currentPage * pageSize, totalItems);
+
+                var html = '';
+                html += '<button class="btn-prev" ' + (currentPage <= 1 ? 'disabled' : '') + ' data-page="' + (currentPage - 1) + '"><i class="fas fa-chevron-left"></i> Sebelumnya</button>';
+                for (var p = 1; p <= totalPages; p++) {
+                    html += '<button class="' + (p === currentPage ? 'active-page' : '') + '" data-page="' + p + '">' + p + '</button>';
+                }
+                html += '<button class="btn-next" ' + (currentPage >= totalPages ? 'disabled' : '') + ' data-page="' + (currentPage + 1) + '">Selanjutnya <i class="fas fa-chevron-right"></i></button>';
+                html += '<span class="pagination-info">' + start + '-' + end + ' dari ' + totalItems + '</span>';
+                html += ' <select class="page-size-select">';
+                var sizes = [10, 20, 50, 100];
+                sizes.forEach(function(s) {
+                    html += '<option value="' + s + '" ' + (s === pageSize ? 'selected' : '') + '>' + s + '</option>';
+                });
+                html += '</select>';
+
+                el.innerHTML = html;
+
+                el.querySelectorAll('button[data-page]').forEach(function(btn) {
+                    btn.addEventListener('click', function(e) {
+                        var page = parseInt(this.dataset.page);
+                        if (page >= 1 && page <= totalPages) {
+                            var state = paginationStates[paginationId];
+                            if (state) {
+                                state.currentPage = page;
+                                renderPagination(paginationId);
+                            }
+                        }
+                    });
+                });
+
+                el.querySelector('.page-size-select').addEventListener('change', function(e) {
+                    var newSize = parseInt(this.value);
+                    var state = paginationStates[paginationId];
+                    if (state) {
+                        state.pageSize = newSize;
+                        state.currentPage = 1;
+                        renderPagination(paginationId);
+                    }
+                });
+            }
+
+            function renderPagination(paginationId) {
+                var state = paginationStates[paginationId];
+                if (!state) return;
+                var container = document.getElementById(state.containerId);
+                if (!container) return;
+
+                var totalItems = state.totalItems;
+                var pageSize = state.pageSize;
+                var currentPage = state.currentPage;
+                var totalPages = Math.ceil(totalItems / pageSize) || 1;
+                if (currentPage > totalPages) currentPage = totalPages;
+                if (currentPage < 1) currentPage = 1;
+                state.currentPage = currentPage;
+
+                var start = (currentPage - 1) * pageSize;
+                var end = Math.min(start + pageSize, totalItems);
+                var paginationEl = document.getElementById(paginationId);
+                var dataStr = paginationEl.getAttribute('data-data');
+                var data = dataStr ? JSON.parse(dataStr) : [];
+                var pageData = data.slice(start, end);
+
+                var html = '';
+                if (pageData.length === 0) {
+                    html = state.isGrid ? '<div class="col-12 text-center text-muted py-5">Tidak ada data.</div>' :
+                                         '<tr><td colspan="10" class="text-center">Tidak ada data.</td></tr>';
+                } else {
+                    pageData.forEach(function(item, idx) {
+                        html += state.renderFn(item, idx, start + idx);
+                    });
+                }
+                container.innerHTML = html;
+
+                buildPaginationControls(paginationId, totalItems, currentPage, pageSize, state.renderFn, state.containerId, state.isGrid);
+            }
+
+            function renderPaginatedTableWithData(containerId, paginationId, data, defaultPageSize, renderRow) {
+                var paginationEl = document.getElementById(paginationId);
+                if (paginationEl) paginationEl.setAttribute('data-data', JSON.stringify(data));
+                var state = paginationStates[paginationId];
+                var pageSize = (state && state.pageSize) ? state.pageSize : (defaultPageSize || 10);
+                var currentPage = (state && state.currentPage) ? state.currentPage : 1;
+                paginationStates[paginationId] = {
+                    totalItems: data.length,
+                    currentPage: currentPage,
+                    pageSize: pageSize,
+                    renderFn: renderRow,
+                    containerId: containerId,
+                    isGrid: false
+                };
+                buildPaginationControls(paginationId, data.length, currentPage, pageSize, renderRow, containerId, false);
+                renderPagination(paginationId);
+            }
+
+            function renderPaginatedGrid(containerId, paginationId, data, defaultPageSize, renderCard) {
+                var paginationEl = document.getElementById(paginationId);
+                if (paginationEl) paginationEl.setAttribute('data-data', JSON.stringify(data));
+                var state = paginationStates[paginationId];
+                var pageSize = (state && state.pageSize) ? state.pageSize : (defaultPageSize || 12);
+                var currentPage = (state && state.currentPage) ? state.currentPage : 1;
+                paginationStates[paginationId] = {
+                    totalItems: data.length,
+                    currentPage: currentPage,
+                    pageSize: pageSize,
+                    renderFn: renderCard,
+                    containerId: containerId,
+                    isGrid: true
+                };
+                buildPaginationControls(paginationId, data.length, currentPage, pageSize, renderCard, containerId, true);
+                renderPagination(paginationId);
+            }
+
+            // ===== DEBOUNCE =====
+            function debounce(fn, delay) {
+                var timer = null;
+                return function() {
+                    var context = this, args = arguments;
+                    clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        fn.apply(context, args);
+                    }, delay);
+                };
+            }
+
+            // ===== AUTH & NAV =====
+            function updateNavUI() {
+                var navLinks = document.getElementById('navLinks');
+                while (navLinks.children.length > 2) {
+                    navLinks.removeChild(navLinks.lastChild);
+                }
+                var userInfo = document.getElementById('userInfo');
+                var btnLogin = document.getElementById('btnLoginNav');
+                var btnLogout = document.getElementById('btnLogoutNav');
+
+                if (currentUser && currentUser.Role === 'Admin') {
+                    var liDash = document.createElement('li');
+                    liDash.className = 'nav-item';
+                    var aDash = document.createElement('a');
+                    aDash.className = 'nav-link';
+                    aDash.href = '#';
+                    aDash.dataset.page = 'dashboard';
+                    aDash.innerHTML = '<i class="fas fa-tachometer-alt"></i> Dashboard';
+                    liDash.appendChild(aDash);
+                    navLinks.appendChild(liDash);
+
+                    var liDropdown = document.createElement('li');
+                    liDropdown.className = 'nav-item dropdown';
+                    var aDropdown = document.createElement('a');
+                    aDropdown.className = 'nav-link dropdown-toggle';
+                    aDropdown.href = '#';
+                    aDropdown.setAttribute('data-bs-toggle', 'dropdown');
+                    aDropdown.innerHTML = '<i class="fas fa-cog"></i> Kelola';
+                    liDropdown.appendChild(aDropdown);
+                    var ul = document.createElement('ul');
+                    ul.className = 'dropdown-menu';
+                    var items = [
+                        { page: 'manage-posts', label: 'Postingan', icon: 'fa-newspaper' },
+                        { page: 'manage-books', label: 'Buku', icon: 'fa-book' },
+                        { page: 'manage-users', label: 'User', icon: 'fa-users' },
+                        { page: 'pengembalian', label: 'Pengembalian', icon: 'fa-undo' },
+                        { page: 'peminjaman-admin', label: 'Peminjaman Manual', icon: 'fa-hand-holding' },
+                        { page: 'all-loans', label: 'Riwayat Peminjaman', icon: 'fa-history' }
+                    ];
+                    items.forEach(function(item) {
+                        var li = document.createElement('li');
+                        var a = document.createElement('a');
+                        a.className = 'dropdown-item';
+                        a.href = '#';
+                        a.dataset.page = item.page;
+                        a.innerHTML = '<i class="fas ' + item.icon + '"></i> ' + item.label;
+                        li.appendChild(a);
+                        ul.appendChild(li);
+                    });
+                    liDropdown.appendChild(ul);
+                    navLinks.appendChild(liDropdown);
+
+                    userInfo.innerHTML = '<span class="user-badge"><i class="fas fa-user-shield"></i> ' + currentUser.Name + '</span>';
+                    userInfo.style.display = 'inline';
+                    btnLogin.style.display = 'none';
+                    btnLogout.style.display = 'inline-flex';
+                } else if (currentUser && currentUser.Role === 'Siswa') {
+                    var liPinjam = document.createElement('li');
+                    liPinjam.className = 'nav-item';
+                    var aPinjam = document.createElement('a');
+                    aPinjam.className = 'nav-link';
+                    aPinjam.href = '#';
+                    aPinjam.dataset.page = 'pinjam';
+                    aPinjam.innerHTML = '<i class="fas fa-hand-holding"></i> Pinjam Buku';
+                    liPinjam.appendChild(aPinjam);
+                    navLinks.appendChild(liPinjam);
+
+                    var liRiwayat = document.createElement('li');
+                    liRiwayat.className = 'nav-item';
+                    var aRiwayat = document.createElement('a');
+                    aRiwayat.className = 'nav-link';
+                    aRiwayat.href = '#';
+                    aRiwayat.dataset.page = 'riwayat';
+                    aRiwayat.innerHTML = '<i class="fas fa-history"></i> Riwayat Saya';
+                    liRiwayat.appendChild(aRiwayat);
+                    navLinks.appendChild(liRiwayat);
+
+                    userInfo.innerHTML = '<span class="user-badge"><i class="fas fa-user-graduate"></i> ' + currentUser.Name + ' (' + (currentUser.Class || '') + ')</span>';
+                    userInfo.style.display = 'inline';
+                    btnLogin.style.display = 'none';
+                    btnLogout.style.display = 'inline-flex';
+                } else {
+                    userInfo.style.display = 'none';
+                    btnLogin.style.display = 'inline-flex';
+                    btnLogout.style.display = 'none';
+                }
+
+                document.querySelectorAll('#navLinks a[data-page], .dropdown-item[data-page]').forEach(function(el) {
+                    el.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        navigateTo(this.dataset.page);
+                    });
+                });
+            }
+
+            function forceLogout() {
+                currentUser = null;
+                currentToken = null;
+                localStorage.removeItem('libToken');
+                localStorage.removeItem('libUser');
+                updateNavUI();
+                navigateTo('beranda');
+            }
+
+            function showLoginModal() {
+                document.getElementById('loginUsername').value = '';
+                document.getElementById('loginPassword').value = '';
+                new bootstrap.Modal(document.getElementById('loginModal')).show();
+            }
+
+            function handleLogin(e) {
+                e.preventDefault();
+                var username = document.getElementById('loginUsername').value.trim();
+                var password = document.getElementById('loginPassword').value.trim();
+                if (!username || !password) return showToast('Isi username dan password.', 'warning');
+                showSpinner();
+                jsonpCall('login', { username: username, password: password }, function(res) {
+                    hideSpinner();
+                    if (res.success) {
+                        currentUser = res.data.user;
+                        currentToken = res.data.token;
+                        localStorage.setItem('libToken', currentToken);
+                        localStorage.setItem('libUser', JSON.stringify(currentUser));
+                        updateNavUI();
+                        bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+                        showToast('Selamat datang, ' + currentUser.Name + '!', 'success');
+                        if (currentUser.Role === 'Admin') { navigateTo('dashboard'); loadDashboard(); }
+                        else { navigateTo('beranda'); checkLateLoansForStudent(); }
+                    } else showToast(res.message || 'Login gagal.', 'error');
+                });
+            }
+
+            function logout() {
+                if (currentToken) jsonpCall('logout', {}, function() {});
+                forceLogout();
+                showToast('Berhasil logout.', 'success');
+            }
+
+            function checkSessionAndUpdateUI() {
+                jsonpCall('checkSession', {}, function(res) {
+                    if (!res.success || !res.data || !res.data.valid) { forceLogout(); }
+                    else { if (res.data.user) currentUser = res.data.user; updateNavUI(); navigateTo('beranda'); }
+                });
+            }
+
+            function checkLateLoansForStudent() {
+                if (!currentUser || currentUser.Role !== 'Siswa') return;
+                jsonpCall('getLoans', { filter: 'active' }, function(res) {
+                    if (res.success && res.data) {
+                        var today = new Date(); today.setHours(0,0,0,0);
+                        var late = res.data.filter(function(l) { return l.Status === 'Dipinjam' && new Date(l.DueDate) < today; });
+                        if (late.length > 0) showToast('⚠️ Anda memiliki ' + late.length + ' buku yang terlambat!', 'warning');
+                    }
+                });
+            }
+
+            // ===== SLIDER =====
+            function renderSlider() {
+                var indicators = document.getElementById('carouselIndicators');
+                var inner = document.getElementById('carouselInner');
+                indicators.innerHTML = '';
+                inner.innerHTML = '';
+                SLIDER_DATA.forEach(function(slide, index) {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.setAttribute('data-bs-target', '#heroCarousel');
+                    btn.setAttribute('data-bs-slide-to', index);
+                    if (index === 0) btn.className = 'active';
+                    btn.setAttribute('aria-label', 'Slide ' + (index + 1));
+                    indicators.appendChild(btn);
+
+                    var div = document.createElement('div');
+                    div.className = 'carousel-item' + (index === 0 ? ' active' : '');
+                    div.style.backgroundImage = 'url(' + slide.image + ')';
+                    var caption = document.createElement('div');
+                    caption.className = 'carousel-caption';
+                    caption.innerHTML = '<h2>' + slide.title + '</h2><p>' + slide.caption + '</p>' +
+                        '<a href="#" class="btn-slider" data-link="' + slide.link + '">' + slide.btnText + '</a>';
+                    div.appendChild(caption);
+                    inner.appendChild(div);
+                });
+
+                document.querySelectorAll('.btn-slider').forEach(function(btn) {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        var link = this.dataset.link;
+                        navigateTo(link);
+                    });
+                });
+            }
+
+            // ===== NAVIGATION =====
+            function navigateTo(page) {
+                document.querySelectorAll('.page-section').forEach(function(el) { el.classList.remove('active'); });
+                var target = document.getElementById('page-' + page);
+                if (target) target.classList.add('active');
+
+                document.querySelectorAll('#navLinks .nav-link, #navLinks .dropdown-item').forEach(function(el) {
+                    el.classList.remove('active');
+                });
+                var activeLink = document.querySelector('#navLinks a[data-page="' + page + '"]');
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    var parentDropdown = activeLink.closest('.dropdown');
+                    if (parentDropdown) {
+                        var toggle = parentDropdown.querySelector('.dropdown-toggle');
+                        if (toggle) toggle.classList.add('active');
+                    }
+                }
+
+                window.scrollTo(0, 0);
+
+                requestAnimationFrame(function() {
+                    setTimeout(function() {
+                        if (page === 'beranda') { loadPosts('beranda'); loadLatestBooks(); }
+                        else if (page === 'semua-postingan') loadPosts('semua');
+                        else if (page === 'buku') loadBooks();
+                        else if (page === 'pinjam') loadBorrowableBooks();
+                        else if (page === 'riwayat') loadMyLoans();
+                        else if (page === 'dashboard') loadDashboard();
+                        else if (page === 'manage-posts') loadManagePosts();
+                        else if (page === 'manage-books') loadManageBooks();
+                        else if (page === 'manage-users') loadManageUsers();
+                        else if (page === 'pengembalian') loadActiveLoans();
+                        else if (page === 'peminjaman-admin') loadAdminPeminjamanForm();
+                        else if (page === 'all-loans') loadAllLoans();
+                    }, 0);
+                });
+            }
+
+            function populateYearDropdowns() {
+                var currentYear = new Date().getFullYear();
+                var years = [];
+                for (var y = currentYear - 5; y <= currentYear + 1; y++) years.push(y);
+                var options = years.map(function(y) { return '<option value="' + y + '">' + y + '</option>'; }).join('');
+                document.getElementById('filterMyLoansYear').innerHTML += options;
+                document.getElementById('filterAllLoansYear').innerHTML += options;
+            }
+
+            function printSection(sectionId) {
+                var tableId = (sectionId === 'page-riwayat') ? 'myLoansTable' : 'allLoansTable';
+                var $table = document.getElementById(tableId);
+                if (!$table) { showToast('Tidak ada tabel untuk dicetak.', 'warning'); return; }
+                var $section = document.getElementById(sectionId);
+                var title = $section.querySelector('.section-header h2')?.textContent || 'Riwayat Peminjaman';
+                var now = new Date();
+                var dateStr = now.toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' }) + ' ' +
+                    now.toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit' });
+                var printContent = '';
+                printContent += '<div style="font-family: Arial, sans-serif; padding: 20px; max-width: 100%;">';
+                printContent += '<h2 style="text-align: center; margin-bottom: 5px;">' + title + '</h2>';
+                printContent += '<p style="text-align: center; font-size: 12px; color: #888; margin: 0 0 15px 0;">Dicetak pada: ' + dateStr + '</p>';
+                var cloneTable = $table.cloneNode(true);
+                var headerCells = cloneTable.querySelectorAll('thead th');
+                var actionIndex = -1;
+                headerCells.forEach(function(th, idx) {
+                    if (th.textContent.trim().toLowerCase() === 'aksi') {
+                        actionIndex = idx;
+                    }
+                });
+                if (actionIndex !== -1) {
+                    cloneTable.querySelectorAll('thead th').forEach(function(th, idx) {
+                        if (idx === actionIndex) th.remove();
+                    });
+                    cloneTable.querySelectorAll('tbody tr').forEach(function(tr) {
+                        var tds = tr.querySelectorAll('td');
+                        if (tds[actionIndex]) tds[actionIndex].remove();
+                    });
+                }
+                cloneTable.classList.add('print-table');
+                printContent += cloneTable.outerHTML;
+                printContent += '<p style="text-align: center; font-size: 11px; color: #888; margin-top: 20px;">© Perpustakaan SMAN 1 Leuwimunding</p>';
+                printContent += '</div>';
+
+                var printArea = document.getElementById('printArea');
+                printArea.innerHTML = printContent;
+                printArea.style.display = 'block';
+                setTimeout(function() {
+                    window.print();
+                    printArea.style.display = 'none';
+                    printArea.innerHTML = '';
+                }, 300);
+                window.onafterprint = function() {
+                    printArea.style.display = 'none';
+                    printArea.innerHTML = '';
+                    window.onafterprint = null;
+                };
+            }
+
+            // ===== CKEDITOR =====
+            function initCKEditor(initialContent) {
+                if (ckeditorInstance) {
+                    ckeditorInstance.destroy().then(function() {
+                        ckeditorInstance = null;
+                        _initCKEditor(initialContent);
+                    }).catch(function(err) {
+                        console.warn('Error destroying CKEditor:', err);
+                        ckeditorInstance = null;
+                        _initCKEditor(initialContent);
+                    });
+                } else {
+                    _initCKEditor(initialContent);
+                }
+            }
+
+            function _initCKEditor(initialContent) {
+                var textarea = document.querySelector('#ckeditor-editor');
+                if (!textarea) { showToast('Textarea tidak ditemukan.', 'error'); return; }
+                textarea.value = '';
+
+                ClassicEditor
+                    .create(textarea, {
+                        toolbar: {
+                            items: [
+                                'heading', '|',
+                                'bold', 'italic', '|',
+                                'link', 'mediaEmbed', '|',
+                                'bulletedList', 'numberedList', '|',
+                                'undo', 'redo'
+                            ]
+                        },
+                        mediaEmbed: {
+                            previewsInData: true,
+                            extraProviders: [
+                                {
+                                    name: 'youtube',
+                                    url: [
+                                        /^https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/,
+                                        /^https?:\/\/(?:www\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/,
+                                        /^https?:\/\/youtu\.be\/([a-zA-Z0-9_-]{11})/
+                                    ],
+                                    html: function(match) {
+                                        var videoId = match[1];
+                                        return '<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe></div>';
+                                    }
+                                }
+                            ]
+                        }
+                    })
+                    .then(function(editor) {
+                        ckeditorInstance = editor;
+                        if (initialContent) {
+                            editor.setData(initialContent);
+                        }
+                        addCustomButtons(editor);
+                        textarea.style.display = 'block';
+                        console.log('CKEditor initialized');
+                    })
+                    .catch(function(error) {
+                        console.error('CKEditor error:', error);
+                        showToast('Gagal memuat editor: ' + error.message, 'error');
+                        textarea.style.display = 'block';
+                        textarea.value = initialContent || '';
+                    });
+            }
+
+            function addCustomButtons(editor) {
+                var toolbarElement = editor.ui.view.toolbar.element;
+                if (!toolbarElement) {
+                    editor.ui.view.toolbar.on('render', function() {
+                        addCustomButtons(editor);
+                    });
+                    return;
+                }
+                var imgBtn = document.createElement('button');
+                imgBtn.innerHTML = '<i class="fas fa-image"></i> Gambar URL';
+                imgBtn.className = 'ck-button ck-custom-btn';
+                imgBtn.setAttribute('type', 'button');
+                imgBtn.onclick = function() {
+                    var url = prompt('Masukkan URL gambar (contoh: https://...):');
+                    if (url && url.trim()) {
+                        var trimmed = url.trim();
+                        if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+                            try {
+                                editor.execute('imageInsert', { source: trimmed });
+                                showToast('✅ Gambar disisipkan.', 'success');
+                            } catch(e) {
+                                editor.model.change(function(writer) {
+                                    var imageElement = writer.createElement('imageBlock', { src: trimmed });
+                                    editor.model.insertContent(imageElement, editor.model.document.selection);
+                                });
+                                showToast('✅ Gambar disisipkan (fallback).', 'success');
+                            }
+                        } else {
+                            showToast('❌ URL tidak valid. Awali http:// atau https://', 'error');
+                        }
+                    }
+                };
+                toolbarElement.appendChild(imgBtn);
+
+                var vidBtn = document.createElement('button');
+                vidBtn.innerHTML = '<i class="fas fa-video"></i> Video URL';
+                vidBtn.className = 'ck-button ck-custom-btn';
+                vidBtn.setAttribute('type', 'button');
+                vidBtn.onclick = function() {
+                    var url = prompt('Masukkan URL YouTube (contoh: https://www.youtube.com/watch?v=...):');
+                    if (url && url.trim()) {
+                        var trimmed = url.trim();
+                        editor.model.change(function(writer) {
+                            var mediaElement = writer.createElement('media', { url: trimmed });
+                            editor.model.insertContent(mediaElement, editor.model.document.selection);
+                        });
+                        showToast('✅ Video disisipkan.', 'success');
+                    }
+                };
+                toolbarElement.appendChild(vidBtn);
+            }
+
+            function destroyCKEditor() {
+                if (ckeditorInstance) {
+                    ckeditorInstance.destroy().then(function() {
+                        ckeditorInstance = null;
+                    }).catch(function(err) {
+                        console.warn('CKEditor destroy error:', err);
+                        ckeditorInstance = null;
+                    });
+                } else {
+                    document.getElementById('ckeditor-editor').value = '';
+                }
+            }
+
+            function getCKEditorContent() {
+                if (ckeditorInstance) {
+                    return ckeditorInstance.getData();
+                }
+                return document.getElementById('ckeditor-editor').value;
+            }
+
+            // ===== POSTS =====
+            function loadPosts(mode) {
+                showSpinner();
+                var params = {};
+                if (mode === 'semua') params.all = 'true';
+                jsonpCall('getPosts', params, function(res) {
+                    hideSpinner();
+                    var containerId = mode === 'beranda' ? 'postCards' : 'allPostCards';
+                    var container = document.getElementById(containerId);
+                    if (res.success && res.data) {
+                        // PASTIKAN 6 POSTINGAN TERBARU DI BERANDA
+                        var posts = mode === 'beranda' ? res.data.slice(0, 6) : res.data;
+                        console.log('Jumlah postingan ditampilkan:', posts.length); // debugging
+                        var html = '';
+                        if (posts.length === 0) html = '<div class="col-12 text-center text-muted py-5">Belum ada postingan.</div>';
+                        posts.forEach(function(post) {
+                            var excerpt = post.Content.replace(/<[^>]*>/g, '').substring(0, 100) + '...';
+                            var hasThumb = post.ThumbnailURL && post.ThumbnailURL.trim() !== '';
+                            var thumbHtml = hasThumb ? '<img src="' + post.ThumbnailURL + '" class="card-img-top" alt="' + post.Title + '" onerror="this.style.display=\'none\'; this.parentNode.querySelector(\'.placeholder-img\').style.display=\'flex\';">' : '';
+                            var placeholderHtml = hasThumb ? '<div class="placeholder-img" style="display:none;"><i class="fas fa-image"></i></div>' : '<div class="placeholder-img"><i class="fas fa-image"></i></div>';
+                            html += `
+                            <div class="col-lg-4 col-md-6">
+                                <div class="post-card">
+                                    ${thumbHtml}${placeholderHtml}
+                                    <div class="card-body">
+                                        <h5 class="card-title">${escapeHtml(post.Title)}</h5>
+                                        <p class="card-text">${escapeHtml(excerpt)}</p>
+                                        <small class="card-date"><i class="far fa-calendar-alt"></i> ${post.DatePosted||'-'}</small>
+                                        <button class="btn-read" data-postid="${post.PostID}">Baca Selengkapnya →</button>
+                                    </div>
+                                </div>
+                            </div>`;
+                        });
+                        container.innerHTML = html;
+                        container.querySelectorAll('.btn-read').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                viewPostDetail(this.dataset.postid);
+                            });
+                        });
+                    } else container.innerHTML = '<div class="col-12 text-center text-muted py-5">Gagal memuat postingan.</div>';
+                });
+            }
+
+            function viewPostDetail(postId) {
+                showSpinner();
+                jsonpCall('getPosts', { all: 'true' }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var post = res.data.find(function(p) { return p.PostID === postId; });
+                        if (post) {
+                            var hasThumb = post.ThumbnailURL && post.ThumbnailURL.trim() !== '';
+                            var heroHtml = hasThumb ?
+                                '<img src="' + post.ThumbnailURL + '" class="blog-hero-image" alt="' + escapeHtml(post.Title) + '" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' +
+                                '<div class="blog-hero-placeholder" style="display:none;"><i class="fas fa-image"></i></div>' :
+                                '<div class="blog-hero-placeholder"><i class="fas fa-newspaper"></i></div>';
+                            document.getElementById('blogHero').innerHTML = heroHtml;
+                            document.getElementById('detailPostTitle').textContent = post.Title;
+                            document.getElementById('detailPostMeta').innerHTML = '<i class="far fa-calendar-alt"></i> ' + (post.DatePosted || '-');
+                            document.getElementById('detailPostContent').innerHTML = post.Content;
+                            document.querySelectorAll('.page-section').forEach(function(el) { el.classList.remove('active'); });
+                            document.getElementById('page-post-detail').classList.add('active');
+                            document.querySelectorAll('#navLinks .nav-link').forEach(function(el) { el.classList.remove('active'); });
+                            window.scrollTo(0, 0);
+                        }
+                    }
+                });
+            }
+
+            // ===== BOOKS =====
+            function loadBooks() {
+                showSpinner();
+                jsonpCall('getBooks', {}, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var search = (document.getElementById('searchBuku').value || '').toLowerCase();
+                        var filtered = res.data.filter(function(b) { return b.Title.toLowerCase().includes(search) || b.Author.toLowerCase().includes(search) || (b.ISBN || '').toLowerCase().includes(search); });
+                        renderPaginatedTableWithData(
+                            'bookTableBody',
+                            'bookPagination',
+                            filtered,
+                            10,
+                            function(b, index, rowNum) {
+                                var avail = parseInt(b.AvailableCopies) || 0;
+                                var action = '';
+                                if (currentUser && currentUser.Role === 'Siswa' && avail > 0) {
+                                    action = '<button class="btn btn-sm btn-accent" data-bookid="'+b.BookID+'" data-action="borrowFromTable">Pinjam</button>';
+                                }
+                                return `<tr>
+                                    <td><div style="width:40px;height:60px;">${getBookCoverHtml(b, '60px')}</div></td>
+                                    <td>${b.BookID}</td><td>${escapeHtml(b.Title)}</td><td>${escapeHtml(b.Author)}</td>
+                                    <td>${b.ISBN||'-'}</td><td>${b.Publisher||'-'}</td><td>${b.Category||'-'}</td><td>${b.Year||'-'}</td>
+                                    <td><span class="badge ${avail>0?'bg-success':'bg-danger'}">${avail}</span></td>
+                                    <td>${action}</td>
+                                </tr>`;
+                            }
+                        );
+                        document.querySelectorAll('#bookTableBody button[data-action="borrowFromTable"]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var bookId = this.dataset.bookid;
+                                var duration = parseInt(document.getElementById('bookLoanDuration').value) || 365;
+                                if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
+                                executeBorrowBook(bookId, duration);
+                            });
+                        });
+                    } else {
+                        document.getElementById('bookTableBody').innerHTML = '<tr><td colspan="10" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('bookPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            function loadLatestBooks() {
+                jsonpCall('getBooks', {}, function(res) {
+                    if (res.success && res.data) {
+                        var latest = res.data.slice(-6).reverse(); // 6 BUKU TERBARU
+                        var html = '';
+                        latest.forEach(function(b) {
+                            html += `
+                            <div class="col-lg-2 col-md-3 col-6">
+                                <div class="book-mini-card">
+                                    ${getBookCoverHtml(b, '120px')}
+                                    <div class="book-title mt-2">${escapeHtml(b.Title)}</div>
+                                    <div class="book-author">${escapeHtml(b.Author)}</div>
+                                </div>
+                            </div>`;
+                        });
+                        document.getElementById('latestBooks').innerHTML = html || '<div class="col-12 text-muted">Belum ada buku.</div>';
+                    }
+                });
+            }
+
+            // ===== MANAGE BOOKS =====
+            function loadManageBooks() {
+                showSpinner();
+                jsonpCall('getBooks', {}, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        renderPaginatedTableWithData(
+                            'manageBookTableBody',
+                            'manageBookPagination',
+                            res.data,
+                            10,
+                            function(b) {
+                                return `<tr>
+                                    <td><div style="width:40px;height:60px;">${getBookCoverHtml(b, '60px')}</div></td>
+                                    <td>${b.BookID}</td><td>${escapeHtml(b.Title)}</td><td>${escapeHtml(b.Author)}</td><td>${b.ISBN||'-'}</td>
+                                    <td>${b.TotalCopies||0}</td><td>${b.AvailableCopies||0}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-warning me-1" data-bookid="${b.BookID}" data-action="editBook"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-sm btn-outline-danger" data-bookid="${b.BookID}" data-action="deleteBook"><i class="fas fa-trash"></i></button>
+                                    </td></tr>`;
+                            }
+                        );
+                        document.querySelectorAll('#manageBookTableBody button[data-action]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var action = this.dataset.action;
+                                var id = this.dataset.bookid;
+                                if (action === 'editBook') showBookForm(id);
+                                else if (action === 'deleteBook') deleteBook(id);
+                            });
+                        });
+                    } else {
+                        document.getElementById('manageBookTableBody').innerHTML = '<tr><td colspan="8" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('manageBookPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            // ===== MANAGE POSTS =====
+            function loadManagePosts() {
+                showSpinner();
+                jsonpCall('getPosts', { all: 'true' }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var search = (document.getElementById('searchPost').value || '').toLowerCase();
+                        var filtered = res.data.filter(function(p) { return p.Title.toLowerCase().includes(search); });
+                        renderPaginatedTableWithData(
+                            'managePostTableBody',
+                            'managePostPagination',
+                            filtered,
+                            10,
+                            function(p) {
+                                return `<tr>
+                                    <td>${p.PostID}</td><td>${escapeHtml(p.Title)}</td><td>${p.DatePosted||'-'}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-warning me-1" data-postid="${p.PostID}" data-action="editPost"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-sm btn-outline-danger" data-postid="${p.PostID}" data-action="deletePost"><i class="fas fa-trash"></i></button>
+                                    </td></tr>`;
+                            }
+                        );
+                        document.querySelectorAll('#managePostTableBody button[data-action]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var action = this.dataset.action;
+                                var id = this.dataset.postid;
+                                if (action === 'editPost') showPostForm(id);
+                                else if (action === 'deletePost') deletePost(id);
+                            });
+                        });
+                    } else {
+                        document.getElementById('managePostTableBody').innerHTML = '<tr><td colspan="4" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('managePostPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            // ===== MANAGE USERS =====
+            function loadManageUsers() {
+                showSpinner();
+                jsonpCall('getUsers', {}, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        renderPaginatedTableWithData(
+                            'manageUserTableBody',
+                            'manageUserPagination',
+                            res.data,
+                            10,
+                            function(u) {
+                                return `<tr>
+                                    <td>${u.UserID}</td><td>${u.NIS||'-'}</td><td>${escapeHtml(u.Name)}</td><td>${u.Class||'-'}</td>
+                                    <td>${u.Username}</td><td><span class="badge ${u.Role==='Admin'?'bg-primary':'bg-info'}">${u.Role}</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-warning me-1" data-userid="${u.UserID}" data-action="editUser"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-sm btn-outline-danger" data-userid="${u.UserID}" data-action="deleteUser"><i class="fas fa-trash"></i></button>
+                                    </td></tr>`;
+                            }
+                        );
+                        document.querySelectorAll('#manageUserTableBody button[data-action]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var action = this.dataset.action;
+                                var id = this.dataset.userid;
+                                if (action === 'editUser') showUserForm(id);
+                                else if (action === 'deleteUser') deleteUser(id);
+                            });
+                        });
+                    } else {
+                        document.getElementById('manageUserTableBody').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('manageUserPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            // ===== BORROWABLE BOOKS (GRID) =====
+            function loadBorrowableBooks() {
+                showSpinner();
+                jsonpCall('getBooks', {}, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var searchTitle = (document.getElementById('pinjamSearchTitle').value || '').toLowerCase().trim();
+                        var searchID = (document.getElementById('pinjamSearchID').value || '').toLowerCase().trim();
+                        var available = res.data.filter(function(b) { return parseInt(b.AvailableCopies) > 0; });
+                        if (searchTitle) available = available.filter(function(b) { return b.Title.toLowerCase().includes(searchTitle); });
+                        if (searchID) available = available.filter(function(b) { return b.BookID.toLowerCase().includes(searchID); });
+
+                        renderPaginatedGrid(
+                            'borrowBookGrid',
+                            'borrowPagination',
+                            available,
+                            12,
+                            function(b) {
+                                return `
+                                <div class="col-lg-3 col-md-4 col-6">
+                                    <div class="book-mini-card" style="text-align:left;">
+                                        ${getBookCoverHtml(b, '160px')}
+                                        <strong style="font-size:0.9rem;">${escapeHtml(b.Title)}</strong>
+                                        <p style="font-size:0.8rem;color:#888;margin:0.2rem 0;">${escapeHtml(b.Author)}</p>
+                                        <small class="text-success">Tersedia: ${b.AvailableCopies} | ID: ${b.BookID}</small>
+                                        <button class="btn btn-accent btn-sm w-100 mt-2" data-bookid="${b.BookID}" data-action="borrowFromPinjam">Pinjam</button>
+                                    </div>
+                                </div>`;
+                            }
+                        );
+                        document.querySelectorAll('#borrowBookGrid button[data-action="borrowFromPinjam"]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var bookId = this.dataset.bookid;
+                                var duration = parseInt(document.getElementById('studentLoanDuration').value) || 365;
+                                if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
+                                executeBorrowBook(bookId, duration);
+                            });
+                        });
+                    } else {
+                        document.getElementById('borrowBookGrid').innerHTML = '<div class="col-12 text-center text-muted py-5">Gagal memuat data.</div>';
+                        document.getElementById('borrowPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            // ===== LOANS =====
+            function loadMyLoans() {
+                showSpinner();
+                jsonpCall('getLoans', { filter: 'all' }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var loans = res.data;
+                        var studentFilter = document.getElementById('filterMyLoansStudent').value.toLowerCase().trim();
+                        if (studentFilter) loans = loans.filter(function(l) { return (l.StudentName || '').toLowerCase().includes(studentFilter); });
+                        var month = document.getElementById('filterMyLoansMonth').value;
+                        var year = document.getElementById('filterMyLoansYear').value;
+                        if (month || year) {
+                            loans = loans.filter(function(l) {
+                                var dateObj = parseDateIndonesian(l.BorrowDate);
+                                if (!dateObj) return false;
+                                var m = ('0' + (dateObj.getMonth() + 1)).slice(-2);
+                                var y = dateObj.getFullYear().toString();
+                                if (month && m !== month) return false;
+                                if (year && y !== year) return false;
+                                return true;
+                            });
+                        }
+                        var today = new Date(); today.setHours(0,0,0,0);
+                        renderPaginatedTableWithData(
+                            'myLoanTableBody',
+                            'myLoansPagination',
+                            loans,
+                            10,
+                            function(l) {
+                                var isLate = l.Status === 'Dipinjam' && new Date(l.DueDate) < today;
+                                var statusHtml = l.Status === 'Dikembalikan' ? '<span class="badge badge-status badge-dikembalikan">Dikembalikan</span>' : (isLate ? '<span class="badge badge-status badge-terlambat">Terlambat</span>' : '<span class="badge badge-status badge-dipinjam">Dipinjam</span>');
+                                return `<tr class="${isLate ? 'table-danger' : ''}">
+                                    <td>${l.LoanID}</td><td>${escapeHtml(l.BookTitle || l.BookID)}</td>
+                                    <td>${l.BorrowDate}</td><td>${l.DueDate}</td><td>${l.ReturnDate || '-'}</td><td>${statusHtml}</td>
+                                </tr>`;
+                            }
+                        );
+                    } else {
+                        document.getElementById('myLoanTableBody').innerHTML = '<tr><td colspan="6" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('myLoansPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            function loadAllLoans() {
+                showSpinner();
+                jsonpCall('getLoans', { filter: 'all', allUsers: 'true' }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var loans = res.data;
+                        var studentFilter = document.getElementById('filterAllLoansStudent').value.toLowerCase().trim();
+                        if (studentFilter) loans = loans.filter(function(l) { return (l.StudentName || '').toLowerCase().includes(studentFilter); });
+                        var nisFilter = document.getElementById('filterAllLoansNIS').value.toLowerCase().trim();
+                        if (nisFilter) loans = loans.filter(function(l) { return (l.StudentNIS || '').toLowerCase().includes(nisFilter); });
+                        var classFilter = document.getElementById('filterAllLoansClass').value.toLowerCase().trim();
+                        if (classFilter) loans = loans.filter(function(l) { return (l.StudentClass || '').toLowerCase().includes(classFilter); });
+                        var month = document.getElementById('filterAllLoansMonth').value;
+                        var year = document.getElementById('filterAllLoansYear').value;
+                        if (month || year) {
+                            loans = loans.filter(function(l) {
+                                var dateObj = parseDateIndonesian(l.BorrowDate);
+                                if (!dateObj) return false;
+                                var m = ('0' + (dateObj.getMonth() + 1)).slice(-2);
+                                var y = dateObj.getFullYear().toString();
+                                if (month && m !== month) return false;
+                                if (year && y !== year) return false;
+                                return true;
+                            });
+                        }
+                        renderPaginatedTableWithData(
+                            'allLoanTableBody',
+                            'allLoansPagination',
+                            loans,
+                            10,
+                            function(l) {
+                                var statusBadge = l.Status === 'Dikembalikan' ? '<span class="badge badge-dikembalikan">Dikembalikan</span>' : '<span class="badge badge-dipinjam">Dipinjam</span>';
+                                return `<tr>
+                                    <td>${l.LoanID}</td>
+                                    <td>${escapeHtml(l.StudentNIS || '-')}</td>
+                                    <td>${escapeHtml(l.StudentName || l.UserID)}</td>
+                                    <td>${escapeHtml(l.StudentClass || '-')}</td>
+                                    <td>${escapeHtml(l.BookTitle || l.BookID)}</td>
+                                    <td>${l.BorrowDate}</td>
+                                    <td>${l.DueDate}</td>
+                                    <td>${l.ReturnDate || '-'}</td>
+                                    <td>${statusBadge}</td>
+                                </tr>`;
+                            }
+                        );
+                    } else {
+                        document.getElementById('allLoanTableBody').innerHTML = '<tr><td colspan="9" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('allLoansPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            function loadActiveLoans() {
+                showSpinner();
+                jsonpCall('getLoans', { filter: 'active', allUsers: 'true' }, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var search = (document.getElementById('searchReturn').value || '').toLowerCase();
+                        var today = new Date(); today.setHours(0,0,0,0);
+                        var filtered = res.data.filter(function(l) { return (l.StudentName || '').toLowerCase().includes(search) || (l.LoanID || '').toLowerCase().includes(search); });
+                        renderPaginatedTableWithData(
+                            'activeLoanTable',
+                            'activeLoanPagination',
+                            filtered,
+                            10,
+                            function(l) {
+                                var isLate = new Date(l.DueDate) < today;
+                                return `<tr class="${isLate ? 'table-danger' : ''}">
+                                    <td>${l.LoanID}</td><td>${escapeHtml(l.StudentName || l.UserID)}</td>
+                                    <td>${escapeHtml(l.BookTitle || l.BookID)}</td>
+                                    <td>${l.BorrowDate}</td><td>${l.DueDate}</td>
+                                    <td>${isLate ? '<span class="badge badge-status badge-terlambat">Terlambat</span>' : '<span class="badge badge-status badge-dipinjam">Dipinjam</span>'}</td>
+                                    <td><button class="btn btn-sm btn-success" data-loanid="${l.LoanID}" data-action="returnBook"><i class="fas fa-undo"></i> Kembalikan</button></td>
+                                </tr>`;
+                            }
+                        );
+                        document.querySelectorAll('#activeLoanTable button[data-action="returnBook"]').forEach(function(btn) {
+                            btn.addEventListener('click', function() {
+                                var loanId = this.dataset.loanid;
+                                returnBook(loanId);
+                            });
+                        });
+                    } else {
+                        document.getElementById('activeLoanTable').innerHTML = '<tr><td colspan="7" class="text-center">Gagal memuat data.</td></tr>';
+                        document.getElementById('activeLoanPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            function loadAdminActiveLoans() {
+                jsonpCall('getLoans', { filter: 'active', allUsers: 'true' }, function(res) {
+                    if (res.success && res.data) {
+                        renderPaginatedTableWithData(
+                            'adminActiveLoanTable',
+                            'adminLoanPagination',
+                            res.data,
+                            10,
+                            function(l) {
+                                return `<tr>
+                                    <td>${l.LoanID}</td><td>${escapeHtml(l.StudentName)}</td><td>${escapeHtml(l.BookTitle)}</td>
+                                    <td>${l.BorrowDate}</td><td>${l.DueDate}</td>
+                                    <td><span class="badge badge-dipinjam">Dipinjam</span></td>
+                                </tr>`;
+                            }
+                        );
+                    } else {
+                        document.getElementById('adminActiveLoanTable').innerHTML = '<tr><td colspan="6" class="text-center">Tidak ada data.</td></tr>';
+                        document.getElementById('adminLoanPagination').innerHTML = '';
+                    }
+                });
+            }
+
+            // ===== OTHER FUNCTIONS =====
+            function executeBorrowBook(bookId, duration) {
+                if (!currentUser || currentUser.Role !== 'Siswa') return showToast('Anda harus login sebagai siswa.', 'warning');
+                showSpinner();
+                jsonpCall('getBooks', {}, function(resB) {
+                    if (!resB.success) { hideSpinner(); return; }
+                    var book = resB.data.find(function(b) { return b.BookID === bookId; });
+                    if (!book) { hideSpinner(); return; }
+                    jsonpCall('getLoans', { filter: 'active' }, function(resL) {
+                        hideSpinner();
+                        if (resL.success && resL.data && resL.data.length >= MAX_ACTIVE_LOANS)
+                            return showToast('⚠️ Anda sudah meminjam ' + MAX_ACTIVE_LOANS + ' buku (maksimum).', 'warning');
+                        var dueDate = new Date(); dueDate.setDate(dueDate.getDate() + duration);
+                        var dueStr = formatDateIndonesian(dueDate.toISOString().split('T')[0]);
+                        showConfirm('Pinjam "<strong>' + escapeHtml(book.Title) + '</strong>"?<br><small>Jatuh tempo: <strong>' + dueStr + '</strong> (' + duration + ' hari)</small>', function() {
+                            showSpinner();
+                            jsonpCall('borrowBook', { bookId: bookId, loanDuration: duration }, function(res) {
+                                hideSpinner();
+                                if (res.success) { showToast('Buku berhasil dipinjam! Jatuh tempo: ' + dueStr, 'success');
+                                    loadBorrowableBooks();
+                                    loadMyLoans();
+                                    loadBooks(); } else showToast(res.message || 'Gagal meminjam.', 'error');
+                            });
+                        });
+                    });
+                });
+            }
+
+            function returnBook(loanId) {
+                showConfirm('Kembalikan buku ini?', function() {
+                    showSpinner();
+                    jsonpCall('returnBook', { loanId: loanId }, function(res) {
+                        hideSpinner();
+                        if (res.success) { showToast('Buku berhasil dikembalikan.', 'success');
+                            loadActiveLoans();
+                            loadManageBooks(); } else showToast(res.message || 'Gagal mengembalikan.', 'error');
+                    });
+                });
+            }
+
+            function loadAdminPeminjamanForm() {
+                showSpinner();
+                jsonpCall('getUsers', {}, function(resUsers) {
+                    if (resUsers.success) {
+                        var optStudent = '<option value="">-- Pilih Siswa --</option>';
+                        resUsers.data.forEach(function(u) { if (u.Role === 'Siswa') optStudent += '<option value="' + u.UserID + '">' + u.Name + ' (' + (u.Class || '-') + ')</option>'; });
+                        document.getElementById('selectStudent').innerHTML = optStudent;
+                    }
+                    jsonpCall('getBooks', {}, function(resBooks) {
+                        hideSpinner();
+                        if (resBooks.success) {
+                            var optBook = '<option value="">-- Pilih Buku --</option>';
+                            resBooks.data.forEach(function(b) { if (parseInt(b.AvailableCopies) > 0) optBook += '<option value="' + b.BookID + '">' + b.Title + ' (Tersedia: ' + b.AvailableCopies + ')</option>'; });
+                            document.getElementById('selectBook').innerHTML = optBook;
+                        }
+                    });
+                });
+                loadAdminActiveLoans();
+                setupSearchFilter();
+            }
+
+            function setupSearchFilter() {
+                var searchStudent = document.getElementById('searchStudent');
+                var searchBook = document.getElementById('searchBook');
+                searchStudent.oninput = function() {
+                    var filter = this.value.toLowerCase();
+                    document.querySelectorAll('#selectStudent option').forEach(function(opt) {
+                        var text = opt.textContent.toLowerCase();
+                        opt.style.display = (text.indexOf(filter) > -1 || opt.value === '') ? '' : 'none';
+                    });
+                };
+                searchBook.oninput = function() {
+                    var filter = this.value.toLowerCase();
+                    document.querySelectorAll('#selectBook option').forEach(function(opt) {
+                        var text = opt.textContent.toLowerCase();
+                        opt.style.display = (text.indexOf(filter) > -1 || opt.value === '') ? '' : 'none';
+                    });
+                };
+            }
+
+            function adminBorrowBook() {
+                var studentId = document.getElementById('selectStudent').value;
+                var bookId = document.getElementById('selectBook').value;
+                var duration = parseInt(document.getElementById('adminLoanDuration').value) || 365;
+                if (!studentId || !bookId) return showToast('Pilih siswa dan buku.', 'warning');
+                if (duration < 1 || duration > 365) return showToast('Durasi harus 1-365 hari.', 'warning');
+                showSpinner();
+                jsonpCall('borrowBookForStudent', { studentId: studentId, bookId: bookId, loanDuration: duration }, function(res) {
+                    hideSpinner();
+                    if (res.success) { showToast(res.message, 'success');
+                        loadAdminPeminjamanForm(); } else showToast(res.message || 'Gagal meminjamkan.', 'error');
+                });
+            }
+
+            function loadDashboard() {
+                showSpinner();
+                jsonpCall('getStats', {}, function(res) {
+                    hideSpinner();
+                    if (res.success && res.data) {
+                        var s = res.data;
+                        document.getElementById('statsRow').innerHTML = `
+                            <div class="col-lg-3 col-md-6"><div class="stat-card"><div class="stat-icon"><i class="fas fa-book"></i></div><div class="stat-value">${s.totalBooks||0}</div><div class="stat-label">Total Buku</div></div></div>
+                            <div class="col-lg-3 col-md-6"><div class="stat-card success"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-value">${s.availableBooks||0}</div><div class="stat-label">Buku Tersedia</div></div></div>
+                            <div class="col-lg-3 col-md-6"><div class="stat-card accent"><div class="stat-icon"><i class="fas fa-hand-holding"></i></div><div class="stat-value">${s.activeLoans||0}</div><div class="stat-label">Dipinjam (Aktif)</div></div></div>
+                            <div class="col-lg-3 col-md-6"><div class="stat-card danger"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">${s.totalStudents||0}</div><div class="stat-label">Jumlah Siswa</div></div></div>
+                        `;
+                        if (s.lateLoans && s.lateLoans.length > 0) {
+                            var lateHtml = '';
+                            s.lateLoans.forEach(function(l) {
+                                var daysLate = Math.floor((new Date() - new Date(l.DueDate)) / (1000 * 60 * 60 * 24));
+                                lateHtml += '<tr class="table-danger"><td>' + l.LoanID + '</td><td>' + escapeHtml(l.StudentName || '') + '</td><td>' + escapeHtml(l.BookTitle || '') + '</td><td>' + l.DueDate + '</td><td>' + daysLate + ' hari</td></tr>';
+                            });
+                            document.getElementById('lateLoanTable').innerHTML = lateHtml;
+                        } else document.getElementById('lateLoanTable').innerHTML = '<tr><td colspan="5" class="text-center text-success">✅ Tidak ada peminjaman terlambat.</td></tr>';
+                    }
+                });
+            }
+
+            // ===== FORMS =====
+            function showBookForm(bookId) {
+                bookId = bookId || null;
+                document.getElementById('bookIdInput').value = '';
+                document.getElementById('bookTitle').value = '';
+                document.getElementById('bookIsbn').value = '';
+                document.getElementById('bookAuthor').value = '';
+                document.getElementById('bookPublisher').value = '';
+                document.getElementById('bookCategory').value = '';
+                document.getElementById('bookYear').value = '';
+                document.getElementById('bookTotalCopies').value = '1';
+                document.getElementById('bookCoverURL').value = '';
+                document.getElementById('bookFormTitle').textContent = 'Tambah Buku';
+                if (bookId) {
+                    showSpinner();
+                    jsonpCall('getBooks', {}, function(res) {
+                        hideSpinner();
+                        if (res.success && res.data) {
+                            var book = res.data.find(function(b) { return b.BookID === bookId; });
+                            if (book) {
+                                document.getElementById('bookIdInput').value = book.BookID;
+                                document.getElementById('bookTitle').value = book.Title;
+                                document.getElementById('bookIsbn').value = book.ISBN || '';
+                                document.getElementById('bookAuthor').value = book.Author;
+                                document.getElementById('bookPublisher').value = book.Publisher || '';
+                                document.getElementById('bookCategory').value = book.Category || '';
+                                document.getElementById('bookYear').value = book.Year || '';
+                                document.getElementById('bookTotalCopies').value = book.TotalCopies || 1;
+                                document.getElementById('bookCoverURL').value = book.CoverURL || '';
+                                document.getElementById('bookFormTitle').textContent = 'Edit Buku';
+                            }
+                        }
+                    });
+                }
+                new bootstrap.Modal(document.getElementById('bookFormModal')).show();
+            }
+
+            function handleSaveBook(e) {
+                e.preventDefault();
+                var bookId = document.getElementById('bookIdInput').value;
+                var data = {
+                    title: document.getElementById('bookTitle').value.trim(),
+                    isbn: document.getElementById('bookIsbn').value.trim(),
+                    author: document.getElementById('bookAuthor').value.trim(),
+                    publisher: document.getElementById('bookPublisher').value.trim(),
+                    category: document.getElementById('bookCategory').value.trim(),
+                    year: document.getElementById('bookYear').value.trim(),
+                    totalCopies: document.getElementById('bookTotalCopies').value.trim(),
+                    coverURL: document.getElementById('bookCoverURL').value.trim()
+                };
+                if (!data.title || !data.author) return showToast('Judul dan penulis wajib diisi.', 'warning');
+                if (!data.totalCopies || parseInt(data.totalCopies) < 1) return showToast('Total eksemplar minimal 1.', 'warning');
+                showSpinner();
+                var action = bookId ? 'updateBook' : 'addBook';
+                var params = data;
+                if (bookId) params.bookId = bookId;
+                jsonpCall(action, params, function(res) {
+                    hideSpinner();
+                    if (res.success) {
+                        bootstrap.Modal.getInstance(document.getElementById('bookFormModal')).hide();
+                        showToast('Buku berhasil disimpan.', 'success');
+                        loadManageBooks();
+                        loadLatestBooks();
+                    } else showToast(res.message || 'Gagal menyimpan.', 'error');
+                });
+            }
+
+            function deleteBook(bookId) {
+                showConfirm('Hapus buku ini?', function() {
+                    showSpinner();
+                    jsonpCall('deleteBook', { bookId: bookId }, function(res) {
+                        hideSpinner();
+                        if (res.success) { showToast('Buku dihapus.', 'success'); loadManageBooks(); loadLatestBooks(); }
+                        else showToast(res.message || 'Gagal menghapus.', 'error');
+                    });
+                });
+            }
+
+            function showPostForm(postId) {
+                postId = postId || null;
+                document.getElementById('postIdInput').value = postId || '';
+                document.getElementById('postTitle').value = '';
+                document.getElementById('postThumbnail').value = '';
+                destroyCKEditor();
+
+                var modal = new bootstrap.Modal(document.getElementById('postFormModal'));
+                if (postId) {
+                    document.getElementById('postFormTitle').innerHTML = '<i class="fas fa-edit me-2" style="color:var(--accent);"></i>Edit Postingan';
+                    showSpinner();
+                    jsonpCall('getPosts', { all: 'true' }, function(res) {
+                        hideSpinner();
+                        if (res.success && res.data) {
+                            var post = res.data.find(function(p) { return p.PostID === postId; });
+                            if (post) {
+                                document.getElementById('postIdInput').value = post.PostID;
+                                document.getElementById('postTitle').value = post.Title;
+                                document.getElementById('postThumbnail').value = post.ThumbnailURL || '';
+                                modal.show();
+                                document.getElementById('postFormModal').addEventListener('shown.bs.modal', function() {
+                                    initCKEditor(post.Content || '');
+                                }, { once: true });
+                            }
+                        }
+                    });
+                } else {
+                    document.getElementById('postFormTitle').innerHTML = '<i class="fas fa-pen-fancy me-2" style="color:var(--accent);"></i>Tambah Postingan';
+                    modal.show();
+                    document.getElementById('postFormModal').addEventListener('shown.bs.modal', function() {
+                        initCKEditor('');
+                    }, { once: true });
+                }
+            }
+
+            function handleSavePost(e) {
+                e.preventDefault();
+                var postId = document.getElementById('postIdInput').value;
+                var title = document.getElementById('postTitle').value.trim();
+                var thumbnailURL = document.getElementById('postThumbnail').value.trim();
+                var content = getCKEditorContent();
+
+                if (!title || !content) return showToast('Judul dan konten wajib diisi.', 'warning');
+
+                showSpinner();
+                var action = postId ? 'updatePost' : 'addPost';
+                var params = { title: title, thumbnailURL: thumbnailURL, content: content };
+                if (postId) params.postId = postId;
+
+                jsonpCall(action, params, function(res) {
+                    hideSpinner();
+                    if (res.success) {
+                        bootstrap.Modal.getInstance(document.getElementById('postFormModal')).hide();
+                        showToast('Postingan berhasil disimpan.', 'success');
+                        loadManagePosts();
+                        loadPosts('beranda');
+                    } else showToast(res.message || 'Gagal menyimpan.', 'error');
+                });
+            }
+
+            function deletePost(postId) {
+                showConfirm('Hapus postingan ini?', function() {
+                    showSpinner();
+                    jsonpCall('deletePost', { postId: postId }, function(res) {
+                        hideSpinner();
+                        if (res.success) { showToast('Postingan dihapus.', 'success'); loadManagePosts(); loadPosts('beranda'); }
+                        else showToast(res.message || 'Gagal menghapus.', 'error');
+                    });
+                });
+            }
+
+            function showUserForm(userId) {
+                userId = userId || null;
+                document.getElementById('userIdInput').value = '';
+                document.getElementById('userNis').value = '';
+                document.getElementById('userName').value = '';
+                document.getElementById('userClass').value = '';
+                document.getElementById('userUsername').value = '';
+                document.getElementById('userPassword').value = '';
+                document.getElementById('userRole').value = 'Siswa';
+                document.getElementById('userEmail').value = '';
+                document.getElementById('userPhone').value = '';
+                document.getElementById('userFormTitle').textContent = 'Tambah User';
+                if (userId) {
+                    showSpinner();
+                    jsonpCall('getUsers', {}, function(res) {
+                        hideSpinner();
+                        if (res.success && res.data) {
+                            var user = res.data.find(function(u) { return u.UserID === userId; });
+                            if (user) {
+                                document.getElementById('userIdInput').value = user.UserID;
+                                document.getElementById('userNis').value = user.NIS || '';
+                                document.getElementById('userName').value = user.Name;
+                                document.getElementById('userClass').value = user.Class || '';
+                                document.getElementById('userUsername').value = user.Username;
+                                document.getElementById('userPassword').value = user.Password;
+                                document.getElementById('userRole').value = user.Role;
+                                document.getElementById('userEmail').value = user.Email || '';
+                                document.getElementById('userPhone').value = user.Phone || '';
+                                document.getElementById('userFormTitle').textContent = 'Edit User';
+                            }
+                        }
+                    });
+                }
+                new bootstrap.Modal(document.getElementById('userFormModal')).show();
+            }
+
+            function handleSaveUser(e) {
+                e.preventDefault();
+                var userId = document.getElementById('userIdInput').value;
+                var data = {
+                    nis: document.getElementById('userNis').value.trim(),
+                    name: document.getElementById('userName').value.trim(),
+                    class: document.getElementById('userClass').value.trim(),
+                    username: document.getElementById('userUsername').value.trim(),
+                    password: document.getElementById('userPassword').value.trim(),
+                    role: document.getElementById('userRole').value,
+                    email: document.getElementById('userEmail').value.trim(),
+                    phone: document.getElementById('userPhone').value.trim()
+                };
+                if (!data.name || !data.username || !data.password) return showToast('Nama, username, dan password wajib.', 'warning');
+                showSpinner();
+                var action = userId ? 'updateUser' : 'addUser';
+                var params = data;
+                if (userId) params.userId = userId;
+                jsonpCall(action, params, function(res) {
+                    hideSpinner();
+                    if (res.success) { bootstrap.Modal.getInstance(document.getElementById('userFormModal')).hide();
+                        showToast('User berhasil disimpan.', 'success');
+                        loadManageUsers(); } else showToast(res.message || 'Gagal menyimpan.', 'error');
+                });
+            }
+
+            function deleteUser(userId) {
+                showConfirm('Hapus user ini?', function() {
+                    showSpinner();
+                    jsonpCall('deleteUser', { userId: userId }, function(res) {
+                        hideSpinner();
+                        if (res.success) { showToast('User dihapus.', 'success');
+                            loadManageUsers(); } else showToast(res.message || 'Gagal menghapus.', 'error');
+                    });
+                });
+            }
+
+            // ===== INIT =====
+            function init() {
+                var savedToken = localStorage.getItem('libToken');
+                var savedUser = localStorage.getItem('libUser');
+                if (savedToken && savedUser) {
+                    currentToken = savedToken;
+                    currentUser = JSON.parse(savedUser);
+                    checkSessionAndUpdateUI();
+                }
+                renderSlider();
+                loadPosts('beranda');
+                loadLatestBooks();
+                updateNavUI();
+                populateYearDropdowns();
+
+                document.querySelectorAll('.modal').forEach(function(modalEl) {
+                    modalEl.addEventListener('hidden.bs.modal', function() {
+                        document.body.focus();
+                    });
+                });
+
+                document.getElementById('brandLink').addEventListener('click', function(e) { e.preventDefault(); navigateTo('beranda'); });
+                document.querySelectorAll('.btn-outline-primary-custom[data-page]').forEach(function(el) {
+                    el.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        navigateTo(this.dataset.page);
+                    });
+                });
+
+                document.getElementById('btnLoginNav').addEventListener('click', showLoginModal);
+                document.getElementById('btnLogoutNav').addEventListener('click', logout);
+                document.getElementById('loginForm').addEventListener('submit', handleLogin);
+
+                document.getElementById('addPostBtn').addEventListener('click', function() { showPostForm(null); });
+                document.getElementById('postForm').addEventListener('submit', handleSavePost);
+
+                document.getElementById('addBookBtn').addEventListener('click', function() { showBookForm(null); });
+                document.getElementById('bookForm').addEventListener('submit', handleSaveBook);
+
+                document.getElementById('addUserBtn').addEventListener('click', function() { showUserForm(null); });
+                document.getElementById('userForm').addEventListener('submit', handleSaveUser);
+
+                document.getElementById('adminBorrowBtn').addEventListener('click', adminBorrowBook);
+                document.getElementById('refreshBorrowable').addEventListener('click', loadBorrowableBooks);
+
+
+
+                var searchBuku = document.getElementById('searchBuku');
+                var searchPost = document.getElementById('searchPost');
+                var searchReturn = document.getElementById('searchReturn');
+                var filterMyLoansStudent = document.getElementById('filterMyLoansStudent');
+                var filterAllLoansStudent = document.getElementById('filterAllLoansStudent');
+                var filterAllLoansNIS = document.getElementById('filterAllLoansNIS');
+                var filterAllLoansClass = document.getElementById('filterAllLoansClass');
+
+                searchBuku.addEventListener('input', debounce(loadBooks, 300));
+                searchPost.addEventListener('input', debounce(loadManagePosts, 300));
+                searchReturn.addEventListener('input', debounce(loadActiveLoans, 300));
+                filterMyLoansStudent.addEventListener('input', debounce(loadMyLoans, 300));
+                filterAllLoansStudent.addEventListener('input', debounce(loadAllLoans, 300));
+                filterAllLoansNIS.addEventListener('input', debounce(loadAllLoans, 300));
+                filterAllLoansClass.addEventListener('input', debounce(loadAllLoans, 300));
+
+                document.getElementById('filterMyLoansMonth').addEventListener('change', loadMyLoans);
+                document.getElementById('filterMyLoansYear').addEventListener('change', loadMyLoans);
+                document.getElementById('filterAllLoansMonth').addEventListener('change', loadAllLoans);
+                document.getElementById('filterAllLoansYear').addEventListener('change', loadAllLoans);
+
+                document.getElementById('printRiwayat').addEventListener('click', function() { printSection('page-riwayat'); });
+                document.getElementById('printAllLoans').addEventListener('click', function() { printSection('page-all-loans'); });
+
+                document.getElementById('postFormModal').addEventListener('hidden.bs.modal', function() {
+                    destroyCKEditor();
+                    document.getElementById('postForm').reset();
+                    document.getElementById('postIdInput').value = '';
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+</body>
+</html>
